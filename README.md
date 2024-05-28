@@ -10,7 +10,8 @@
 ```bash
 kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 
 ```
-Go to http://localhost:8082/invincible-gtg
+Go to http://localhost:8082/invincible-gtg/securityRealm/finishLogin?state=67d33b64-7c8c-4e91-84b6-ce906c7efbfb&code=0198fea4-0087-48eb-831f-83bd97fdc949
+3. Go through wizard
 3. Create credentials in invincible-gtg master controller for dockerhub
 3. Create credentials in invincible-gtg master controller for github with PAT
 5. Add library:
