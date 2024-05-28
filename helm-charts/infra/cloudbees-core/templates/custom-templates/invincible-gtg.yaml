@@ -217,6 +217,13 @@ ingress:
           pathType: "Prefix"
 additionalResources: []
 allResources:
+
+
+
+
+
+
+
 - apiVersion: "apps/v1"
   kind: "StatefulSet"
   metadata:
@@ -353,6 +360,13 @@ allResources:
         resources:
           requests:
             storage: "50Gi"
+
+
+
+
+
+
+
 - apiVersion: "v1"
   kind: "Service"
   metadata:
@@ -382,46 +396,54 @@ allResources:
       com.cloudbees.pse.type: "master"
       tenant: "invincible-gtg"
       type: "master"
-# - apiVersion: "networking.k8s.io/v1"
-#   kind: "Ingress"
-#   metadata:
-#     annotations:
-#       nginx.ingress.kubernetes.io/proxy-body-size: "50m"
-#       nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
-#       nginx.ingress.kubernetes.io/ssl-redirect: "false"
-#       kubectl.kubernetes.io/last-applied-configuration: "{\"apiVersion\":\"networking.k8s.io/v1\"\
-#         ,\"kind\":\"Ingress\",\"metadata\":{\"annotations\":{\"kubernetes.io/tls-acme\"\
-#         :\"false\",\"nginx.ingress.kubernetes.io/app-root\":\"/cjoc/teams-check/\"\
-#         ,\"nginx.ingress.kubernetes.io/proxy-body-size\":\"50m\",\"nginx.ingress.kubernetes.io/proxy-request-buffering\"\
-#         :\"off\",\"nginx.ingress.kubernetes.io/ssl-redirect\":\"false\"},\"labels\"\
-#         :{\"app.kubernetes.io/instance\":\"cloudbees-core\",\"app.kubernetes.io/managed-by\"\
-#         :\"Helm\",\"app.kubernetes.io/name\":\"cloudbees-core\",\"argocd.argoproj.io/instance\"\
-#         :\"cloudbees-core\",\"helm.sh/chart\":\"cloudbees-core-3.17821.0_5cfcf804cfad\"\
-#         },\"name\":\"cjoc\",\"namespace\":\"cloudbees-core\"},\"spec\":{\"ingressClassName\"\
-#         :\"nginx\",\"rules\":[{\"http\":{\"paths\":[{\"backend\":{\"service\":{\"\
-#         name\":\"cjoc\",\"port\":{\"number\":80}}},\"path\":\"/cjoc\",\"pathType\"\
-#         :\"Prefix\"}]}}]}}\n"
-#       nginx.ingress.kubernetes.io/app-root: "/cjoc/teams-check/"
-#       kubernetes.io/tls-acme: "false"
-#     labels:
-#       com.cloudbees.cje.tenant: "invincible-gtg"
-#       com.cloudbees.cje.type: "master"
-#       com.cloudbees.pse.tenant: "invincible-gtg"
-#       com.cloudbees.pse.type: "master"
-#       tenant: "invincible-gtg"
-#       type: "master"
-#     name: "invincible-gtg"
-#     namespace: "cloudbees-core"
-#   spec:
-#     ingressClassName: "nginx"
-#     rules:
-#     - http:
-#         paths:
-#         - backend:
-#             service:
-#               name: "invincible-gtg"
-#               port:
-#                 name: "http"
-#           path: "/invincible-gtg/"
-#           pathType: "Prefix"
+
+
+
+
+
+
+- apiVersion: "networking.k8s.io/v1"
+  kind: "Ingress"
+  metadata:
+    annotations:
+      nginx.ingress.kubernetes.io/proxy-body-size: "50m"
+      nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      kubectl.kubernetes.io/last-applied-configuration: "{\"apiVersion\":\"networking.k8s.io/v1\"\
+        ,\"kind\":\"Ingress\",\"metadata\":{\"annotations\":{\"kubernetes.io/tls-acme\"\
+        :\"false\",\"nginx.ingress.kubernetes.io/app-root\":\"/cjoc/teams-check/\"\
+        ,\"nginx.ingress.kubernetes.io/proxy-body-size\":\"50m\",\"nginx.ingress.kubernetes.io/proxy-request-buffering\"\
+        :\"off\",\"nginx.ingress.kubernetes.io/ssl-redirect\":\"false\"},\"labels\"\
+        :{\"app.kubernetes.io/instance\":\"cloudbees-core\",\"app.kubernetes.io/managed-by\"\
+        :\"Helm\",\"app.kubernetes.io/name\":\"cloudbees-core\",\"argocd.argoproj.io/instance\"\
+        :\"cloudbees-core\",\"helm.sh/chart\":\"cloudbees-core-3.17821.0_5cfcf804cfad\"\
+        },\"name\":\"cjoc\",\"namespace\":\"cloudbees-core\"},\"spec\":{\"ingressClassName\"\
+        :\"nginx\",\"rules\":[{\"http\":{\"paths\":[{\"backend\":{\"service\":{\"\
+        name\":\"cjoc\",\"port\":{\"number\":80}}},\"path\":\"/cjoc\",\"pathType\"\
+        :\"Prefix\"}]}}]}}\n"
+      nginx.ingress.kubernetes.io/app-root: "/cjoc/teams-check/"
+      kubernetes.io/tls-acme: "false"
+    labels:
+      com.cloudbees.cje.tenant: "invincible-gtg"
+      com.cloudbees.cje.type: "master"
+      com.cloudbees.pse.tenant: "invincible-gtg"
+      com.cloudbees.pse.type: "master"
+      tenant: "invincible-gtg"
+      type: "master"
+    name: "invincible-gtg"
+    namespace: "cloudbees-core"
+  spec:
+    ingressClassName: "nginx"
+    rules:
+    - http:
+        paths:
+        - backend:
+            service:
+              name: "invincible-gtg"
+              port:
+                name: "http"
+          path: "/invincible-gtg/"
+          pathType: "Prefix"
+
+          
 rawExtensions: []
