@@ -1,6 +1,6 @@
-OperationsCenter:
-  CasC:
-    Enabled: true
-    Retriever:
-      secrets:
-        adminPassword: hola
+# OperationsCenter:
+#   CasC: # Configuration as Code
+#     Enabled: true
+#     Retriever:
+#       secrets:
+#         adminPassword: hola
