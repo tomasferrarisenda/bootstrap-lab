@@ -141,3 +141,16 @@ echo "##########################################################################
 echo "#############################################################################"
 #  kubectl rollout status sts cjoc --namespace cloudbees-core
 #  kubectl exec cjoc-0 --namespace cloudbees-core -- cat /var/jenkins_home/secrets/initialAdminPassword
+
+
+
+# COSAS A MANO
+1. crear master para invincible-gtg:
+  disk (5gb)
+  storgaeclass standard
+  memory 768
+  cpu 0.5
+2. agregar credenciales en ese master 
+3. port forward 
+kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 
+ir a localhost:8082/invincible-gtg
