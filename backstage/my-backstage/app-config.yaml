@@ -139,7 +139,7 @@ catalog:
 
       # Use this if new services are created in their own repositories
       # catalogsProvider:
-      #   organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+      #   organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
       #   catalogPath: '/catalog-info.yaml' # string
       #   filters:
       #     branch: 'main' # string
@@ -150,77 +150,77 @@ catalog:
 
       # Catalogs
       catalogsProvider:
-        organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+        organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
         catalogPath: '/application-code/**/*catalog-info.yaml' # this will search all folders for files that end in template.yaml
         filters:
           branch: 'main' # string
-          repository: 'backstage-minikube-lab-reloaded' # Regex
+          repository: 'cloudbees-core-minikube-lab' # Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
 
       # Resources
       resourcesProvider:
-        organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+        organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
         catalogPath: '/application-code/**/*catalog-info.yaml' # this will search all folders for files that end in template.yaml
         filters:
           branch: 'main' # string
-          repository: 'backstage-minikube-lab-reloaded' # Regex
+          repository: 'cloudbees-core-minikube-lab' # Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
 
       # APIs
       apisProvider:
-        organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+        organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
         catalogPath: '/application-code/**/*api-info.yaml' # this will search all folders for files that end in template.yaml
         filters:
           branch: 'main' # string
-          repository: 'backstage-minikube-lab-reloaded' # Regex
+          repository: 'cloudbees-core-minikube-lab' # Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
 
       # Templates
       templatesProvider:
-        organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+        organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
         catalogPath: '/backstage/entities/templates/**/*template.yaml' # this will search all folders for files that end in template.yaml
         filters:
           branch: 'main' # string
-          repository: 'backstage-minikube-lab-reloaded' # Regex
+          repository: 'cloudbees-core-minikube-lab' # Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
 
       # Systems
       systemsProvider:
-        organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+        organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
         catalogPath: '/backstage/entities/systems/**/*.yaml' # this will search all folders for files that end in .yaml
         filters:
           branch: 'main' # string
-          repository: 'backstage-minikube-lab-reloaded' # Regex
+          repository: 'cloudbees-core-minikube-lab' # Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
 
       # Groups
       groupsProvider:
-        organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+        organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
         catalogPath: '/backstage/entities/groups/**/*.yaml' # this will search all folders for files that end in .yaml
         filters: # optional filters
           branch: 'main' # optional string
-          repository: 'backstage-minikube-lab-reloaded' # optional Regex
+          repository: 'cloudbees-core-minikube-lab' # optional Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }
 
       # Users
       usersProvider:
-        organization: 'AATT_GITHUB_USERNAME' # This value was modified by the initial-setup script
+        organization: 'tomasferrarisenda' # This value was modified by the initial-setup script
         catalogPath: '/backstage/entities/users/**/*.yaml' # this will search all folders for files that end in .yaml
         filters: # optional filters
           branch: 'main' # optional string
-          repository: 'backstage-minikube-lab-reloaded' # optional Regex
+          repository: 'cloudbees-core-minikube-lab' # optional Regex
         schedule: # same options as in TaskScheduleDefinition
           frequency: { minutes: 1 }
           timeout: { minutes: 3 }

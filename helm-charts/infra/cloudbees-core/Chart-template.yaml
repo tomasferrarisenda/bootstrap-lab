@@ -1,0 +1,26 @@
+apiVersion: v2
+kubeVersion: ">= 1.22.0-0"
+name: cloudbees-core
+version: '@@CHART_VERSION@@'
+description: Enterprise Continuous Integration with Jenkins
+keywords:
+  - cloudbees
+  - jenkins
+home: https://www.cloudbees.com/products/continuous-integration
+dependencies:
+  - name: ingress-nginx
+    version: 4.8.2
+    repository: https://kubernetes.github.io/ingress-nginx
+    condition: ingress-nginx.Enabled
+  - name: cloudbees-sidecar-injector
+    version: "347+e33c7d48327f"
+    repository: https://charts.cloudbees.com/public/cloudbees
+    condition: sidecarinjector.Enabled
+icon: https://images.ctfassets.net/vtn4rfaw6n2j/7xprMMXARXDBuVxW4y8XfV/349fff91035050e3f2a8ff37bc0615b5/cloudbees-core-logo_header.svg
+appVersion: '@@IMAGE_TAG@@'
+annotations:
+  artifacthub.io/links: |
+    - name: Product overview
+      url: https://www.cloudbees.com/products/continuous-integration
+    - name: Documentation
+      url: https://docs.cloudbees.com/docs/cloudbees-ci/latest/

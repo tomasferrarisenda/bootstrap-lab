@@ -7,12 +7,12 @@ read -r github_username
 echo -n "What's your DockerHub username?: "
 read -r dockerhub_username
 
-# Function that looks for strings AATT_GITHUB_USERNAME and AATT_DOCKERHUB_USERNAME in a files /backstage/my-backstage/app-config.yaml and /k8s-manifests/my-app/backend/deployment and replaces them with the value of github_username and dockerhub_username
+# Function that looks for strings tomasferrarisenda and AATT_DOCKERHUB_USERNAME in a files /backstage/my-backstage/app-config.yaml and /k8s-manifests/my-app/backend/deployment and replaces them with the value of github_username and dockerhub_username
 replace_string_in_file() {
     file_path=$1
     github_username=$2
     dockerhub_username=$3
-    sed -i "s/AATT_GITHUB_USERNAME/$github_username/g" "$file_path"
+    sed -i "s/tomasferrarisenda/$github_username/g" "$file_path"
     sed -i "s/AATT_DOCKERHUB_USERNAME/$dockerhub_username/g" "$file_path"
 }
 
