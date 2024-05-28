@@ -150,7 +150,7 @@ echo "##########################################################################
   storgaeclass standard
   memory 768
   cpu 0.5
-2. agregar credenciales en ese master 
 3. port forward 
-kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 
-ir a localhost:8082/invincible-gtg
+  kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 
+  ir a localhost:8082/invincible-gtg
+2. agregar credenciales en ese master pa dockerhub
