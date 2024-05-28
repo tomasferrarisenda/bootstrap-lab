@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Prompt the user for their GitHub token
-read -p "Enter your GitHub token: " GITHUB_TOKEN
-read -p "Enter your GitHub auth cliend ID: " AUTH_GITHUB_CLIENT_ID
-read -p "Enter your GitHub auth client secret: " AUTH_GITHUB_CLIENT_SECRET
+# read -p "Enter your GitHub token: " GITHUB_TOKEN
+# read -p "Enter your GitHub auth cliend ID: " AUTH_GITHUB_CLIENT_ID
+# read -p "Enter your GitHub auth client secret: " AUTH_GITHUB_CLIENT_SECRET
 
 # Start cluster. Extra beefy beause Backstage is a bit heavy.
 minikube start --cpus 4 --memory 4096
