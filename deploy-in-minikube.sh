@@ -121,11 +121,23 @@ kubectl port-forward -n argocd service/argocd-server 8081:443 &
 
 # # Port forward the Backstage service
 # kubectl port-forward -n backstage service/backstage 8080:7007
- kubectl port-forward -n cloudbees-core service/cjoc 8080:80
+kubectl port-forward -n cloudbees-core service/cjoc 8080:80
 
 
 echo "go to http://localhost:8080/cjoc/"
  
-
+echo "#############################################################################"
+echo "#############################################################################"
+echo "#############################################################################"
+echo " "
+echo "TO ACCESS THE OPERATIONS CENTER DASHBOARD, RUN THE FOLLOWING COMMAND:"
+echo "kubectl port-forward -n cloudbees-core service/cjoc 8080:80"
+echo " "
+echo "user: admin"
+echo "password: $(kubectl exec cjoc-0 --namespace cloudbees-core -- cat /var/jenkins_home/secrets/initialAdminPassword)"
+echo " "
+echo "#############################################################################"
+echo "#############################################################################"
+echo "#############################################################################"
 #  kubectl rollout status sts cjoc --namespace cloudbees-core
 #  kubectl exec cjoc-0 --namespace cloudbees-core -- cat /var/jenkins_home/secrets/initialAdminPassword
