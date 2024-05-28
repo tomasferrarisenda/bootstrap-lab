@@ -38,7 +38,7 @@ kubectl create -n argocd -f argo-cd/self-manage/argocd-app-of-apps-application.y
 
 # This is for the ArgoCD plugin. We need to get the ArgoCD token for the Backstage service account
 # We expose argocd on port 8081 in the background so we can then login to get the token
-kubectl port-forward -n argocd service/argocd-server 8081:443 &
+kubectl port-forward -n argocd service/argocd-server 8080:443 &
 # sleep 10
 # export ARGOCD_ADMIN_PASSWORD=$(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)
 # export ARGOCD_ADMIN_BEARER_TOKEN=$(curl http://localhost:8081/api/v1/session -d '{"username":"admin","password":"'"$ARGOCD_ADMIN_PASSWORD"'"}' | grep -Po '"token":\s*"\K([^"]*)')
@@ -121,19 +121,21 @@ kubectl port-forward -n argocd service/argocd-server 8081:443 &
 
 # # Port forward the Backstage service
 # kubectl port-forward -n backstage service/backstage 8080:7007
-kubectl port-forward -n cloudbees-core service/cjoc 8080:80
 
 
-echo "go to http://localhost:8080/cjoc/"
+
+sleep 60
  
+kubectl port-forward -n cloudbees-core service/cjoc 8081:80 &
 echo "#############################################################################"
 echo "#############################################################################"
 echo "#############################################################################"
 echo " "
 echo "TO ACCESS THE OPERATIONS CENTER DASHBOARD, RUN THE FOLLOWING COMMAND:"
-echo "kubectl port-forward -n cloudbees-core service/cjoc 8080:80"
+# echo "kubectl port-forward -n cloudbees-core service/cjoc 8080:80"
 echo " "
-echo "user: admin"
+echo "URL: http://localhost:8080/cjoc/"
+# echo "user: admin"
 echo "password: $(kubectl exec cjoc-0 --namespace cloudbees-core -- cat /var/jenkins_home/secrets/initialAdminPassword)"
 echo " "
 echo "#############################################################################"
@@ -145,7 +147,9 @@ echo "##########################################################################
 
 
 # COSAS A MANO
+# 0. go through wizard
 # 1. crear master para invincible-gtg:
+New item -> Managed controller
 #   disk (5gb)
 #   storgaeclass standard
 #   memory 768
