@@ -1,3 +1,41 @@
+# COSAS A MANO
+0. Go through wizard
+1. Create master controller invincible-gtg:
+  New item -> Managed controller
+    Disk size: (5gb)
+    Storgaeclass: standard
+    Memory: 768
+    Cpu: 0.5
+2. Port forward invincible-gtg controller:
+```bash
+kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 
+```
+Go to http://localhost:8082/invincible-gtg
+3. Create credentials in invincible-gtg master controller for dockerhub
+3. Create credentials in invincible-gtg master controller for github with PAT
+5. Add library:
+  On invincible-gtg master controller go  configure system -> global pipeline libraries  
+    name docker-shared-lib
+    version main
+    Repository HTTPS URL  https://github.com/tomasferrarisenda/cloudbees-core-minikube-lab
+    Library Path cloudbees/global-shared-library
+
+6. ir a pipeline template catalog /> add catalog
+  branch main
+  15 minutes
+  github
+    Repository HTTPS URL https://github.com/tomasferrarisenda/template-docker
+
+
+
+
+
+
+
+
+
+
+
 <a href="https://www.instagram.com/ttomasferrari/">
     <img align="right" alt="Abhishek's Instagram" width="22px" 
     src="https://i.imgur.com/EzpyGdV.png" />
