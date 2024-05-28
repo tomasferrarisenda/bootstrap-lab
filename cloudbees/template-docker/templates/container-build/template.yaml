@@ -9,19 +9,19 @@ templateType: MULTIBRANCH
 parameters:
   - name: github_organization
     type: string
-    displayName: Specify the GitHub Organisation e.g. lot2learn (mandatory)
+    displayName: Specify the GitHub Organisation e.g. tomasferrarisenda (mandatory)
 
   - name: github_repo
     type: string
     displayName: Specify the GitHub Repository e.g. nodejs-project (mandatory)
 
-  - name: headWildcardFilterIncludes
-    type: string
-    displayName: "Space-separated list of name patterns to consider. You may use * as a wildcard; for example: master release*"
+  # - name: headWildcardFilterIncludes
+  #   type: string
+  #   displayName: "Space-separated list of name patterns to consider. You may use * as a wildcard; for example: master release*"
 
-  - name: headWildcardFilterExcludes
-    type: string
-    displayName: "Space-separated list of name patterns to ignore even if matched by the includes list. For example: release alpha-* beta-*"
+  # - name: headWildcardFilterExcludes
+  #   type: string
+  #   displayName: "Space-separated list of name patterns to ignore even if matched by the includes list. For example: release alpha-* beta-*"
 
   - name: github_creds
     type: credentials
@@ -31,13 +31,13 @@ parameters:
     type: string
     displayName: Specify the path to the Dockerfile(s) as semicolon delimited string e.g. app01/Dockerfile (optional)
     
-  - name: build_arguments
-    type: string
-    displayName: Specify the container build arguments as semicolon delimited string e.g. VAR1=FOO;VAR2=BAR (optional)
+  # - name: build_arguments
+  #   type: string
+  #   displayName: Specify the container build arguments as semicolon delimited string e.g. VAR1=FOO;VAR2=BAR (optional)
 
   - name: docker_tag
     type: string
-    displayName: Specify the container tagname e.g. arnabdnany1706/smartdb:latest (mandatory)
+    displayName: Specify the container tagname e.g. tferrari92/invincible-gtg:1 (mandatory)
 
 multibranch:
   branchSource:
