@@ -4,8 +4,8 @@
   New item -> Managed controller
     Disk size: (5gb)
     Storgaeclass: standard
-    Memory: 768
-    Cpu: 0.5
+    Memory: 1024
+    Cpu: 1
 2. Port forward invincible-gtg controller:
 ```bash
 kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 

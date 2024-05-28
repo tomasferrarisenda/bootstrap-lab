@@ -123,18 +123,24 @@ kubectl port-forward -n argocd service/argocd-server 8080:443 &
 # kubectl port-forward -n backstage service/backstage 8080:7007
 
 
-
-sleep 60
+# Wait for the Cloudbees pod to be ready
+echo "Waiting for Cloudbees pod to be ready..."
+until [[ $(kubectl -n cloudbees-core get pods -l "app.kubernetes.io/name=cloudbees-core" -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') == "True" ]]; do
+  echo "Waiting for Cloudbees pod to be ready..."
+  sleep 3 
+done
  
 kubectl port-forward -n cloudbees-core service/cjoc 8081:80 &
+
+
 echo "#############################################################################"
 echo "#############################################################################"
 echo "#############################################################################"
 echo " "
-echo "TO ACCESS THE OPERATIONS CENTER DASHBOARD, RUN THE FOLLOWING COMMAND:"
+echo "TO ACCESS THE CLOUDBEES OPERATIONS CENTER DASHBOARD, RUN THE FOLLOWING COMMAND:"
 # echo "kubectl port-forward -n cloudbees-core service/cjoc 8080:80"
 echo " "
-echo "URL: http://localhost:8080/cjoc/"
+echo "URL: http://localhost:8081/cjoc/"
 # echo "user: admin"
 echo "password: $(kubectl exec cjoc-0 --namespace cloudbees-core -- cat /var/jenkins_home/secrets/initialAdminPassword)"
 echo " "
