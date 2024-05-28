@@ -121,3 +121,8 @@ kubectl port-forward -n argocd service/argocd-server 8081:443 &
 
 # # Port forward the Backstage service
 # kubectl port-forward -n backstage service/backstage 8080:7007
+ kubectl port-forward -n cloudbees-core service/cjoc 8080:80
+
+
+echo "go to http://localhost:8080/cjoc/"
+ 

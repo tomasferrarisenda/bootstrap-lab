@@ -1,0 +1,5 @@
+OperationsCenter:
+  CasC:
+    Retriever:
+      secrets:
+        adminPassword: hola
