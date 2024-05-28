@@ -126,3 +126,6 @@ kubectl port-forward -n argocd service/argocd-server 8081:443 &
 
 echo "go to http://localhost:8080/cjoc/"
  
+
+#  kubectl rollout status sts cjoc --namespace cloudbees-core
+#  kubectl exec cjoc-0 --namespace cloudbees-core -- cat /var/jenkins_home/secrets/initialAdminPassword
