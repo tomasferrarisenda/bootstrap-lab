@@ -145,12 +145,24 @@ echo "##########################################################################
 
 
 # COSAS A MANO
-1. crear master para invincible-gtg:
-  disk (5gb)
-  storgaeclass standard
-  memory 768
-  cpu 0.5
-3. port forward 
-  kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 
-  ir a localhost:8082/invincible-gtg
-2. agregar credenciales en ese master pa dockerhub
+# 1. crear master para invincible-gtg:
+#   disk (5gb)
+#   storgaeclass standard
+#   memory 768
+#   cpu 0.5
+# 2. port forward 
+#   kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 
+#   ir a localhost:8082/invincible-gtg
+# 3. agregar credenciales en ese master pa dockerhub
+# 4. agregar credenciales en ese master pa github con PAT
+# 5. Ir en  invincible-gtg a configure system -> global pipeline libraries  
+#   name docker-shared-lib
+#   version main
+#   Repository HTTPS URL  https://github.com/tomasferrarisenda/cloudbees-core-minikube-lab
+#   Library Path cloudbees/global-shared-library
+
+# 6. ir a pipeline template catalog /> add catalog
+#   branch main
+#   15 minutes
+#   github
+#     Repository HTTPS URL https://github.com/tomasferrarisenda/template-docker
