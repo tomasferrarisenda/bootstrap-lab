@@ -1,5 +1,6 @@
 OperationsCenter:
   CasC:
+    Enabled: true
     Retriever:
       secrets:
         adminPassword: hola
