@@ -13,11 +13,11 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: helm-charts/systems/invincible-gtg/omniman-service
+    path: helm-chart
     helm:
       valueFiles:
         - environments/values-dev.yaml
-    repoURL: https://github.com/tomasferrarisenda/cloudbees-core-minikube-lab.git 
+    repoURL: https://github.com/tomasferrarisenda/omniman-service.git 
   syncPolicy:
     automated:
       prune: true
