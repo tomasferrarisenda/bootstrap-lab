@@ -21,18 +21,16 @@ kubectl port-forward -n cloudbees-core service/invincible-gtg-managed-controller
 1. Go through wizard
 1. Create credentials in invincible-gtg-managed-controller for dockerhub. ID must be "dockerhub".
 1. Create credentials in invincible-gtg-managed-controller for github with PAT. ID must be "github".
-1. Add library:
-  On invincible-gtg-managed-controller go Manage Jenkins -> System -> Global Pipeline Libraries  
-    Name: global-shared-library
-    Default version: main
-    GitHub
-      Repository HTTPS URL: https://github.com/tomasferrarisenda/global-shared-library
-1. Add template:
-  Go to Pipeline Template Catalog -> Add catalog
-    Branch: main
-    Check for template catalog updates every: 15 minutes
-    GitHub
-      Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
+1. Add Shared Library. On invincible-gtg-managed-controller go Manage Jenkins -> System -> Global Pipeline Libraries  
+  - Name: global-shared-library
+  - Default version: main
+  - GitHub
+  - Repository HTTPS URL: https://github.com/tomasferrarisenda/global-shared-library
+1. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
+  - Branch: main
+  - Check for template catalog updates every: 15 minutes
+  - GitHub
+  - Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
 1. Create Kubernetes pod template for "maven-docker" with label containerBuilds
 ```yaml
 apiVersion: v1
