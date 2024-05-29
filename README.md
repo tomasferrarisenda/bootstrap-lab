@@ -34,14 +34,19 @@ Acces the invincible-gtg-managed-controller UI
     Check for template catalog updates every: 15 minutes
     GitHub
       Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
-10. Create Kubernetes pod template for docker with label containerBuilds
+10. Create Kubernetes pod template for "maven-docker" with label containerBuilds
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: docker
+  name: maven-docker
 spec:
   containers:
+  - name: maven
+    image: maven:3.8.5-openjdk-11
+    command:
+    - cat
+    tty: true
   - name: docker
     image: docker
     args: ["sleep", "10000"]
