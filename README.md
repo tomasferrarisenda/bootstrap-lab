@@ -59,7 +59,7 @@ spec:
     hostPath:
       path: /var/run/docker.sock
 ```
-9. Create pipeline: New item -> Maven Docker Build and Deploy
+13. Create pipeline: New item -> Maven Docker Build and Deploy
 
 
 
