@@ -1,4 +1,0 @@
-apiVersion: v2
-name: invincible-gtg-omniman-service-dev
-description: A Helm chart for deploying invincible-gtg-omniman-service-dev
-version: 1.0
