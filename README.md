@@ -13,13 +13,12 @@ chmod +x deploy-in-minikube.sh
     Disk size: (5gb)
     Storgaeclass: standard
     Memory: 1024
-    Cpu: 1
-2. Port forward invincible-gtg controller:
+    Cpu: 1.0
+2. Once pod is running, port forward invincible-gtg-managed-controller:
 ```bash
-kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 
+kubectl port-forward -n cloudbees-core service/invincible-gtg-managed-controller 8082:80 
 ```
-Acces the invincible-gtg managed controller UI
-3. Go through wizard
+Acces the invincible-gtg-managed-controller UI
 3. Create credentials in invincible-gtg managed controller for dockerhub
 3. Create credentials in invincible-gtg managed controller for github with PAT
 5. Add library:
