@@ -6,32 +6,32 @@
 chmod +x deploy-in-minikube.sh
 ./deploy-in-minikube.sh
 ```
-1. Log into Operations Center at http://localhost:8081/cjoc/
-1. Go through wizard
-1. Create Managed controller "invincible-gtg-managed-controller":
+2. Log into Operations Center at http://localhost:8081/cjoc/
+3. Go through wizard
+4. Create Managed controller "invincible-gtg-managed-controller":
   - Disk size: (5gb)
   - Storgaeclass: standard
   - Memory: 1024
   - Cpu: 1.0
-1. Once pod is running, port forward invincible-gtg-managed-controller:
+5. Once pod is running, port forward invincible-gtg-managed-controller:
 ```bash
 kubectl port-forward -n cloudbees-core service/invincible-gtg-managed-controller 8082:80 
 ```
-1. Acces the invincible-gtg-managed-controller UI
-1. Go through wizard
-1. Create credentials in invincible-gtg-managed-controller for dockerhub. ID must be "dockerhub".
-1. Create credentials in invincible-gtg-managed-controller for github with PAT. ID must be "github".
-1. Add Shared Library. On invincible-gtg-managed-controller go Manage Jenkins -> System -> Global Pipeline Libraries  
+6. Acces the invincible-gtg-managed-controller UI
+7. Go through wizard
+8. Create credentials in invincible-gtg-managed-controller for dockerhub. ID must be "dockerhub".
+9. Create credentials in invincible-gtg-managed-controller for github with PAT. ID must be "github".
+10. Add Shared Library. On invincible-gtg-managed-controller go Manage Jenkins -> System -> Global Pipeline Libraries  
   - Name: global-shared-library
   - Default version: main
   - GitHub
   - Repository HTTPS URL: https://github.com/tomasferrarisenda/global-shared-library
-1. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
+11. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
   - Branch: main
   - Check for template catalog updates every: 15 minutes
   - GitHub
   - Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
-1. Create Kubernetes pod template. On invincible-gtg-managed-controller go Manage Jenkins -> Kubernetes Pod Templates:
+12. Create Kubernetes pod template. On invincible-gtg-managed-controller go Manage Jenkins -> Kubernetes Pod Templates:
   - Name: maven-docker 
   - Labels: containerBuilds
   - Raw YAML for the Pod:
