@@ -147,6 +147,7 @@ kubectl port-forward -n argocd service/argocd-server 8080:443 &
 
 # Wait for the Cloudbees pod to be ready
 echo "Waiting for Cloudbees pod to be ready..."
+
 until [[ $(kubectl -n cloudbees-core get pods -l "app.kubernetes.io/name=cloudbees-core" -o 'jsonpath={..status.conditions[?(@.type=="Ready")].status}') == "True" ]]; do
   echo "Waiting for Cloudbees pod to be ready..."
   sleep 3 

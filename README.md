@@ -8,7 +8,7 @@ chmod +x deploy-in-minikube.sh
 ```
 2. Log into Operations Center 
 0. Go through wizard
-1. Create Managed controller invincible-gtg:
+1. Create Managed controller "invincible-gtg-managed-controller":
   New item -> Managed controller
     Disk size: (5gb)
     Storgaeclass: standard
