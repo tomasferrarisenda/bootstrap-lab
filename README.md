@@ -19,11 +19,12 @@ chmod +x deploy-in-minikube.sh
 kubectl port-forward -n cloudbees-core service/invincible-gtg-managed-controller 8082:80 
 ```
 Acces the invincible-gtg-managed-controller UI
-3. Create credentials in invincible-gtg managed controller for dockerhub
-3. Create credentials in invincible-gtg managed controller for github with PAT
+3. Go through wizard
+3. Create credentials in invincible-gtg-managed-controller for dockerhub. ID should be dockerhub
+3. Create credentials in invincible-gtg-managed-controller for github with PAT.  ID should be github
 5. Add library:
-  On invincible-gtg managed controller go Manage Jenkins -> System -> Global Pipeline Libraries  
-    Name: docker-shared-lib
+  On invincible-gtg-managed-controller go Manage Jenkins -> System -> Global Pipeline Libraries  
+    Name: global-shared-library
     Default version: main
     GitHub
       Repository HTTPS URL: https://github.com/tomasferrarisenda/global-shared-library
