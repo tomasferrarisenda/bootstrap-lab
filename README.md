@@ -60,6 +60,65 @@ spec:
 
 
 
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: maven-docker
+  labels:
+    jenkins/label: "containerBuilds"
+spec:
+  containers:
+  - name: maven
+    image: maven:3.8.5-openjdk-11
+    command:
+    - cat
+    tty: true
+  - name: docker
+    image: docker
+    args: ["sleep", "10000"]
+    volumeMounts:
+    - mountPath: /var/run/docker.sock
+      name: docker-socket
+  restartPolicy: Never
+  volumes:
+  - name: docker-socket
+    hostPath:
+      path: /var/run/docker.sock
+```
+
+
+
+
+
+```yaml
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: maven
+    image: maven:3.8.5-openjdk-11
+    command:
+    - cat
+    tty: true
+  - name: docker
+    image: docker:19.03.12
+    command:
+    - cat
+    tty: true
+    volumeMounts:
+    - name: docker-sock
+      mountPath: /var/run/docker.sock
+  volumes:
+  - name: docker-sock
+    hostPath:
+      path: /var/run/docker.sock
+```
+
+
+
+
+
 
 
 <a href="https://www.instagram.com/ttomasferrari/">
