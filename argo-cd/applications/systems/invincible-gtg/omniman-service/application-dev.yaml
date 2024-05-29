@@ -17,7 +17,7 @@ spec:
     helm:
       valueFiles:
         - environments/values-dev.yaml
-    repoURL: https://github.com/tomasferrarisenda/omniman-service.git 
+    repoURL: https://github.com/tomasferrarisenda/omniman-service-helm-chart.git 
   syncPolicy:
     automated:
       prune: true
