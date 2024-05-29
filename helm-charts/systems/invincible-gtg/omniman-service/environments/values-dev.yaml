@@ -2,12 +2,12 @@ environment: dev
 
 deployment:
   image:  
-    tag: backstage-minikube-lab
+    tag: 1
   replicas: 1
 
   labels:
     environment: dev
-    app: my-app-backend-dev
+    app: invincible-gtg-omniman-service-dev
     
-  env:
-    redis_host: my-app-redis-dev-master 
+  # env:
+  #   redis_host: my-app-redis-dev-master 
