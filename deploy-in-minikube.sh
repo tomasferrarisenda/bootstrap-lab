@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # Prompt the user for their GitHub token
-read -p "Enter your DockerHub username: " REGISTRY_USER 
-read -p "Enter your DockerHub password: " REGISTRY_PASS 
-read -p "Enter your DockerHub email: " REGISTRY_EMAIL
+# read -p "Enter your DockerHub username: " REGISTRY_USER 
+# read -p "Enter your DockerHub password: " REGISTRY_PASS 
+# read -p "Enter your DockerHub email: " REGISTRY_EMAIL
 # read -p "Enter your GitHub token: " GITHUB_TOKEN
 # read -p "Enter your GitHub auth cliend ID: " AUTH_GITHUB_CLIENT_ID
 # read -p "Enter your GitHub auth client secret: " AUTH_GITHUB_CLIENT_SECRET
@@ -125,7 +125,7 @@ kubectl port-forward -n argocd service/argocd-server 8080:443 &
 # # Port forward the Backstage service
 # kubectl port-forward -n backstage service/backstage 8080:7007
 
-export REGISTRY_SERVER=https://index.docker.io/v1/
+# export REGISTRY_SERVER=https://index.docker.io/v1/
 
 # # Replace `[...]` with the registry username
 # export REGISTRY_USER=[...]
@@ -136,12 +136,12 @@ export REGISTRY_SERVER=https://index.docker.io/v1/
 # # Replace `[...]` with the registry email
 # export REGISTRY_EMAIL=[...]
 
-kubectl create secret \
-    docker-registry regcred -n cloudbees-core \
-    --docker-server=$REGISTRY_SERVER \
-    --docker-username=$REGISTRY_USER \
-    --docker-password=$REGISTRY_PASS \
-    --docker-email=$REGISTRY_EMAIL
+# kubectl create secret \
+#     docker-registry regcred -n cloudbees-core \
+#     --docker-server=$REGISTRY_SERVER \
+#     --docker-username=$REGISTRY_USER \
+#     --docker-password=$REGISTRY_PASS \
+#     --docker-email=$REGISTRY_EMAIL
 
 
 # Wait for the Cloudbees pod to be ready

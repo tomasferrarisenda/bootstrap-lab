@@ -1,4 +1,11 @@
-# COSAS A MANO
+# CLOUDBEES CORE MINIKUBE LAB
+
+## Instructions
+1. Run deploy-in-minikube.sh
+```bash
+chmod +x deploy-in-minikube.sh
+./deploy-in-minikube.sh
+```
 0. Go through wizard
 1. Create Managed controller invincible-gtg:
   New item -> Managed controller
@@ -19,15 +26,14 @@ Acces the invincible-gtg managed controller UI
     Name: docker-shared-lib
     Default version: main
     GitHub
-      Repository HTTPS URL: https://github.com/tomasferrarisenda/cloudbees-core-minikube-lab
-      Library Path: cloudbees/global-shared-library
+      Repository HTTPS URL: https://github.com/tomasferrarisenda/global-shared-library
 
 6. Add template:
   Go to Pipeline Template Catalog -> Add catalog
     Branch: main
     Check for template catalog updates every: 15 minutes
     GitHub
-      Repository HTTPS URL: https://github.com/tomasferrarisenda/template-docker
+      Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
 
 10. Create Kubernetes pod template for docker with label containerBuilds
 9. New item -> Container Build
