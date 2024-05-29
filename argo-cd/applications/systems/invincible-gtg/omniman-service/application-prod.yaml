@@ -13,7 +13,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: helm-chart
+    # path: helm-chart
     helm:
       valueFiles:
         - environments/values-prod.yaml
