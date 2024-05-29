@@ -6,6 +6,7 @@
 chmod +x deploy-in-minikube.sh
 ./deploy-in-minikube.sh
 ```
+2. Log into Operations Center 
 0. Go through wizard
 1. Create Managed controller invincible-gtg:
   New item -> Managed controller
@@ -36,6 +37,25 @@ Acces the invincible-gtg managed controller UI
       Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
 
 10. Create Kubernetes pod template for docker with label containerBuilds
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: docker
+spec:
+  containers:
+  - name: docker
+    image: docker
+    args: ["sleep", "10000"]
+    volumeMounts:
+    - mountPath: /var/run/docker.sock
+      name: docker-socket
+  restartPolicy: Never
+  volumes:
+  - name: docker-socket
+    hostPath:
+      path: /var/run/docker.sock
+```
 9. New item -> Container Build
 
 
