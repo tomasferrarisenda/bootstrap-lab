@@ -10,4 +10,4 @@ deployment:
     app: invincible-gtg-omniman-service-dev
     
   # env:
-  #   redis_host: my-app-redis-dev-master 
+  #   redis_host: my-app-redis-dev-master

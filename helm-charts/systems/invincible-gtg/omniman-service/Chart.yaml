@@ -1,4 +1,4 @@
 apiVersion: v2
-name: my-app-backend
-description: A Helm chart for deploying my-app-backend
+name: invincible-gtg-omniman-service-dev
+description: A Helm chart for deploying invincible-gtg-omniman-service-dev
 version: 1.0
