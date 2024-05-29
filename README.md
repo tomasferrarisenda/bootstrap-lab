@@ -31,7 +31,10 @@ kubectl port-forward -n cloudbees-core service/invincible-gtg-managed-controller
   - Check for template catalog updates every: 15 minutes
   - GitHub
   - Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
-1. Create Kubernetes pod template for "maven-docker" with label containerBuilds
+1. Create Kubernetes pod template. On invincible-gtg-managed-controller go Manage Jenkins -> Kubernetes Pod Templates:
+  - Name: maven-docker 
+  - Labels: containerBuilds
+  - Raw YAML for the Pod:
 ```yaml
 apiVersion: v1
 kind: Pod
@@ -56,7 +59,7 @@ spec:
     hostPath:
       path: /var/run/docker.sock
 ```
-9. New item -> Container Build
+9. Create pipeline: New item -> Maven Docker Build and Deploy
 
 
 
