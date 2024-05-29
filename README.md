@@ -1,6 +1,6 @@
 # COSAS A MANO
 0. Go through wizard
-1. Create master controller invincible-gtg:
+1. Create Managed controller invincible-gtg:
   New item -> Managed controller
     Disk size: (5gb)
     Storgaeclass: standard
@@ -10,15 +10,14 @@
 ```bash
 kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 
 ```
-Go to http://localhost:8082/invincible-gtg/securityRealm/finishLogin?state=67d33b64-7c8c-4e91-84b6-ce906c7efbfb&code=0198fea4-0087-48eb-831f-83bd97fdc949
-http://localhost:8082/invincible-gtg/securityRealm/finishLogin?state=b9189bc7-8031-4fcf-a1c0-721770623dfa&code=b115fc31-71de-4b3f-994b-8e27bb574d8c
+Acces the invincible-gtg managed controller UI
 3. Go through wizard
-3. Create credentials in invincible-gtg master controller for dockerhub
-3. Create credentials in invincible-gtg master controller for github with PAT
+3. Create credentials in invincible-gtg managed controller for dockerhub
+3. Create credentials in invincible-gtg managed controller for github with PAT
 5. Add library:
-  On invincible-gtg master controller go Manage Jenkins -> System -> Global Pipeline Libraries  
+  On invincible-gtg managed controller go Manage Jenkins -> System -> Global Pipeline Libraries  
     Name: docker-shared-lib
-    Default: version main
+    Default version: main
     GitHub
       Repository HTTPS URL: https://github.com/tomasferrarisenda/cloudbees-core-minikube-lab
       Library Path: cloudbees/global-shared-library
@@ -30,7 +29,9 @@ http://localhost:8082/invincible-gtg/securityRealm/finishLogin?state=b9189bc7-80
     GitHub
       Repository HTTPS URL: https://github.com/tomasferrarisenda/template-docker
 
+10. Create Kubernetes pod template for docker with label containerBuilds
 9. New item -> Container Build
+
 
 
 
