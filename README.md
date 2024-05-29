@@ -28,14 +28,12 @@ Acces the invincible-gtg-managed-controller UI
     Default version: main
     GitHub
       Repository HTTPS URL: https://github.com/tomasferrarisenda/global-shared-library
-
 6. Add template:
   Go to Pipeline Template Catalog -> Add catalog
     Branch: main
     Check for template catalog updates every: 15 minutes
     GitHub
       Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
-
 10. Create Kubernetes pod template for docker with label containerBuilds
 ```yaml
 apiVersion: v1
