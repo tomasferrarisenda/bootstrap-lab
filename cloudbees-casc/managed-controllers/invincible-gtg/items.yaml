@@ -1,4 +1,44 @@
 removeStrategy:
-  rbac: SYNC
-  items: NONE
+  items: "none"
+  rbac: "sync"
+
 items:
+  - kind: "folder"
+    name: project-alpha
+    displayName: "Project Alpha"
+    description: "Project Alpha is going to change the world!"
+    # properties:
+    #   - folderCredentialsProperty:
+    #       folderCredentials:
+    #         - credentials:
+    #             - usernamePassword:
+    #                 password: ${secret_location}
+    #                 scope: GLOBAL
+    #                 description: description
+    #                 id: test-id
+    #                 usernameSecret: false
+    #                 username: test-user
+    #           domain: {}
+    # groups:
+    #   - name: "Project Alpha Developers"
+    #     members:
+    #       external_groups:
+    #         - ldap-project-${team_group}
+    #     roles:
+    #       - name: "developer"
+    items: 
+      - kind: "folder"
+        name: "project-alpha-tests"
+        displayName: "Project Alpha Tests"
+        items:
+          - kind: "folder"
+            name: "test-1"
+          - kind: "folder"
+            name: "test-2"
+  - kind: "folder"
+    name: "project-beta"
+    displayName: "Project Beta"
+    description: "Secret project! Only Admins can see this!"
+    filteredRoles: 
+      - "developer"
+      - "browser"
