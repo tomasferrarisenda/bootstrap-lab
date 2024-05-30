@@ -57,7 +57,7 @@ OperationsCenter:
       # OperationsCenter.CasC.Retriever..scmBranch -- The branch of the repo containing the casc bundle
       scmBranch: main
       # OperationsCenter.CasC.Retriever.scmBundlePath -- path to a folder within the repo where the bundle.yaml is located
-      scmBundlePath: "/cloudbees-casc/operations-center"
+      scmBundlePath: "cloudbees-casc/operations-center"
       # OperationsCenter.CasC.Retriever.ocBundleAutomaticVersion -- if true, the commit hash will replace the version of the bundle from the SCM
       ocBundleAutomaticVersion: "false"
       # OperationsCenter.CasC.Retriever.scmPollingInterval -- How frequently to poll SCM for changes
