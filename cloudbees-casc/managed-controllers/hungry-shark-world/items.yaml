@@ -19,13 +19,13 @@ items:
     #                 usernameSecret: false
     #                 username: test-user
     #           domain: {}
-    groups:
-      - name: "Project Alpha Developers"
-        members:
-          external_groups:
-            - ldap-project-${team_group}
-        roles:
-          - name: "developer"
+    # groups:
+    #   - name: "Project Alpha Developers"
+    #     members:
+    #       external_groups:
+    #         - ldap-project-${team_group}
+    #     roles:
+    #       - name: "developer"
     items: 
       - kind: "folder"
         name: "project-alpha-tests"
