@@ -7,17 +7,24 @@ chmod +x deploy-in-minikube.sh
 ./deploy-in-minikube.sh
 ```
 2. Log into Operations Center at http://localhost:8081/cjoc/
-3. Go through wizard
-4. Create Managed controller "invincible-gtg-managed-controller":
+<!-- 3. Go through wizard -->
+3. Create user:
+  - Username: admin
+  - Pass: admin
+  - Full Name: admin
+  - Email: admin
+<!-- 4. Create Managed controller "invincible-gtg-managed-controller":
   - Disk size: (5gb)
   - Storgaeclass: standard
   - Memory: 1024
-  - Cpu: 1.0
-5. Once pod is running, port forward invincible-gtg-managed-controller:
+  - Cpu: 1.0 -->
+4. Start "invincible-gtg" managed controller.
+5. Run:
 ```bash
-kubectl port-forward -n cloudbees-core service/invincible-gtg-managed-controller 8082:80 
+kubectl wait --for=condition=ready -n cloudbees-core pod/invincible-gtg-0 
+kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 
 ```
-6. Acces the invincible-gtg-managed-controller UI
+6. Acces the "invincible-gtg" managed-controller UI
 7. Go through wizard
 8. Create credentials in invincible-gtg-managed-controller for dockerhub. ID must be "dockerhub".
 9. Create credentials in invincible-gtg-managed-controller for github with PAT. ID must be "github".

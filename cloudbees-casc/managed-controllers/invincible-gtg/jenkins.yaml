@@ -3,18 +3,18 @@ credentials:
     domainCredentials:
     - credentials:
       - usernamePassword:
-          description: "GitHub"
-          id: "github"
-          password: "{AQAAABAAAAAwB6FBlC+KKhpuCjoSDmb5l88dOOkfoQF9P4AH9yhuqPfMVVbCMgfFchwCBCg6ljPySufyLJ1bzrkPPj5Bv3NWow==}"
-          scope: GLOBAL
-          username: "tomasferrarisenda"
-          usernameSecret: true
-      - usernamePassword:
           description: "DockerHub"
           id: "dockerhub"
-          password: "{AQAAABAAAAAgscwbenUeaMRlD6yUEeCXDNE4SG1a15xYzTISigS6r9CQhdvF7B93eurBTmeNweNL}"
+          password: "{AQAAABAAAAAg6IsYh/5wNL4nERbZIiWphCPAckaXvgYSfMfu/MXmW004jT3SC/2GMFMzWFNVCZgB}"
           scope: GLOBAL
           username: "tferrari92"
+          usernameSecret: true
+      - usernamePassword:
+          description: "GitHub"
+          id: "github"
+          password: "{AQAAABAAAAAwzqLmA37bwdESiCHG4OlNLr3qT+MOW/B4voeaUwoSGEeUM4dwvQZ8TGfp3KvbMJ0rww8QR1YEEiJNLSuqbikJ4g==}"
+          scope: GLOBAL
+          username: "tomasferrarisenda"
           usernameSecret: true
 jenkins:
   agentProtocols:
@@ -23,9 +23,6 @@ jenkins:
   - "OperationsCenter2"
   - "Ping"
   authorizationStrategy: "cloudBeesRoleBasedAccessControl"
-  # authorizationStrategy:
-  #   loggedInUsersCanDoAnything:
-  #     allowAnonymousRead: false
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: false
@@ -34,6 +31,7 @@ jenkins:
   - "hudson.util.DoubleLaunchChecker"
   labelAtoms:
   - name: "built-in"
+  - name: "containerBuilds"
   markupFormatter: "plainText"
   mode: NORMAL
   myViewsTabBar: "standard"
@@ -85,7 +83,7 @@ globalCloudBeesPipelineTemplateCatalog:
       github:
         configuredByUrl: true
         credentialsId: "github"
-        id: "bc8c9759-bd89-45f2-b162-a3947550e016"
+        id: "ac637d90-c0ad-4f46-9edf-9200e3a1fafd"
         repoOwner: "tomasferrarisenda"
         repository: "pipeline-template-catalogs"
         repositoryUrl: "https://github.com/tomasferrarisenda/pipeline-template-catalogs"
@@ -100,9 +98,9 @@ globalCloudBeesPipelineTemplateCatalog:
 license:
   certificate: |
     -----BEGIN CERTIFICATE-----
-    MIIRXDCCEESgAwIBAgIGAY/LTk7UMA0GCSqGSIb3DQEBBQUAMIICeDERMA8GCisG
-    AQQBgql/AQETATMxMDAuBgorBgEEAYKpfwECEyAzYzEwNjI2YjlkMTU3Mjk4YjNl
-    YmIxNWVkN2Q4NTg4YjEVMBMGCysGAQQBgql/AQsOEwR0cnVlMRUwEwYLKwYBBAGC
+    MIIRRTCCEC2gAwIBAgIGAY/LsuVXMA0GCSqGSIb3DQEBBQUAMIICczERMA8GCisG
+    AQQBgql/AQETATMxMDAuBgorBgEEAYKpfwECEyAzMzFhNTNjOTI1OTRmYzM3YTU0
+    N2U2NjcyMTYyZjA4MDEVMBMGCysGAQQBgql/AQsOEwR0cnVlMRUwEwYLKwYBBAGC
     qX8BCw0TBHRydWUxFTATBgsrBgEEAYKpfwELEBMEdHJ1ZTEVMBMGCysGAQQBgql/
     AQsPEwR0cnVlMRUwEwYLKwYBBAGCqX8BCwoTBHRydWUxFTATBgsrBgEEAYKpfwEL
     DBMEdHJ1ZTEVMBMGCysGAQQBgql/AQsLEwR0cnVlMRUwEwYLKwYBBAGCqX8BCxET
@@ -112,121 +110,174 @@ license:
     FTATBgsrBgEEAYKpfwELBRMEdHJ1ZTEVMBMGCysGAQQBgql/AQsEEwR0cnVlMRUw
     EwYLKwYBBAGCqX8BCwETBHRydWUxFTATBgsrBgEEAYKpfwELFBMEdHJ1ZTEVMBMG
     CysGAQQBgql/AQsVEwR0cnVlMRMwEQYKKwYBBAGCqX8BAxMDMTAwMRUwEwYKKwYB
-    BAGCqX8BDhMFMTAwMDAxFTATBgorBgEEAYKpfwEJEwVmYWxzZTEWMBQGA1UEAxMN
-    VG9tYXMgRmVycmFyaTEJMAcGA1UECxMAMRYwFAYLKwYBBAGCqX8BCxgTBWZhbHNl
-    MB4XDTI0MDUzMDIwMDA1N1oXDTI0MDYwMjIyMDA1N1owggKlMRYwFAYDVQQDDA1U
-    b21hcyBGZXJyYXJpMRYwFAYDVQQLDA1Ub21hcyBGZXJyYXJpMREwDwYKKwYBBAGC
-    qX8BAQwBMzEwMC4GCisGAQQBgql/AQIMIGJmZmVmZWNmOThmZjY5NDI5MjIwMjIy
-    NjMxNjUxYWY1MTQwMgYKKwYBBAGCqX8BBgwkODQ4ZjExZDYtMWNjMC00NjQ2LTgx
-    ZGEtYzEzODI2ZjRkNmY4MRUwEwYKKwYBBAGCqX8BDgwFMTAwMDAxFDASBgorBgEE
-    AYKpfwEDDAQxMDAwMRUwEwYLKwYBBAGCqX8BCw4TBHRydWUxFTATBgsrBgEEAYKp
-    fwELDRMEdHJ1ZTEVMBMGCysGAQQBgql/AQsQEwR0cnVlMRUwEwYLKwYBBAGCqX8B
-    Cw8TBHRydWUxFTATBgsrBgEEAYKpfwELChMEdHJ1ZTEVMBMGCysGAQQBgql/AQsM
-    EwR0cnVlMRUwEwYLKwYBBAGCqX8BCwsTBHRydWUxFTATBgsrBgEEAYKpfwELERME
-    dHJ1ZTEVMBMGCysGAQQBgql/AQsHEwR0cnVlMRUwEwYLKwYBBAGCqX8BCwYTBHRy
-    dWUxFTATBgsrBgEEAYKpfwELCRMEdHJ1ZTEVMBMGCysGAQQBgql/AQsIEwR0cnVl
-    MRUwEwYLKwYBBAGCqX8BCwMTBHRydWUxFTATBgsrBgEEAYKpfwELAhMEdHJ1ZTEV
-    MBMGCysGAQQBgql/AQsFEwR0cnVlMRUwEwYLKwYBBAGCqX8BCwQTBHRydWUxFTAT
-    BgsrBgEEAYKpfwELARMEdHJ1ZTEVMBMGCysGAQQBgql/AQsUEwR0cnVlMRUwEwYL
-    KwYBBAGCqX8BCxUTBHRydWUxFjAUBgsrBgEEAYKpfwELGBMFZmFsc2UwggEiMA0G
-    CSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQC66ff8wINmiX7XpuPLuKFSQhO/Zg1O
-    ZF0n/8UdCGwUA0wlE9Udn1JDYD8ZVT7HxeFIaN6/Cc8MGtkqTYZU4sliz4iFv2x+
-    UDDN9i5gLpwTXbe5n17iq0v23bQVeQSqZhdd+YvP4MiZ78vMxPXcXPLF6ZXlPDBb
-    Eo8/AkKNiJtjeL5TXMsINWgqxV0tmYdxDEn/iBA8Fx5BfLyFxhV+/HJYD1n9SyE0
-    MTLfsGtUPS9PxQMoVkbd+v9bgElNVICqb3LG/PWev9OKahs12v9LS3nhhsyxXkWd
-    8NycCpesEFcXrI8ziyQ/zLiSRW8HPC+CEXHVagnB2lLl+DGyTcxYkWqPAgMBAAGj
-    ggm5MIIJtTAdBgNVHQ4EFgQUgxu6cD1ORtka2rJ5fAndRcS9PVowdQYDVR0jBG4w
-    bIAUr5NP80MFN+NXKzfTSRhN2wuXwlShTqRMMEoxCzAJBgNVBAYTAlVTMREwDwYD
-    VQQIDAhEZWxhd2FyZTEOMAwGA1UEBwwFTGV3ZXMxGDAWBgNVBAoMD0Nsb3VkQmVl
-    cywgSW5jLoIEAWRdZjCCCRsGCisGAQQBgql/AQcEggkLBIIJBwotLS0tLUJFR0lO
-    IENFUlRJRklDQVRFLS0tLS0KTUlJR2ZEQ0NCR1NnQXdJQkFnSUVBV1JkWmpBTkJn
-    a3Foa2lHOXcwQkFRc0ZBREJLTVFzd0NRWURWUVFHRXdKVgpVekVSTUE4R0ExVUVD
-    QXdJUkdWc1lYZGhjbVV4RGpBTUJnTlZCQWNNQlV4bGQyVnpNUmd3RmdZRFZRUUtE
-    QTlECmJHOTFaRUpsWlhNc0lFbHVZeTR3SGhjTk1qUXdOVE13TURBd01EQXdXaGNO
-    TWpRd05qRTFNak0xT1RVNVdqQ0MKQW5neEVUQVBCZ29yQmdFRUFZS3Bmd0VCRXdF
-    ek1UQXdMZ1lLS3dZQkJBR0NxWDhCQWhNZ00yTXhNRFl5Tm1JNQpaREUxTnpJNU9H
-    SXpaV0ppTVRWbFpEZGtPRFU0T0dJeEZUQVRCZ3NyQmdFRUFZS3Bmd0VMRGhNRWRI
-    SjFaVEVWCk1CTUdDeXNHQVFRQmdxbC9BUXNORXdSMGNuVmxNUlV3RXdZTEt3WUJC
-    QUdDcVg4QkN4QVRCSFJ5ZFdVeEZUQVQKQmdzckJnRUVBWUtwZndFTER4TUVkSEox
-    WlRFVk1CTUdDeXNHQVFRQmdxbC9BUXNLRXdSMGNuVmxNUlV3RXdZTApLd1lCQkFH
-    Q3FYOEJDd3dUQkhSeWRXVXhGVEFUQmdzckJnRUVBWUtwZndFTEN4TUVkSEoxWlRF
-    Vk1CTUdDeXNHCkFRUUJncWwvQVFzUkV3UjBjblZsTVJVd0V3WUxLd1lCQkFHQ3FY
-    OEJDd2NUQkhSeWRXVXhGVEFUQmdzckJnRUUKQVlLcGZ3RUxCaE1FZEhKMVpURVZN
-    Qk1HQ3lzR0FRUUJncWwvQVFzSkV3UjBjblZsTVJVd0V3WUxLd1lCQkFHQwpxWDhC
-    Q3dnVEJIUnlkV1V4RlRBVEJnc3JCZ0VFQVlLcGZ3RUxBeE1FZEhKMVpURVZNQk1H
-    Q3lzR0FRUUJncWwvCkFRc0NFd1IwY25WbE1SVXdFd1lMS3dZQkJBR0NxWDhCQ3dV
-    VEJIUnlkV1V4RlRBVEJnc3JCZ0VFQVlLcGZ3RUwKQkJNRWRISjFaVEVWTUJNR0N5
-    c0dBUVFCZ3FsL0FRc0JFd1IwY25WbE1SVXdFd1lMS3dZQkJBR0NxWDhCQ3hRVApC
-    SFJ5ZFdVeEZUQVRCZ3NyQmdFRUFZS3Bmd0VMRlJNRWRISjFaVEVUTUJFR0Npc0dB
-    UVFCZ3FsL0FRTVRBekV3Ck1ERVZNQk1HQ2lzR0FRUUJncWwvQVE0VEJURXdNREF3
-    TVJVd0V3WUtLd1lCQkFHQ3FYOEJDUk1GWm1Gc2MyVXgKRmpBVUJnTlZCQU1URFZS
-    dmJXRnpJRVpsY25KaGNta3hDVEFIQmdOVkJBc1RBREVXTUJRR0N5c0dBUVFCZ3Fs
-    LwpBUXNZRXdWbVlXeHpaVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFE
-    Q0NBUW9DZ2dFQkFMS0MrNkIwCmNGRGN2WW1mdlBiaGp2TFVqSHZ6eUExaXJRMnV4
-    WjVodTk4WVJQT2ljNTNoMFdmckMzNjRkS0dhendHUDNpYVYKeFlDQk5lM0FraEI4
-    aFplZ1JaaFNOdndxTWZ3dDQreENVOWNxc0RNdDdhUkF1ZTR4cDlWQm52dkFZb3lD
-    UTV1dQpiSlBIZ2VybnI5L1lJTDgvNk50M2doMmlZTVVDdGRhc3FZSjVaMWtJTjQ3
-    NURnRGlTbUNjWThhYTZzaUUrUGgrClVMcGtsTlFsMGZaLzZPMDhsVUo4a0wycVZm
-    UUt6NzhOVGdRTUtDQVpLSlpGdWswVStldVN6UWd5RkdPa3U4MUsKWnBvNTl3U1h0
-    MU9raHpBVmpDeHlwMTZHbGN5cmtsdXUwVFp4Qk8ySEp3WW4zWjJVcDd3b3lGVmdt
-    dmpSRWhuMgpGQkhSMjRsV0JuZ0FWRUVDQXdFQUFhTTZNRGd3REFZRFZSMFRCQVV3
-    QXdFQi96QWRCZ05WSFE0RUZnUVVyNU5QCjgwTUZOK05YS3pmVFNSaE4yd3VYd2xR
-    d0NRWURWUjBqQkFJd0FEQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FnRUEKS1lSTGhU
-    UHNUOEtRdzg1SE04M25RVEtlOEVlS3ZFRy9CZ2w4a1ZpazRGMCswdmY1QkU0Q0pq
-    MjdLa1ZIVWRHbQpiZHVOY2tTRkNFamFQZHoyRU80ekR1WGtYNGU4V0VML1JQSTBv
-    VVpIZDA0NU43MEFhOVdSQjNSbUgyT21HaGI0CitBakdqVFFGV3ZRNGdQaG5BZUEr
-    dDdQOGNvcjB2a3FTYnNUdUQ4eXo1bi91aXFQZXFyZ1J6OThCMitkWkJSTDgKNmNk
-    UDhtWTZYVDZHV2I5bVZlWG0raTBucTRSU2dBMXhpRzl1Q2xYUUJvV08zc2FpU1l0
-    MDBtWU03NDFsdzhsYwpKU1pSd1RmVDRWa3ZVMitLYmt0eGFuc01MNVZVYjdDRGNV
-    K3JqZWdPdXNBdUtkYUdobDhWRTByaU5haldmS3JWCjN3bElUckpoUThRL3JyZ3ZG
-    c3ltYTdXeTQ1Ykw2WHM1VVRleEQ5bWcwMm9YanBNdSswdTA4VDBNK3N0T3d2TUUK
-    b2srYkYzMWZ3TEJKajNlS3l6cWdtN2pYblVpdkdCYUNjSDNOL0xxZ3dURVNVTE5P
-    RWFEYW50SHczK1BVOEdqdgp4ZzZvRk91NURhTGg1ajVKRzVtMGNYaUg0QlNlTmtV
-    MXNWb2RaMVNEbEhKc1c4S1AwUHFGMGhxQXI0L2U3bGJUCkx1RG1qV01ieEtxNGo3
-    eTNpdk5wdUlVVXlKeTRQRXBWdE9PVXJnejZSb0xTdUxkRFowRCtIeDdVU0M5anF1
-    aWEKRGR1TGV2SitXenZuOXQ3ZFlPaStsa0ZtZDlTRTVleTlDYkpsTnp6dHMvclF1
-    anlwTGtmdEl1d1FMZjM2Mlh3NworSFR0WkNOSUNaSE9xb3BUSzdFQndRUjlmajQ4
-    eDVJbnpGU2FhNGhPN1YwPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCgowDQYJ
-    KoZIhvcNAQEFBQADggEBABZiGvwPP8ij13PpwvaHduRebGzNTfI+n2TjZqPvbazj
-    zEoC+dHVJHFM6lbofnpRFRj1aXbuFcmqStjyslv7GJnkoWSZYvYC4nDh0g3z/KeO
-    4NIInr/GEO5RgfPiasR1XfZ1EPop4lMQdTPmxaMFi4oeJn22q/1DMi2CXZSWsQey
-    K+Wc0r3JjVugpe7PPx1B/HCBwk62NRtovh6CmJeUw9jHFWT6jE8JMPsCl21LZGJc
-    C4IscL1F1huGQA99n7FBcsgPvntQtTYRlMseV1mXDYLbCGb7n7cr8FOvCYxby73L
-    wuQVWUmaKaonuMNv92pXj5Shwk26uM9S0KKTHfvGsU4=
+    BAGCqX8BDhMFMTAwMDAxFTATBgorBgEEAYKpfwEJEwVmYWxzZTERMA8GA1UEAxMI
+    VG9tRmVycmExCTAHBgNVBAsTADEWMBQGCysGAQQBgql/AQsYEwVmYWxzZTAeFw0y
+    NDA1MzAyMTUwNTBaFw0yNDA2MDIyMzUwNTBaMIICmzERMA8GA1UEAwwIVG9tRmVy
+    cmExETAPBgNVBAsMCFRvbUZlcnJhMREwDwYKKwYBBAGCqX8BAQwBMzEwMC4GCisG
+    AQQBgql/AQIMIDMyOWVkODE2NDFlMTkzN2IxMjNiZmUyMDI5OTBiZjNjMTQwMgYK
+    KwYBBAGCqX8BBgwkMWNjNDVjNDgtYzA3YS00ZWRlLWIxMmItNDAzNGNjNzA3NzMx
+    MRUwEwYKKwYBBAGCqX8BDgwFMTAwMDAxFDASBgorBgEEAYKpfwEDDAQxMDAwMRUw
+    EwYLKwYBBAGCqX8BCw4TBHRydWUxFTATBgsrBgEEAYKpfwELDRMEdHJ1ZTEVMBMG
+    CysGAQQBgql/AQsQEwR0cnVlMRUwEwYLKwYBBAGCqX8BCw8TBHRydWUxFTATBgsr
+    BgEEAYKpfwELChMEdHJ1ZTEVMBMGCysGAQQBgql/AQsMEwR0cnVlMRUwEwYLKwYB
+    BAGCqX8BCwsTBHRydWUxFTATBgsrBgEEAYKpfwELERMEdHJ1ZTEVMBMGCysGAQQB
+    gql/AQsHEwR0cnVlMRUwEwYLKwYBBAGCqX8BCwYTBHRydWUxFTATBgsrBgEEAYKp
+    fwELCRMEdHJ1ZTEVMBMGCysGAQQBgql/AQsIEwR0cnVlMRUwEwYLKwYBBAGCqX8B
+    CwMTBHRydWUxFTATBgsrBgEEAYKpfwELAhMEdHJ1ZTEVMBMGCysGAQQBgql/AQsF
+    EwR0cnVlMRUwEwYLKwYBBAGCqX8BCwQTBHRydWUxFTATBgsrBgEEAYKpfwELARME
+    dHJ1ZTEVMBMGCysGAQQBgql/AQsUEwR0cnVlMRUwEwYLKwYBBAGCqX8BCxUTBHRy
+    dWUxFjAUBgsrBgEEAYKpfwELGBMFZmFsc2UwggEiMA0GCSqGSIb3DQEBAQUAA4IB
+    DwAwggEKAoIBAQCb5jjlGC0P/YBfIQSVSixYGW0drN6X9lpzzNka2BVsDjtIoV99
+    NyNNV+iVWAa2uVKR4q0SR/MYYx0le8ORiPcvdXw1oAoIbLFGrRQoLXN+bSeUOZo8
+    J0zCX0jp7qWKKUdJHIwvJTalX40wgAQMAfC7qkjq6zM4a2oWzB98OHBWN/ukgCVP
+    aL3ZWgODYESoPGR2i3XjWP4J7Jx6EtHqwBWxRyF/6QtdtYxH/9q3DH+a/4BhBqHz
+    HGNxi7LB6yZSvdaRV1tyKCRPhBTOiusGYMAxPGf2dx13LiC39lmOMnNHJ7tnLcM+
+    l3v4PMMD9SNZzQWz3QywU0pgXO+wxbv6BApZAgMBAAGjggmxMIIJrTAdBgNVHQ4E
+    FgQU/eqVxqZ1jKnMeCAm5ucqShcvKuQwdQYDVR0jBG4wbIAUst/rPG1ekf3SJysS
+    CHHG44RMtiGhTqRMMEoxCzAJBgNVBAYTAlVTMREwDwYDVQQIDAhEZWxhd2FyZTEO
+    MAwGA1UEBwwFTGV3ZXMxGDAWBgNVBAoMD0Nsb3VkQmVlcywgSW5jLoIEAeaaNzCC
+    CRMGCisGAQQBgql/AQcEggkDBIII/wotLS0tLUJFR0lOIENFUlRJRklDQVRFLS0t
+    LS0KTUlJR2R6Q0NCRitnQXdJQkFnSUVBZWFhTnpBTkJna3Foa2lHOXcwQkFRc0ZB
+    REJLTVFzd0NRWURWUVFHRXdKVgpVekVSTUE4R0ExVUVDQXdJUkdWc1lYZGhjbVV4
+    RGpBTUJnTlZCQWNNQlV4bGQyVnpNUmd3RmdZRFZRUUtEQTlECmJHOTFaRUpsWlhN
+    c0lFbHVZeTR3SGhjTk1qUXdOVE13TURBd01EQXdXaGNOTWpRd05qRTFNak0xT1RV
+    NVdqQ0MKQW5NeEVUQVBCZ29yQmdFRUFZS3Bmd0VCRXdFek1UQXdMZ1lLS3dZQkJB
+    R0NxWDhCQWhNZ016TXhZVFV6WXpreQpOVGswWm1Nek4yRTFORGRsTmpZM01qRTJN
+    bVl3T0RBeEZUQVRCZ3NyQmdFRUFZS3Bmd0VMRGhNRWRISjFaVEVWCk1CTUdDeXNH
+    QVFRQmdxbC9BUXNORXdSMGNuVmxNUlV3RXdZTEt3WUJCQUdDcVg4QkN4QVRCSFJ5
+    ZFdVeEZUQVQKQmdzckJnRUVBWUtwZndFTER4TUVkSEoxWlRFVk1CTUdDeXNHQVFR
+    QmdxbC9BUXNLRXdSMGNuVmxNUlV3RXdZTApLd1lCQkFHQ3FYOEJDd3dUQkhSeWRX
+    VXhGVEFUQmdzckJnRUVBWUtwZndFTEN4TUVkSEoxWlRFVk1CTUdDeXNHCkFRUUJn
+    cWwvQVFzUkV3UjBjblZsTVJVd0V3WUxLd1lCQkFHQ3FYOEJDd2NUQkhSeWRXVXhG
+    VEFUQmdzckJnRUUKQVlLcGZ3RUxCaE1FZEhKMVpURVZNQk1HQ3lzR0FRUUJncWwv
+    QVFzSkV3UjBjblZsTVJVd0V3WUxLd1lCQkFHQwpxWDhCQ3dnVEJIUnlkV1V4RlRB
+    VEJnc3JCZ0VFQVlLcGZ3RUxBeE1FZEhKMVpURVZNQk1HQ3lzR0FRUUJncWwvCkFR
+    c0NFd1IwY25WbE1SVXdFd1lMS3dZQkJBR0NxWDhCQ3dVVEJIUnlkV1V4RlRBVEJn
+    c3JCZ0VFQVlLcGZ3RUwKQkJNRWRISjFaVEVWTUJNR0N5c0dBUVFCZ3FsL0FRc0JF
+    d1IwY25WbE1SVXdFd1lMS3dZQkJBR0NxWDhCQ3hRVApCSFJ5ZFdVeEZUQVRCZ3Ny
+    QmdFRUFZS3Bmd0VMRlJNRWRISjFaVEVUTUJFR0Npc0dBUVFCZ3FsL0FRTVRBekV3
+    Ck1ERVZNQk1HQ2lzR0FRUUJncWwvQVE0VEJURXdNREF3TVJVd0V3WUtLd1lCQkFH
+    Q3FYOEJDUk1GWm1Gc2MyVXgKRVRBUEJnTlZCQU1UQ0ZSdmJVWmxjbkpoTVFrd0J3
+    WURWUVFMRXdBeEZqQVVCZ3NyQmdFRUFZS3Bmd0VMR0JNRgpabUZzYzJVd2dnRWlN
+    QTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUUM1d01ycWEyWmpF
+    dWU0CkxlMG9nR1JiQldjbklCWHUrNnpFRStNNDB0bHZDV2FXUnZKZk5QbTZhdm55
+    Qm1QdFZvd2lGUncwV3dsRmU5QlQKeE5vQXQzRlprRmlXWW1tMVFNeG1PNXAxNFVP
+    TGNEL09SV0NjeEZMNEhpTTFPOEVDOVByeHMzL1BSNVhuN1lZOApMS211ZHFRZlY4
+    MVRqNFJRVmEvamtqdVlQV1hqZzh5NDZabk1NQ0pnbHJVK2VaKzZEaStPZVJpa0pm
+    UzkyRkxKCmZkNVFhR2Z0S1ZQK1grYXQvbnFBY3htQm13eXRJQ3hoT0t0b0x4RUFO
+    N3J0dVdhdnNkR1FPcWxtOXowWGk1ZWsKdGVpRUEzQjIzSTJhdllwYTVURnE0eDBD
+    TWhadHRMdC8rSWRWNlNTZlhEZVh4NU93MHM3a2pSNysxWVN4VzVBSgpLUXVsMDJi
+    bkFnTUJBQUdqT2pBNE1Bd0dBMVVkRXdRRk1BTUJBZjh3SFFZRFZSME9CQllFRkxM
+    ZjZ6eHRYcEg5CjBpY3JFZ2h4eHVPRVRMWWhNQWtHQTFVZEl3UUNNQUF3RFFZSktv
+    WklodmNOQVFFTEJRQURnZ0lCQUJza0l5TzAKd1Fyc2hsbXVSUk55emhZTUdKRXBQ
+    MTVGdUZRWmtYbFZwMnZhTEc5eXYxSW5HNnRpdGtXV2s4WGoxcFZkMVJOQwpkTXlF
+    RkxwVC9lVDBXNlJzVVdYbkNiSkNkcjBCSlRhYTRha1J5ODZ1eTNnc0JDOXpJWUNJ
+    OUpxSHdsQXUxWVR3CkwyNUdEaWtFK3NIblU5UzM3bUpSMElPVkV6OFozU2NrRzVX
+    SlN2dnRFRGx6RHJMNUdtVGIxekh3alRlV3o3TnIKTnkxK2Y2MVNYQkNOTVl0UDAz
+    TWh0VVVDckVtM2NrbDJ5MDIzVEUyWU10UVZzTjBRR3JuMHd3NnVPbXRTR2NaRwpr
+    T1pwQ3hRRXltaHliQXlWbFRGc3FiVU92U0RPaDVJSi9KaVJsMG50dG1IRWFINHdJ
+    NWpNSm1SM3FZVk5oMUx3ClVCSlk5bGZ0VVZ2QmVxNlp3WFdSYk9Ydm1Fc1MzKzFD
+    MjFKcVZqN0N0WWVpYzgwWGFsbndFUjdWUDAvZjZZZEwKSUpYSlhxbW1UZ1dyaE9L
+    ZGlaSnM5V1pQemdmajR1bXlac0V4YVFSalFkcXArN1A1ZGJudlByUXA3ZE1OTEtV
+    WgpuSnpYbHMvaG9qT3lnNDhQNi9scCtjK2tMUDRtdTBZQ1llZ2Nzbjd0QTR6NkFx
+    SVhEckUrbDh5YVhCRTVYTkhhCjl5dHorbDFWYlU4VHFvNlVWK2JReHdxZjVCQ0dx
+    eVV4bm5wd1AvdlQ0bmlyQVFlbUh5ek1jOTlhd01JeTJtdmwKVFptZGc3NktqTyta
+    dDNENkxsUXNqQWJrSmNQZTlLVXpKVWg1bFpKYVgzNDBlbHRTcUJoRGdUM3B4R3dX
+    Mlp6MQp5aUFYK1FzaEpKRmRWMWtBclFsWGNIT0FyRHF6WHJ4dXZhalMKLS0tLS1F
+    TkQgQ0VSVElGSUNBVEUtLS0tLQoKMA0GCSqGSIb3DQEBBQUAA4IBAQCxbKyNMqkl
+    iJW264OwlZXu6wiWRYHx812Gae+iMsF+irSFAnKUlwhrC0BkMWeCsmdI5gTjFL46
+    6GeeEGXzirZEOM0SLUGtjyzdQ1Ih3yUMoXgLrA9qYasBZLngFh55W3KKz3jpZk/e
+    heeAdIgPgRSltn/8mLqKvAPxlogOaNExnNj6+qxi+lHLXOX71vSHxDnwEZNH072U
+    aRhtunQWh+i3mwzJ06ITBpyxJl25n4A4WeoMlb3jy2PgG4mQZb0yjYzCtSjCXbQs
+    8yNrZ3gyjTMuDZ165zxbBmenJmEWZSF8p5odIs6FJrV3TgcTp1oOqY8PI+lwS/vJ
+    N60GA8DpTe6E
     -----END CERTIFICATE-----
   key: |
     -----BEGIN RSA PRIVATE KEY-----
-    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
+    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
     -----END RSA PRIVATE KEY-----
+kube:
+  podTemplatesConfiguration:
+    templates:
+    - id: "4b645ecf-91c9-4b1c-9012-e47fb4151b92"
+      label: "containerBuilds"
+      name: "maven-docker"
+      yaml: |-
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: maven-docker
+        spec:
+          containers:
+          - name: maven
+            image: maven:3.8.5-openjdk-11
+            command:
+            - cat
+            tty: true
+          - name: docker
+            image: docker
+            args: ["sleep", "10000"]
+            volumeMounts:
+            - mountPath: /var/run/docker.sock
+              name: docker-socket
+          restartPolicy: Never
+          volumes:
+          - name: docker-socket
+            hostPath:
+              path: /var/run/docker.sock
+      yamlMergeStrategy: "override"
+      yamls:
+      - |-
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: maven-docker
+        spec:
+          containers:
+          - name: maven
+            image: maven:3.8.5-openjdk-11
+            command:
+            - cat
+            tty: true
+          - name: docker
+            image: docker
+            args: ["sleep", "10000"]
+            volumeMounts:
+            - mountPath: /var/run/docker.sock
+              name: docker-socket
+          restartPolicy: Never
+          volumes:
+          - name: docker-socket
+            hostPath:
+              path: /var/run/docker.sock
 support:
   automatedBundleConfiguration:
     componentIds:
     - "CloudBeesAssuranceSupport"
-    - "CloudBeesCasCUpdateLogBundlesSupport"
     - "AgentsConfigFile"
     - "ConfigFileComponent"
     - "OtherConfigFilesComponent"
@@ -346,18 +397,19 @@ unclassified:
   gitHubConfiguration:
     apiRateLimitChecker: ThrottleForNormalize
   gitHubPluginConfig:
-    hookUrl: "http://localhost:8081/invincible-gtg-managed-controller/github-webhook/"
+    hookUrl: "http://localhost:8081/invincible-gtg/github-webhook/"
   globalLibraries:
     libraries:
     - defaultVersion: "main"
       name: "global-shared-library"
       retriever:
         modernSCM:
+          libraryPath: "."
           scm:
             github:
               configuredByUrl: true
               credentialsId: "github"
-              id: "30742acb-db92-4efa-9e26-20eb98f8ec83"
+              id: "6d9b6336-bddc-4e88-b13d-237dfb8e6d18"
               repoOwner: "tomasferrarisenda"
               repository: "global-shared-library"
               repositoryUrl: "https://github.com/tomasferrarisenda/global-shared-library"
@@ -382,16 +434,15 @@ unclassified:
     storage: "file"
   location:
     adminAddress: "address not configured yet <nobody@nowhere>"
-    url: "http://localhost:8081/invincible-gtg-managed-controller/"
+    url: "http://localhost:8081/invincible-gtg/"
   mailer:
     charset: "UTF-8"
     useSsl: false
     useTls: false
   operationsCenterRootAction:
-    connectionDetails: "----- BEGIN CONNECTION DETAILS -----\nH4sIAAAAAAAA/x3OQQ7CIBCF4buwdtpSCSG9hieAYUB0BAO0Lox3F92+fC/53yJWm7vYhFEmSOk1\r\
-      \nSMQFlFYajPQWUJ7NqoPyOhhxEskPu0DKR8qYHBPEHuFhs43kAUvutTBTHXSvPOy19+c2z3grOCGX\r\
-      \n3TuiNmClqR2/aW+d6sQFLf/VPK4vcpeCdxphwXKjzxfxlNB6qAAAAA==\r\n----- END CONNECTION\
-      \ DETAILS -----\n"
+    connectionDetails: "----- BEGIN CONNECTION DETAILS -----\nH4sIAAAAAAAA/x2OWw7CIBQF98K3ty0tBtNtuAI4XCtKwPBoP4x7F/2dM5Oct9iyiVWsQgLqDHUh\r\
+      \nTNqQYsdk5WxJTYsC9KT1IsVJeNfdmXzcfYS3gWmrW+cthz7ca32t44hHwoCQmrPMhZAyD2X/oVYq\r\
+      \n5yEkmPC3xp4ebK8JT+4vbiYU/nwBYOpQw5UAAAA=\r\n----- END CONNECTION DETAILS -----\n"
   pollSCM:
     pollingThreadCount: 10
   scmGit:
