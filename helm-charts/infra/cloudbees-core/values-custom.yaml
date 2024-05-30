@@ -1,13 +1,17 @@
 OperationsCenter:
-  # ExtraConfigMaps:
+  ExtraConfigMaps:
   # - name: oc-casc-bundle
-  #   labels:
-  #     key1: value1
-  #   annotations:
-  #     key1: value1
   #   data:
-  #      myfile.yaml: |
-  #        foo: bar  
+  #     bundle.yaml: |
+  #       # bundle.yaml file content
+  #     jenkins.yaml: |
+  #       # jenkins.yaml file content
+  #     plugins.yaml: |
+  #       # plugins.yaml file content
+  #     items.yaml: |
+  #       # item.yaml file content
+  #     rbac.yaml: |
+  #       # rbac.yaml file content
   CasC:
     # OperationsCenter.CasC.Enabled -- enable or disable CasC for Operations Center.
     Enabled: true
