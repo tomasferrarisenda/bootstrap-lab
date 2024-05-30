@@ -60,3 +60,12 @@ spec:
       path: /var/run/docker.sock
 ```
 13. Create pipeline: New item -> Maven Docker Build and Deploy
+
+
+## CasC
+
+Couldn't deploy Operations Center with CasC because of license:
+```bash
+2024-05-30 18:10:59.854+0000 [id=30]	SEVERE	jenkins.InitReactorRunner$1#onTaskFailed: Failed ConfigurationAsCode.init
+ERROR: This license belongs to another server: 962ad4baa7b523689ed2eec67e92183c
+```
