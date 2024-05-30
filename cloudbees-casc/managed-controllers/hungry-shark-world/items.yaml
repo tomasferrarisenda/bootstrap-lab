@@ -4,7 +4,7 @@ removeStrategy:
 
 items:
   - kind: "folder"
-    name: project-${team_group}
+    name: project-alpha
     displayName: "Project Alpha"
     description: "Project Alpha is going to change the world!"
     # properties:
