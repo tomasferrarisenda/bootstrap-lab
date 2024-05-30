@@ -17,7 +17,8 @@ until kubectl -n argocd get secret argocd-initial-admin-secret &> /dev/null; do
   sleep 3
 done
 
-kubectl wait --for=condition=ready service/argocd-server --namespace argocd 
+kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=argocd-server --namespace argocd --timeout=120s
+
 
 kubectl port-forward -n argocd service/argocd-server 8080:443 &
 
