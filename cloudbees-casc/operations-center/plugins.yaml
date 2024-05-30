@@ -25,6 +25,7 @@ plugins:
 - id: cloudbees-casc-shared
 - id: cloudbees-folder
 - id: cloudbees-folders-plus
+# - id: cloudbees-github-reporting
 - id: cloudbees-jenkins-advisor
 - id: cloudbees-license
 - id: cloudbees-monitoring
@@ -46,6 +47,11 @@ plugins:
 - id: docker-commons
 - id: durable-task
 - id: font-awesome-api
+- id: git
+# - id: git-client
+# - id: github
+# - id: github-api
+# - id: github-branch-source
 - id: gson-api
 - id: handy-uri-templates-2-api
 - id: infradna-backup
