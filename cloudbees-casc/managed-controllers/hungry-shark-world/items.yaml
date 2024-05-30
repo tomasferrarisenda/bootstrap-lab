@@ -7,18 +7,18 @@ items:
     name: project-${team_group}
     displayName: "Project Alpha"
     description: "Project Alpha is going to change the world!"
-    properties:
-      - folderCredentialsProperty:
-          folderCredentials:
-            - credentials:
-                - usernamePassword:
-                    password: ${secret_location}
-                    scope: GLOBAL
-                    description: description
-                    id: test-id
-                    usernameSecret: false
-                    username: test-user
-              domain: {}
+    # properties:
+    #   - folderCredentialsProperty:
+    #       folderCredentials:
+    #         - credentials:
+    #             - usernamePassword:
+    #                 password: ${secret_location}
+    #                 scope: GLOBAL
+    #                 description: description
+    #                 id: test-id
+    #                 usernameSecret: false
+    #                 username: test-user
+    #           domain: {}
     groups:
       - name: "Project Alpha Developers"
         members:
