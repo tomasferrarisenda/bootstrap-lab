@@ -1,22 +1,38 @@
-# OperationsCenter:
-#   ExtraConfigMaps:
-#   # - name: oc-casc-bundle
-#   #   data:
-#   #     bundle.yaml: |
-#   #       # bundle.yaml file content
-#   #     jenkins.yaml: |
-#   #       # jenkins.yaml file content
-#   #     plugins.yaml: |
-#   #       # plugins.yaml file content
-#   #     items.yaml: |
-#   #       # item.yaml file content
-#   #     rbac.yaml: |
-#   #       # rbac.yaml file content
-#   CasC:
-#     Enabled: true
-#     # ConfigMapName: oc-casc-bundle
-#     Retriever:
-#       Enabled: true
-#       scmRepo: https://github.com/tomasferrarisenda/cloudbees-core-minikube-lab
-#       scmBranch: main
-#       scmBundlePath: "cloudbees-casc/operations-center"
+OperationsCenter:
+  ExtraConfigMaps:
+  # - name: oc-casc-bundle
+  #   data:
+  #     bundle.yaml: |
+  #       # bundle.yaml file content
+  #     jenkins.yaml: |
+  #       # jenkins.yaml file content
+  #     plugins.yaml: |
+  #       # plugins.yaml file content
+  #     items.yaml: |
+  #       # item.yaml file content
+  #     rbac.yaml: |
+  #       # rbac.yaml file content
+  CasC:
+    Enabled: true
+    # ConfigMapName: oc-casc-bundle
+    Retriever:
+      Enabled: true
+      scmRepo: https://github.com/tomasferrarisenda/cloudbees-core-minikube-lab
+      scmBranch: main
+      scmBundlePath: "cloudbees-casc/operations-center"
+
+  License:
+    Evaluation:
+      # OperationsCenter.License.Evaluation.Enabled -- Obtain a trial evaluation license upon first startup of Operations Center.
+      # FirstName, LastName, Email, and Company are all mandatory.
+      # Operations Center must be able to contact licenses.cloudbees.com over HTTPS.
+      # By using this facility you accept the license agreement: https://www.cloudbees.com/r/subscription
+      Enabled: true
+      # OperationsCenter.License.Evaluation.FirstName -- first name of evaluating user
+      FirstName: "Tomas"
+      # OperationsCenter.License.Evaluation.LastName -- last name of evaluating user
+      LastName: "Ferrari"
+      # OperationsCenter.License.Evaluation.Email -- email address of evaluating user
+      Email: "totofefe@hotmail.com"
+      # OperationsCenter.License.Evaluation.Company -- company or organization of evaluating user
+      Company: "TomFerra"
