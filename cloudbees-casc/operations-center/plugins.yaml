@@ -48,7 +48,7 @@ plugins:
 - id: durable-task
 - id: font-awesome-api
 - id: git
-# - id: git-client
+- id: git-client
 # - id: github
 # - id: github-api
 # - id: github-branch-source
@@ -119,5 +119,6 @@ plugins:
 - id: variant
 - id: workflow-api
 - id: workflow-durable-task-step
+- id: workflow-scm-step
 - id: workflow-step-api
 - id: workflow-support

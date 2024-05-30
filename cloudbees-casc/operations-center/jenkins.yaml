@@ -1,3 +1,14 @@
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - usernamePassword:
+          description: "GitHub"
+          id: "github"
+          password: "{AQAAABAAAAAwwxzgTLQYn38c7Ykbo2sPJVlidO6MteEGdFZYVgXKcd6YuO+Tc1VajFC0LDRCgs4YW7M6as6FrvkXXafiEdtPng==}"
+          scope: GLOBAL
+          username: "tomasferrarisenda"
+          usernameSecret: true
 jenkins:
   agentProtocols:
   - "Diagnostic-Ping"
@@ -57,9 +68,10 @@ jenkins:
       allowsSignup: false
       enableCaptcha: false
       users:
-      - id: "tferrari"
-        name: "tferrari"
+      - id: "admin"
+        name: "admin"
         properties:
+        - "apiToken"
         - "consoleUrlProvider"
         - "blueSteelRedirectOptOutProperty"
         - "myView"
@@ -68,8 +80,7 @@ jenkins:
         - "timezone"
         - "experimentalFlags"
         - mailer:
-            emailAddress: "tferrari.92@hotmail.com"
-        - "apiToken"
+            emailAddress: "admin@admin.com"
   slaveAgentPort: 50000
   updateCenter:
     sites:
@@ -279,6 +290,11 @@ security:
     creationOfLegacyTokenEnabled: false
     tokenGenerationOnCreationEnabled: false
     usageStatisticsEnabled: true
+  gitHooks:
+    allowedOnAgents: false
+    allowedOnController: false
+  gitHostKeyVerificationConfiguration:
+    sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
   sSHD:
     port: -1
   securitySettingsEnforcement:
@@ -292,7 +308,19 @@ unclassified:
     configuredBuildDiscarders:
     - "jobBuildDiscarder"
   bundleStorageService:
-    activated: false
+    activated: true
+    bundles:
+    - name: "managed-controller-bundles"
+      retriever:
+        SCM:
+          ghChecksActivated: false
+          scmSource:
+            git:
+              credentialsId: "github"
+              id: "02ef8e73-aa8e-4937-bd32-478aca786a5e"
+              remote: "https://github.com/tomasferrarisenda/cloudbees-core-minikube-lab.git"
+              traits:
+              - "gitBranchDiscovery"
     checkOutTimeout: 600
     pollingPeriod: 120
     purgeOnDeactivation: false
@@ -327,6 +355,14 @@ unclassified:
     enabled: false
   pollSCM:
     pollingThreadCount: 10
+  scmGit:
+    addGitTagAction: false
+    allowSecondFetch: false
+    createAccountBasedOnEmail: false
+    disableGitToolChooser: false
+    hideCredentials: false
+    showEntireCommitSummaryInChanges: false
+    useExistingAccountWithSameEmail: false
   usageStatisticsCloudBees:
     disabledJenkinsUsageStatistics: true
     usageStatisticsCollected: true
@@ -335,6 +371,10 @@ unclassified:
 tool:
   cloudbeesPluginUsageAnalyzer:
     enabled: true
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
   mavenGlobalConfig:
     globalSettingsProvider: "standard"
     settingsProvider: "standard"
