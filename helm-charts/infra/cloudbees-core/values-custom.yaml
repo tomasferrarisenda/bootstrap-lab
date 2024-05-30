@@ -7,7 +7,8 @@ OperationsCenter:
       key1: value1
     data:
        myfile.yaml: |
-         foo: bar  CasC:
+         foo: bar  
+  CasC:
     # OperationsCenter.CasC.Enabled -- enable or disable CasC for Operations Center.
     Enabled: true
     # OperationsCenter.CasC.ConfigMapName -- the name of the ConfigMap used to configure Operations Center.
