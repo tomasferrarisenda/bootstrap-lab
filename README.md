@@ -64,6 +64,7 @@ spec:
 
 ## CasC
 
+### Operations Center
 Couldn't deploy Operations Center with CasC because of license:
 ```bash
 2024-05-30 18:10:59.854+0000 [id=30]	SEVERE	jenkins.InitReactorRunner$1#onTaskFailed: Failed ConfigurationAsCode.init
