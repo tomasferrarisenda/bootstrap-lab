@@ -17,7 +17,6 @@ until kubectl -n argocd get secret argocd-initial-admin-secret &> /dev/null; do
   sleep 3
 done
 
-kubectl port-forward -n argocd service/argocd-server 8080:443 &
 
 echo "#############################################################################"
 echo "#############################################################################"
@@ -39,6 +38,7 @@ kubectl create -n argocd -f argo-cd/self-manage/argocd-application.yaml
 # Finally, we create an application that will automatically deploy any ArgoCD Applications we specify in the argo-cd/applications directory (App of Apps pattern).
 kubectl create -n argocd -f argo-cd/self-manage/argocd-app-of-apps-application.yaml  
 
+kubectl port-forward -n argocd service/argocd-server 8080:443 &
 
 # export REGISTRY_SERVER=https://index.docker.io/v1/
 
