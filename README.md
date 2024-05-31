@@ -4,15 +4,17 @@ https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-controller/items#_suppo
 
 # CLOUDBEES CORE MINIKUBE LAB
 
-```bash
-sudo echo "$(minikube ip) cloudbees-core.local" | sudo tee -a /etc/hosts
-```
+
 
 ## Instructions
 1. Run deploy-in-minikube.sh
 ```bash
 chmod +x deploy-in-minikube.sh
 ./deploy-in-minikube.sh
+```
+2. Run:
+```bash
+sudo echo "$(minikube ip) cloudbees-core.local" | sudo tee -a /etc/hosts
 ```
 2. Log into Operations Center at http://localhost:8081/cjoc/
 <!-- 3. Go through wizard -->
