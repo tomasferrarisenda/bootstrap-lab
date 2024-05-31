@@ -4,9 +4,6 @@
 OperationsCenter:
   HostName: cloudbees-core.local
   ServiceType: NodePort
-  # Ingress:
-  #   Annotations:
-  #     nginx.ingress.kubernetes.io/rewrite-target: /$1
 
   # ExtraConfigMaps:
   # - name: oc-casc-bundle
