@@ -22,15 +22,15 @@ spec:
             port:
               number: {{ .Values.OperationsCenter.ServicePort }}
         pathType: Prefix
-  {{- if .Values.OperationsCenter.CasC.Retriever.Enabled }}
-      - path: /casc-retriever
-        pathType: Prefix
-        backend:
-          service:
-            name: casc-retriever-sidecar-svc
-            port:
-              number: {{ .Values.OperationsCenter.ServicePort }}
-  {{- end }}
+  # {{- if .Values.OperationsCenter.CasC.Retriever.Enabled }}
+  #     - path: /casc-retriever
+  #       pathType: Prefix
+  #       backend:
+  #         service:
+  #           name: casc-retriever-sidecar-svc
+  #           port:
+  #             number: {{ .Values.OperationsCenter.ServicePort }}
+  # {{- end }}
 {{- if (include "oc.hostnamewithoutport" . ) }}
     host: {{ include "oc.hostnamewithoutport" . | quote }}
 {{- end }}
