@@ -2,7 +2,6 @@ OperationsCenter:
   HostName: cloudbees-core.local
   Ingress:
     Annotations:
-      kubernetes.io/tls-acme: "false"
       nginx.ingress.kubernetes.io/rewrite-target: /$1
 
   ExtraConfigMaps:
