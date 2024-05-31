@@ -1,4 +1,5 @@
 OperationsCenter:
+  HostName: cloudbees-core.local
   ExtraConfigMaps:
   # - name: oc-casc-bundle
   #   data:
