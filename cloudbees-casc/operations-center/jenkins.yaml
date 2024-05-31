@@ -101,6 +101,7 @@ jenkins:
       - "queueSizeViewColumn"
       - "jenkinsVersionViewColumn"
       - "listSelectionColumn"
+      - "cascViewColumn"
       jobFilters:
       - "connectedMasterViewFilter"
       name: "Controllers"
