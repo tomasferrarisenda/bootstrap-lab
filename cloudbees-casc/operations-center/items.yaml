@@ -27,7 +27,8 @@ items:
   description: ''
   displayName: hungry-shark-evolution
   properties:
-  - configurationAsCode: {}
+  - configurationAsCode:
+      bundle: main/hungry-shark-evolution
   - customWebhookData: {}
   - sharedHeaderLabelOptIn:
       optIn: true
@@ -65,7 +66,8 @@ items:
   description: ''
   displayName: hungry-shark-world
   properties:
-  - configurationAsCode: {}
+  - configurationAsCode:
+      bundle: main/hungry-shark-world
   - customWebhookData: {}
   - sharedHeaderLabelOptIn:
       optIn: true
@@ -103,7 +105,8 @@ items:
   description: ''
   displayName: invincible-gtg
   properties:
-  - configurationAsCode: {}
+  - configurationAsCode:
+      bundle: main/invincible-gtg
   - customWebhookData: {}
   - sharedHeaderLabelOptIn:
       optIn: true
