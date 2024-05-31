@@ -1,6 +1,5 @@
-ingress-nginx:
-  # may not be enabled if fips140 is true
-  Enabled: true
+# ingress-nginx:
+#   Enabled: true
   
 OperationsCenter:
   HostName: cloudbees-core.local
