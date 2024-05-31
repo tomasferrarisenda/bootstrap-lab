@@ -6,7 +6,7 @@
 # read -p "Enter your DockerHub email: " REGISTRY_EMAIL
 
 # Start cluster. Extra beefy beause Backstage is a bit heavy.
-minikube start --cpus 4 --memory 4096
+minikube start --cpus 4 --memory 4096 --addons ingress 
 
 # Install ArgoCD
 helm install argocd -n argocd helm-charts/infra/argo-cd --values helm-charts/infra/argo-cd/values-custom.yaml --dependency-update --create-namespace
