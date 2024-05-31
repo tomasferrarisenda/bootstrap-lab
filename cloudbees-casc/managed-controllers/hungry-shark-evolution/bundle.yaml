@@ -12,3 +12,5 @@ rbac:
   - "rbac.yaml"
 items:
   - "items.yaml"
+availabilityPattern: "hungry-shark-evolution"
+

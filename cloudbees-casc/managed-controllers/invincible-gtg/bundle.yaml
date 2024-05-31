@@ -12,3 +12,4 @@ rbac:
   - "rbac.yaml"
 items:
   - "items.yaml"
+availabilityPattern: "invincible-gtg"
