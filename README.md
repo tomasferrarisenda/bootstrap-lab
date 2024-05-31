@@ -1,3 +1,7 @@
+
+# LEER!!!!!!!!!!!!!!!!!!!!!!!!!
+https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-controller/items#_supported_items_using_casc
+
 # CLOUDBEES CORE MINIKUBE LAB
 
 ## Instructions
