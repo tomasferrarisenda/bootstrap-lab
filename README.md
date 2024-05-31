@@ -5,8 +5,7 @@ https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-controller/items#_suppo
 # CLOUDBEES CORE MINIKUBE LAB
 
 ```bash
-export MINIKUBE_IP=$(minikube ip)
-sudo echo "$MINIKUBE_IP cloudbees-core.local" | sudo tee -a /etc/hosts
+sudo echo "$(minikube ip) cloudbees-core.local" | sudo tee -a /etc/hosts
 ```
 
 ## Instructions
