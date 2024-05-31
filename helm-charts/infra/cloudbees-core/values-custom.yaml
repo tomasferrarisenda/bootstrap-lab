@@ -1,3 +1,7 @@
+ingress-nginx:
+  # may not be enabled if fips140 is true
+  Enabled: true
+  
 OperationsCenter:
   HostName: cloudbees-core.local
   ServiceType: NodePort
