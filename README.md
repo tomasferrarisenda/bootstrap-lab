@@ -16,15 +16,16 @@ chmod +x deploy-in-minikube.sh
   - Username: admin
   - Pass: admin
   - Full Name: admin
-  - Email: admin
+  - Email: admin@admin.com
 <!-- 4. Create Managed controller "invincible-gtg-managed-controller":
   - Disk size: (5gb)
   - Storgaeclass: standard
   - Memory: 1024
   - Cpu: 1.0 -->
-1. Go to http://localhost:8081/cjoc/manage/core-casc-bundles/?tab=2 and click EDIT on invincible-gtg. Write "invincible-gtg" under "Edit availability pattter". Save.
-2. Go to the configuration of "invincible-gtg" managed controller. Under Configuration as Code (CasC) select the bundle. Save
+<!-- 1. Go to http://localhost:8081/cjoc/manage/core-casc-bundles/?tab=2 and click EDIT on invincible-gtg. Write "invincible-gtg" under "Edit availability pattter". Save.
+2. Go to the configuration of "invincible-gtg" managed controller. Under Configuration as Code (CasC) select the bundle. Save -->
 <!-- 4. Start "invincible-gtg" managed controller. -->
+4. Start "invincible-gtg" managed controller.
 5. Run:
 ```bash
 kubectl wait --for=condition=ready -n cloudbees-core pod/invincible-gtg-0 
