@@ -1,7 +1,11 @@
 
 # LEER!!!!!!!!!!!!!!!!!!!!!!!!!
 https://docs.cloudbees.com/docs/cloudbees-ci/latest/casc-controller/items#_supported_items_using_casc
+https://hellokube.dev/posts/configure-minikube-ingress-on-wsl2/
 
+```bash
+minikube tunnel
+```
 # CLOUDBEES CORE MINIKUBE LAB
 
 
