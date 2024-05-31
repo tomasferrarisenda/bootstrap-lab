@@ -1,25 +1,25 @@
-# apiVersion: argoproj.io/v1alpha1
-# kind: Application
-# metadata:
-#   name: ingress-test-application
-#   namespace: argocd
-#   finalizers:
-#     - resources-finalizer.argocd.argoproj.io # Adding the finalizer enables cascading deletes when implementing the App of Apps pattern. If this isn't used, when you remove the application yaml from git, the application will be removed from ArgoCD but the resources will remain active in the cluster
-# spec:  
-#   destination:
-#     # namespace: ingress-nginx
-#     namespace: default
-#     server: https://kubernetes.default.svc
-#   project: default
-#   source:
-#     repoURL: https://github.com/tomasferrarisenda/cloudbees-core-minikube-lab.git # This value was modified by the initial-setup python script
-#     path: helm-charts/infra/ingress-test-application
-#     directory:
-#       recurse: true
-#       jsonnet: {}
-#   syncPolicy:
-#     automated:
-#       selfHeal: true
-#       prune: true
-#     syncOptions:
-#       - CreateNamespace=true
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-test-application
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io # Adding the finalizer enables cascading deletes when implementing the App of Apps pattern. If this isn't used, when you remove the application yaml from git, the application will be removed from ArgoCD but the resources will remain active in the cluster
+spec:  
+  destination:
+    # namespace: ingress-nginx
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    repoURL: https://github.com/tomasferrarisenda/cloudbees-core-minikube-lab.git # This value was modified by the initial-setup python script
+    path: helm-charts/infra/ingress-test-application
+    directory:
+      recurse: true
+      jsonnet: {}
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
