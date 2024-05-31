@@ -1,0 +1,345 @@
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - usernamePassword:
+          description: "DockerHub"
+          id: "dockerhub"
+          password: "{AQAAABAAAAAg6IsYh/5wNL4nERbZIiWphCPAckaXvgYSfMfu/MXmW004jT3SC/2GMFMzWFNVCZgB}"
+          scope: GLOBAL
+          username: "tferrari92"
+          usernameSecret: true
+      - usernamePassword:
+          description: "GitHub"
+          id: "github"
+          password: "{AQAAABAAAAAwzqLmA37bwdESiCHG4OlNLr3qT+MOW/B4voeaUwoSGEeUM4dwvQZ8TGfp3KvbMJ0rww8QR1YEEiJNLSuqbikJ4g==}"
+          scope: GLOBAL
+          username: "tomasferrarisenda"
+          usernameSecret: true
+jenkins:
+  agentProtocols:
+  - "Diagnostic-Ping"
+  - "JNLP4-connect"
+  - "OperationsCenter2"
+  - "Ping"
+  authorizationStrategy: "cloudBeesRoleBasedAccessControl"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  disabledAdministrativeMonitors:
+  - "hudson.util.DoubleLaunchChecker"
+  labelAtoms:
+  - name: "built-in"
+  - name: "containerBuilds"
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  noUsageStatistics: true
+  nodeMonitors:
+  - "architecture"
+  - "clock"
+  - diskSpace:
+      freeSpaceThreshold: "1GiB"
+      freeSpaceWarningThreshold: "2GiB"
+  - "swapSpace"
+  - tmpSpace:
+      freeSpaceThreshold: "1GiB"
+      freeSpaceWarningThreshold: "2GiB"
+  - "responseTime"
+  numExecutors: 0
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: true
+  scmCheckoutRetryCount: 0
+  securityRealm: "operationsCenter"
+  slaveAgentPort: 50000
+  updateCenter:
+    sites:
+    - id: "core-mm-offline"
+      url: "file:/tmp/jenkins/war/WEB-INF/plugins/update-center.json"
+    - id: "cap-core-mm"
+      url: "https://jenkins-updates.cloudbees.com/update-center/envelope-core-mm/update-center.json"
+  views:
+  - all:
+      name: "all"
+  viewsTabBar: "standard"
+beekeeper:
+  enabled: true
+  securityWarnings:
+    enabledForCore: true
+    enabledForPlugins: true
+  upgrades:
+    autoDowngradePlugins: false
+    autoUpgradePlugins: true
+globalCloudBeesPipelineTemplateCatalog:
+  catalogs:
+  - branchOrTag: "main"
+    scm:
+      github:
+        configuredByUrl: true
+        credentialsId: "github"
+        id: "ac637d90-c0ad-4f46-9edf-9200e3a1fafd"
+        repoOwner: "tomasferrarisenda"
+        repository: "pipeline-template-catalogs"
+        repositoryUrl: "https://github.com/tomasferrarisenda/pipeline-template-catalogs"
+        traits:
+        - gitHubBranchDiscovery:
+            strategyId: 1
+        - gitHubPullRequestDiscovery:
+            strategyId: 2
+        - gitHubForkDiscovery:
+            strategyId: 2
+            trust: "gitHubTrustPermissions"
+kube:
+  podTemplatesConfiguration:
+    templates:
+    - id: "4b645ecf-91c9-4b1c-9012-e47fb4151b92"
+      label: "containerBuilds"
+      name: "maven-docker"
+      yaml: |-
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: maven-docker
+        spec:
+          containers:
+          - name: maven
+            image: maven:3.8.5-openjdk-11
+            command:
+            - cat
+            tty: true
+          - name: docker
+            image: docker
+            args: ["sleep", "10000"]
+            volumeMounts:
+            - mountPath: /var/run/docker.sock
+              name: docker-socket
+          restartPolicy: Never
+          volumes:
+          - name: docker-socket
+            hostPath:
+              path: /var/run/docker.sock
+      yamlMergeStrategy: "override"
+      yamls:
+      - |-
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: maven-docker
+        spec:
+          containers:
+          - name: maven
+            image: maven:3.8.5-openjdk-11
+            command:
+            - cat
+            tty: true
+          - name: docker
+            image: docker
+            args: ["sleep", "10000"]
+            volumeMounts:
+            - mountPath: /var/run/docker.sock
+              name: docker-socket
+          restartPolicy: Never
+          volumes:
+          - name: docker-socket
+            hostPath:
+              path: /var/run/docker.sock
+support:
+  automatedBundleConfiguration:
+    componentIds:
+    - "CloudBeesAssuranceSupport"
+    - "AgentsConfigFile"
+    - "ConfigFileComponent"
+    - "OtherConfigFilesComponent"
+    - "AboutBrowser"
+    - "AboutJenkins"
+    - "AboutUser"
+    - "AdministrativeMonitors"
+    - "AgentProtocols"
+    - "BuildQueue"
+    - "CustomLogs"
+    - "DumpExportTable"
+    - "EnvironmentVariables"
+    - "FileDescriptorLimit"
+    - "GCLogs"
+    - "HeapUsageHistogram"
+    - "ItemsContent"
+    - "AgentsJVMProcessSystemMetricsContents"
+    - "MasterJVMProcessSystemMetricsContents"
+    - "JenkinsLogs"
+    - "LoadStats"
+    - "LoggerManager"
+    - "Metrics"
+    - "NetworkInterfaces"
+    - "NodeExecutors"
+    - "NodeMonitors"
+    - "OtherLogs"
+    - "ReverseProxy"
+    - "RootCAs"
+    - "RunningBuilds"
+    - "SlaveCommandStatistics"
+    - "SlaveLaunchLogs"
+    - "SlaveLogs"
+    - "AgentsSystemConfiguration"
+    - "MasterSystemConfiguration"
+    - "SystemProperties"
+    - "TaskLogs"
+    - "ThreadDumps"
+    - "UpdateCenter"
+    - "UserCount"
+    - "ComponentImpl"
+    - "SlowRequestComponent"
+    - "HighLoadComponent"
+    - "DeadlockRequestComponent"
+    - "OperationsCenterSupportComponent"
+    - "UserActivityComponent"
+    - "PipelineInternalCalls"
+    - "PipelineTimings"
+    - "PipelineThreadDump"
+    enabled: true
+    period: 1
+globalCredentialsConfiguration:
+  configuration:
+    providerFilter: "none"
+    typeFilter: "none"
+appearance:
+  prism:
+    theme: PRISM
+security:
+  anonymizeSupportBundle:
+    enabled: false
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  gitHooks:
+    allowedOnAgents: false
+    allowedOnController: false
+  gitHostKeyVerificationConfiguration:
+    sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
+unclassified:
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - "jobBuildDiscarder"
+  bundleUpdateTiming:
+    automaticReload: false
+    automaticRestart: false
+    rejectWarnings: false
+    reloadAlwaysOnRestart: false
+    skipNewVersions: false
+  cascItemsConfiguration:
+    variableInterpolationEnabledForAdmin: false
+    variableInterpolationEnabledForNonAdmin: false
+  cloudBeesSCMReporting:
+    enabled: true
+  cloudbeesPipelineExplorer:
+    autoPollingEnabled: true
+    autoPollingIntervalSeconds: 10
+    enabled: true
+    searchMaxIndexSize: 1000
+  email-ext:
+    adminRequiredForTemplateTesting: false
+    allowUnregisteredEnabled: false
+    charset: "UTF-8"
+    debugMode: false
+    defaultBody: |-
+      $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+      Check console output at $BUILD_URL to view the results.
+    defaultContentType: "text/plain"
+    defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
+    defaultTriggerIds:
+    - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
+    maxAttachmentSize: -1
+    maxAttachmentSizeMb: -1
+    precedenceBulk: false
+    watchingEnabled: false
+  enrichedSummaryConfig:
+    enrichedSummaryEnabled: false
+    httpClientDelayBetweenRetriesInSeconds: 1
+    httpClientMaxRetries: 3
+    httpClientTimeoutInSeconds: 1
+  experimentalPlugins:
+    enabled: false
+  fingerprints:
+    fingerprintCleanupDisabled: false
+    storage: "file"
+  gitHubConfiguration:
+    apiRateLimitChecker: ThrottleForNormalize
+  gitHubPluginConfig:
+    hookUrl: "http://cloudbees-core.local/exercise/github-webhook/"
+  globalLibraries:
+    libraries:
+    - defaultVersion: "main"
+      name: "global-shared-library"
+      retriever:
+        modernSCM:
+          libraryPath: "."
+          scm:
+            github:
+              configuredByUrl: true
+              credentialsId: "github"
+              id: "6d9b6336-bddc-4e88-b13d-237dfb8e6d18"
+              repoOwner: "tomasferrarisenda"
+              repository: "global-shared-library"
+              repositoryUrl: "https://github.com/tomasferrarisenda/global-shared-library"
+              traits:
+              - gitHubBranchDiscovery:
+                  strategyId: 1
+              - gitHubPullRequestDiscovery:
+                  strategyId: 2
+              - gitHubForkDiscovery:
+                  strategyId: 2
+                  trust: "gitHubTrustPermissions"
+  injectionConfig:
+    allowUntrusted: false
+    checkForBuildAgentErrors: false
+    enabled: false
+    enforceUrl: false
+    gradleCaptureTaskInputFiles: true
+    injectCcudExtension: false
+    injectMavenExtension: false
+    mavenCaptureGoalInputFiles: true
+  junitTestResultStorage:
+    storage: "file"
+  location:
+    adminAddress: "address not configured yet <nobody@nowhere>"
+    url: "http://cloudbees-core.local/exercise/"
+  mailer:
+    charset: "UTF-8"
+    useSsl: false
+    useTls: false
+  operationsCenterRootAction:
+    connectionDetails: "----- BEGIN CONNECTION DETAILS -----\nH4sIAAAAAAAA/x2OWw7CIBQF98K3ty0tBtNtuAI4XCtKwPBoP4x7F/2dM5Oct9iyiVWsQgLqDHUh\r\
+      \nTNqQYsdk5WxJTYsC9KT1IsVJeNfdmXzcfYS3gWmrW+cthz7ca32t44hHwoCQmrPMhZAyD2X/oVYq\r\
+      \n5yEkmPC3xp4ebK8JT+4vbiYU/nwBYOpQw5UAAAA=\r\n----- END CONNECTION DETAILS -----\n"
+  pollSCM:
+    pollingThreadCount: 10
+  scmGit:
+    addGitTagAction: false
+    allowSecondFetch: false
+    createAccountBasedOnEmail: false
+    disableGitToolChooser: false
+    hideCredentials: false
+    showEntireCommitSummaryInChanges: false
+    useExistingAccountWithSameEmail: false
+  usageStatisticsCloudBees:
+    disabledJenkinsUsageStatistics: true
+    usageStatisticsCollected: true
+  validationVisualization:
+    quiet: false
+tool:
+  cloudbeesPluginUsageAnalyzer:
+    enabled: true
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"
