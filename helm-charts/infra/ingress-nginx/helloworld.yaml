@@ -40,13 +40,10 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  creationTimestamp: "2024-05-31T09:41:08Z"
   labels:
     app: web
   name: web
   namespace: default
-  resourceVersion: "701"
-  uid: b56dc173-207a-47d9-b537-121a18e6e75d
 spec:
   clusterIP: 10.104.225.68
   clusterIPs:
