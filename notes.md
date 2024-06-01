@@ -37,6 +37,10 @@ mp.openapi.scan.disable=false
       <property name="javax.persistence.jdbc.password" value="api"/>
 ```
 1. uncommented it, still same unauthenticated error. WHY???
+1. changed value of crm_db to something random. Still same error. Values are gotten from somewhere else then. buth where?
+NOTE: check mariadb compatibility since image tag is latest
+1. ive tried as envs in the docker compuse, but how do I know the java service is using those env vars? how do i know the name of the vars are ok?
+
 
 # OPENAPI
 
