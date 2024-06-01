@@ -108,7 +108,159 @@ MariaDB [apiDB]> SHOW TABLES;
 
 MariaDB [apiDB]> 
 ```
-1. 
+1. changed maridb tag, got different error. if this was the issue im gonna throw myself out the window
+```bash
+[Warning] Access denied for user 'root'@'%' to database 'apiDB'
+```
+1. I had changed the user in persistence.xml while trying stuff. Now changed it back to api. New error:
+```bash
+2024-06-02 01:13:53 2024-06-01 23:13:53 3 [ERROR] Error while loading database options: './apiDB/db.opt':
+2024-06-02 01:13:53 2024-06-01 23:13:53 3 [ERROR] Unknown collation: 'utf8mb4_uca1400_ai_ci'
+```
+1. curled http://localhost:8080/health
+```bash
+{"status":"UP","checks":[{"name":"api","status":"UP","data":{}}]}
+```
+1. it was the mariadb version.................
+1. curl http://localhost:8080/openapi
+```bash
+openapi: 3.0.0
+info:
+  title: Api Gradle with Payara
+  version: 1.0.0
+servers:
+- url: http://localhost:8080
+  description: "8080"
+  variables: {}
+paths:
+  /api/api/current-user:
+    get:
+      operationId: getCurrentUserLogin
+      responses:
+        default:
+          content:
+            '*/*':
+              schema:
+                type: string
+          description: Default Response.
+  /api/api/info:
+    get:
+      operationId: getInfo
+      responses:
+        default:
+          content:
+            '*/*':
+              schema:
+                type: object
+          description: Default Response.
+  /api/javaee8:
+    get:
+      operationId: ping
+      responses:
+        default:
+          content:
+            '*/*':
+              schema:
+                type: object
+          description: Default Response.
+  /api/profile:
+    get:
+      summary: get all the profiles
+      operationId: getAllProfiles
+      responses:
+        "200":
+          description: OK
+    put:
+      summary: update profile
+      description: Updates an existing profile
+      operationId: updateProfile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+    post:
+      summary: create a new profile
+      description: Create a new profile
+      operationId: createProfile
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+      responses:
+        "201":
+          description: Created
+        "400":
+          description: Bad Request
+  /api/profile/info:
+    get:
+      operationId: info
+      responses:
+        "200":
+          description: OK
+  /api/profile/{id}:
+    get:
+      summary: get the profile
+      operationId: getProfile
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: number
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+    delete:
+      summary: remove the profile
+      operationId: removeProfile
+      parameters:
+      - name: id
+        in: path
+        required: true
+        style: simple
+        schema:
+          type: number
+      responses:
+        "200":
+          description: OK
+        "404":
+          description: Not Found
+components:
+  schemas:
+    Profile:
+      type: object
+      properties:
+        id:
+          type: number
+        name:
+          type: string
+        lastPlayedVersion:
+          type: string
+        lastPlayed:
+          type: number
+        language:
+          type: string
+        ageRestricted:
+          type: boolean
+        version:
+          type: number
+        serialVersionUID:
+          type: number
+        _persistence_fetchGroup:
+          type: object
+```
 
 
 
