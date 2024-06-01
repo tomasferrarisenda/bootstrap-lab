@@ -22,7 +22,7 @@ jenkins:
   - "JNLP4-connect"
   - "OperationsCenter2"
   - "Ping"
-  authorizationStrategy: "cloudBeesRoleBasedAccessControl"
+  # authorizationStrategy: "cloudBeesRoleBasedAccessControl"
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: false
