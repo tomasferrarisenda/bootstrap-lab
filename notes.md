@@ -40,7 +40,80 @@ mp.openapi.scan.disable=false
 1. changed value of crm_db to something random. Still same error. Values are gotten from somewhere else then. buth where?
 NOTE: check mariadb compatibility since image tag is latest
 1. ive tried as envs in the docker compuse, but how do I know the java service is using those env vars? how do i know the name of the vars are ok?
+1. I removed all env vars in the dockerfile, including the included one DB=crm_db. Still geting error. 
+1. installed mysql in apigradle container, connection works fine:
+```bash
+docker exec -it borrar2-api-gradle-1 sh
+# mysql -h crm_db -u api -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 4
+Server version: 11.4.2-MariaDB-ubu2404 mariadb.org binary distribution
 
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> 
+```
+1. api user cant create dbs:
+```bash
+● docker exec -it borrar2-api-gradle-1 sh
+# mysql -h crm_db -u api -p
+Enter password: 
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 4
+Server version: 11.4.2-MariaDB-ubu2404 mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> CREATE TABLE test_table (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(255) NOT NULL,
+    ->     email VARCHAR(255) NOT NULL
+    -> );
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> CREATE DATABASE your_database_name;
+ERROR 1044 (42000): Access denied for user 'api'@'%' to database 'your_database_name'
+```
+1. this works:
+```bash
+MariaDB [(none)]> SHOW DATABASES;
++--------------------+
+| Database           |
++--------------------+
+| apiDB              |
+| information_schema |
++--------------------+
+2 rows in set (0.021 sec)
+
+MariaDB [(none)]> USE apiDB;
+Database changed
+MariaDB [apiDB]> CREATE TABLE test_table (
+    ->     id INT AUTO_INCREMENT PRIMARY KEY,
+    ->     name VARCHAR(255) NOT NULL,
+    ->     email VARCHAR(255) NOT NULL
+    -> );
+Query OK, 0 rows affected (0.064 sec)
+
+MariaDB [apiDB]> SHOW TABLES;
++-----------------+
+| Tables_in_apiDB |
++-----------------+
+| test_table      |
++-----------------+
+1 row in set (0.000 sec)
+
+MariaDB [apiDB]> 
+```
+1. 
+
+
+
+# CI/CD ENVIRONMENT
+Cant deploy managed controller from CasC bundle, no time to solve this so when starting "exercise" controller Configuration as Code (CasC) -> Bundle must be None. Well have to manually add al the stuff.
 
 # OPENAPI
 
