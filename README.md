@@ -26,9 +26,10 @@ chmod +x deploy-in-minikube.sh
 # sudo echo "127.0.0.1 cloudbees-core.local" | sudo tee -a /etc/hosts
 minikube tunnel
 ```
-2. Log into Operations Center at http://localhost:8081/cjoc/
+<!-- 2. Log into Operations Center at http://localhost:8081/cjoc/ -->
+2. Log into Operations Center at http://cloudbees-core.local/cjoc/
 <!-- 3. Go through wizard -->
-3. Create user:
+3. Create First Admin User:
   - Username: admin
   - Pass: admin
   - Full Name: admin

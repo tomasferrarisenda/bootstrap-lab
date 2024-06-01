@@ -10,3 +10,4 @@ rbac:
   - "rbac.yaml"
 items:
   - "items.yaml"
+availabilityPattern: "exercise"
