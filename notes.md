@@ -158,6 +158,7 @@ paths:
 ```
 1. i don't know if im happy about solving it or sad about how much time I wasted
 1. need to go back and remove all unnecessary changes which involved, docker networks.. healthchecks.. env vars...
+1. done, going back to CI/CD environment. need to solve CasC for managed controllers. If it takes too long Ill drop it and begin working on unit tests for apigradle
 
 
 # CI/CD ENVIRONMENT
