@@ -1,6 +1,17 @@
+# PROLOGUE
+I got Mauricio's call on Tuesday, since I was out on holidays, he offered to send me the challenge on friday, I said yes.
+
+Still got a little anxious, and since David was worried about my lack of experience with Jenkins shared libraries and templata catalogs, I thought the challenge would have something to do with that.
+
+So every free moment i got during the holidays I started learning about these subjects and setting up a lab. Ended up with a Cloudbees core deployment. Created repo for shared libraries and another for templates. Set up an example omniman-service that used all of these features. Omniman service was java maven app.
+
+Also learned about CasC for jenkins, tried to CasC everything as much as possible, in order to get "1-click deployment". Got pretty far, though not fully 1-click.
+
+On friday I get challenge from mauricio. Not what I was expecting but I'll be putting the lab I set up to good use.
+
 # STEP BY STEP
 1. General overview of task and files
-1. Modify for deployment in k8s.
+1. Adapt for deployment in k8s.
 1. Create images, push to dockerhub
 1. Create dpl, service, env vars, ingress, etc.
 2. Deploy in my k8s env.
