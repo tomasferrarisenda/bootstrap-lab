@@ -6,10 +6,7 @@ jcasc:
   - "jenkins.yaml"
 plugins:
   - "plugins.yaml"
-# catalog:
-#   - "plugin-catalog.yaml"
 rbac:
   - "rbac.yaml"
 items:
   - "items.yaml"
-availabilityPattern: "exercise"
