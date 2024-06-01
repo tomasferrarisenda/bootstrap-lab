@@ -23,10 +23,11 @@ jenkins:
   - "OperationsCenter2"
   - "Ping"
   # authorizationStrategy: "cloudBeesRoleBasedAccessControl"
+  # authorizationStrategy:
+  #   inherit: true
   authorizationStrategy:
-    # Inherit the authorization strategy from the Operations Center
-    # Set it to `none` if you want to inherit everything, or you can override specific parts as needed.
-    inherit: true
+      loggedInUsersCanDoAnything:
+        allowAnonymousRead: false
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: false
