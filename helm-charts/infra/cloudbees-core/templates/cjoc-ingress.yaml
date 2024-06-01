@@ -31,13 +31,6 @@ spec:
             port:
               number: {{ .Values.OperationsCenter.ServicePort }}
   {{- end }}
-      - path: /invincible-gtg
-        pathType: Prefix
-        backend:
-          service:
-            name: invincible-gtg
-            port:
-              number: {{ .Values.OperationsCenter.ServicePort }}
 {{- if (include "oc.hostnamewithoutport" . ) }}
     host: {{ include "oc.hostnamewithoutport" . | quote }}
 {{- end }}
