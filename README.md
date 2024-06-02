@@ -1,8 +1,9 @@
-
-
-# CLOUDBEES CORE MINIKUBE LAB
+# BOOTSTRAP LAB
 
 ## Prerequisites
+- minikube installed
+- kubectl installed
+- helm installed
 
 ## Other repos this project depends on
 - https://github.com/tomasferrarisenda/infra-tools-helm-charts
@@ -22,6 +23,9 @@
 
 - https://github.com/tomasferrarisenda/omniman-service
 - https://github.com/tomasferrarisenda/omniman-service-helm-chart
+
+<br/>
+<br/>
 
 ## Instructions
 1. Run deploy-in-minikube.sh
