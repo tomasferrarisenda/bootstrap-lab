@@ -202,6 +202,7 @@ gradle wrapper
 - tf module for ecr
 - pass in db server name for api gradle through env var and not hard ocded in web.xml
 - create pvc for mariadb
+- setup cronjob so apiGradle builds every night. Why is the Build periodically option greyed out???
 
 
 
