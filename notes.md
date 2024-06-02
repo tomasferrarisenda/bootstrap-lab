@@ -186,7 +186,13 @@ public class HelloResource {
 The hello endpoint will be available at http://localhost:8080/api/hello.
 
 
-
+# UNIT TESTS
+gradle wrapper
+./gradlew build
+./gradlew test --tests com.ubisoft.hotel.profileapi.repository.ProfileRepositoryTest --info
+./gradlew test --tests com.ubisoft.hotel.profileapi.repository.AuthorityRepositoryTest --info
+./gradlew test --tests com.ubisoft.hotel.profileapi.repository.UserRepositoryTest --info
+./gradlew test --tests com.ubisoft.hotel.profileapi.repository.AbstractRepositoryTest --info
 
 
 # TO DO
@@ -195,10 +201,10 @@ The hello endpoint will be available at http://localhost:8080/api/hello.
 - code unit tests
 - tf module for ecr
 - pass in db server name for api gradle through env var and not hard ocded in web.xml
+- create pvc for mariadb
 
 
 
 
 
-
- mysql -h exercise-mariadb-service-dev-service.exercise-dev.svc.cluster.local -u api -p
+ <!-- mysql -h exercise-mariadb-service-dev-service.exercise-dev.svc.cluster.local -u api -p -->
