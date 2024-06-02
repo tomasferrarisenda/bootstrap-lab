@@ -73,7 +73,7 @@ echo "password: $(kubectl exec pods/exercise-0  --namespace cloudbees-core -- ca
   - Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
 12. Create Kubernetes pod template. On invincible-gtg-managed-controller go Manage Jenkins -> Kubernetes Pod Templates:
   - Name: maven-docker 
-  - Labels: containerBuilds
+  - Labels: mavenContainerBuilds
   - Raw YAML for the Pod:
 ```yaml
 apiVersion: v1
@@ -84,6 +84,34 @@ spec:
   containers:
   - name: maven
     image: maven:3.8.5-openjdk-11
+    command:
+    - cat
+    tty: true
+  - name: docker
+    image: docker
+    args: ["sleep", "10000"]
+    volumeMounts:
+    - mountPath: /var/run/docker.sock
+      name: docker-socket
+  restartPolicy: Never
+  volumes:
+  - name: docker-socket
+    hostPath:
+      path: /var/run/docker.sock
+```
+12. Create Kubernetes pod template. On invincible-gtg-managed-controller go Manage Jenkins -> Kubernetes Pod Templates:
+  - Name: gradle-docker 
+  - Labels: gradleContainerBuilds
+  - Raw YAML for the Pod:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gradle-docker
+spec:
+  containers:
+  - name: gradle
+    image: gradle:7.4.2-jdk11
     command:
     - cat
     tty: true

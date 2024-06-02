@@ -159,7 +159,7 @@ paths:
 1. i don't know if im happy about solving it or sad about how much time I wasted
 1. need to go back and remove all unnecessary changes which involved, docker networks.. healthchecks.. env vars...
 1. done, going back to CI/CD environment. need to solve CasC for managed controllers. If it takes too long Ill drop it and begin working on unit tests for apigradle
-
+1. while adapting to k8s, relized connection vars come from web.xml file. need to move them to env vars for working with multiple environments in k8s
 
 # CI/CD ENVIRONMENT
 Cant deploy managed controller from CasC bundle, no time to solve this so when starting "exercise" controller Configuration as Code (CasC) -> Bundle must be None. Well have to manually add al the stuff.
@@ -184,3 +184,21 @@ public class HelloResource {
 }
 
 The hello endpoint will be available at http://localhost:8080/api/hello.
+
+
+
+
+
+# TO DO
+- refactor repos
+- stop using docker socket
+- code unit tests
+- tf module for ecr
+
+
+
+
+
+
+
+ mysql -h exercise-mariadb-service-dev-service.exercise-dev.svc.cluster.local -u api -p
