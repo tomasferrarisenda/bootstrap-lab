@@ -13,8 +13,8 @@ spec:
   project: default
   source:
     repoURL: https://github.com/tomasferrarisenda/infra-tools-helm-charts.git # This value was modified by the initial-setup python script
-    path: ingress-test-application
-    # path: helm-charts/infra/ingress-test-application
+    path: helloworld-ingress-test
+    # path: helm-charts/infra/helloworld-ingress-test
     directory:
       recurse: true
       jsonnet: {}
