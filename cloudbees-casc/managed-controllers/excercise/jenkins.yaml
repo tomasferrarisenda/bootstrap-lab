@@ -25,9 +25,15 @@ jenkins:
   # authorizationStrategy: "cloudBeesRoleBasedAccessControl"
   # authorizationStrategy:
   #   inherit: true
+  # authorizationStrategy:
+  #     loggedInUsersCanDoAnything:
+  #       allowAnonymousRead: false
   authorizationStrategy:
-      loggedInUsersCanDoAnything:
-        allowAnonymousRead: false
+    globalMatrix:
+      permissions:
+        - "USER:Overall/Read:anonymous"
+        - "GROUP:Overall/Administer:authenticated"
+        - "USER:Overall/Administer:admin"
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: false
