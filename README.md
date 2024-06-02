@@ -42,13 +42,20 @@ minikube tunnel
 <!-- 1. Go to http://localhost:8081/cjoc/manage/core-casc-bundles/?tab=2 and click EDIT on invincible-gtg. Write "invincible-gtg" under "Edit availability pattter". Save.
 2. Go to the configuration of "invincible-gtg" managed controller. Under Configuration as Code (CasC) select the bundle. Save -->
 <!-- 4. Start "invincible-gtg" managed controller. -->
-4. Start "invincible-gtg" managed controller.
-5. Run:
+<!-- 4. Start "invincible-gtg" managed controller. -->
+4. Start "exercise" managed controller.
+<!-- 5. Run:
 ```bash
 kubectl wait --for=condition=ready -n cloudbees-core pod/invincible-gtg-0 
 kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 
+``` -->
+7. Get password:
+```bash
+kubectl wait --for=condition=ready -n cloudbees-core pods/exercise-0  --timeout=120s
+echo "password: $(kubectl exec pods/exercise-0  --namespace cloudbees-core -- cat /var/jenkins_home/secrets/initialAdminPassword)"
 ```
-6. Acces the "invincible-gtg" managed-controller UI
+6. Acces the "exercise" managed-controller UI
+<!-- 6. Acces the "invincible-gtg" managed-controller UI -->
 7. Go through wizard
 8. Create credentials in invincible-gtg-managed-controller for dockerhub. ID must be "dockerhub".
 9. Create credentials in invincible-gtg-managed-controller for github with PAT. ID must be "github".
