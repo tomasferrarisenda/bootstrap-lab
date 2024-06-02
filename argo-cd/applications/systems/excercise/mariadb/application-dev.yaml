@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mariadb-dev 
+  name: mariadb-service-dev 
   namespace: argocd
   labels:
     system-service: mariadb # This is for Backstage ArgoCD plugin 
