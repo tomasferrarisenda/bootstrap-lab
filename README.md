@@ -73,44 +73,44 @@ minikube tunnel
 kubectl wait --for=condition=ready -n cloudbees-core pod/invincible-gtg-0 
 kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 
 ``` -->
-7. Get password:
+<!-- 7. Get password:
 ```bash
 kubectl wait --for=condition=ready -n cloudbees-core pods/exercise-0  --timeout=120s
 echo "password: $(kubectl exec pods/exercise-0  --namespace cloudbees-core -- cat /var/jenkins_home/secrets/initialAdminPassword)"
-```
+``` -->
 6. Acces the "exercise" managed-controller UI
 <!-- 6. Acces the "invincible-gtg" managed-controller UI -->
-7. Go through wizard
-8. Create credentials in invincible-gtg-managed-controller for dockerhub. ID must be "dockerhub".
-9. Create credentials in invincible-gtg-managed-controller for github with PAT. ID must be "github".
-10. Add Shared Library. On invincible-gtg-managed-controller go Manage Jenkins -> System -> Global Pipeline Libraries  
+7. Go through wizard. Install all suggested plugins
+
+**NOTE**: I tried to automate this next steps but couldn't get the CasC for the managed controllers to work. We need to do them manually.
+
+8. Create credentials in "exercise" managed-controller for dockerhub. ID must be "dockerhub".
+9. Create credentials in "exercise" managed-controller for github with PAT. ID must be "github".
+10. Add Shared Library. On "exercise" managed-controller go Manage Jenkins -> System -> Global Pipeline Libraries  
   - Name: global-shared-library
   - Default version: main
   - Source Code Management: GitHub
   - Credentials: GitHub
   - Repository HTTPS URL: https://github.com/tomasferrarisenda/global-shared-library
+  - Save
 11. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
   - Branch: main
   - Check for template catalog updates every: 15 minutes
   - Catalog source code repository location: GitHub
   - Credentials: GitHub
   - Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
-12. Create Kubernetes pod template. On invincible-gtg-managed-controller go Manage Jenkins -> Kubernetes Pod Templates:
-  - Name: maven-docker 
-  - Labels: mavenContainerBuilds
+  - Save
+12. Create Kubernetes pod template for just Docker builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
+  - Name: docker 
+  - Labels: dockerContainerBuilds
   - Raw YAML for the Pod:
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: maven-docker
+  name: docker
 spec:
   containers:
-  - name: maven
-    image: maven:3.8.5-openjdk-11
-    command:
-    - cat
-    tty: true
   - name: docker
     image: docker
     args: ["sleep", "10000"]
@@ -123,7 +123,7 @@ spec:
     hostPath:
       path: /var/run/docker.sock
 ```
-12. Create Kubernetes pod template. On invincible-gtg-managed-controller go Manage Jenkins -> Kubernetes Pod Templates:
+12. Create Kubernetes pod template for Gradle builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
   - Name: gradle-docker 
   - Labels: gradleContainerBuilds
   - Raw YAML for the Pod:
@@ -151,10 +151,55 @@ spec:
     hostPath:
       path: /var/run/docker.sock
 ```
-13. Create pipeline: New item -> Maven Docker Build and Deploy
+12. Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
+  - Name: maven-docker 
+  - Labels: mavenContainerBuilds
+  - Raw YAML for the Pod:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: maven-docker
+spec:
+  containers:
+  - name: maven
+    image: maven:3.8.5-openjdk-11
+    command:
+    - cat
+    tty: true
+  - name: docker
+    image: docker
+    args: ["sleep", "10000"]
+    volumeMounts:
+    - mountPath: /var/run/docker.sock
+      name: docker-socket
+  restartPolicy: Never
+  volumes:
+  - name: docker-socket
+    hostPath:
+      path: /var/run/docker.sock
+```
+13. Create frontend pipeline. On "exercise" managed-controller go to New item:
+  - Name: frontend
+  - Docker Build and Deploy
+  - OK
+  - Complete with appropiate values
+  - Save
+13. Create apiGradle pipeline. On "exercise" managed-controller go to New item:
+  - Name: apiGradle
+  - Gradle Docker Build and Deploy
+  - Complete with appropiate values
+  - Save
+  - OK
+13. Create mariadb pipeline. On "exercise" managed-controller go to New item:
+  - Name: mariadb
+  - Docker Build and Deploy
+  - OK
+  - Complete with appropiate values
+  - Save
+14. You can build now any of the service, they will be automatically deployed to Minikube afeter a few minutes. 
 
 
-## CasC
 
 <!-- ### Operations Center
 Couldn't deploy Operations Center with CasC because of license:
