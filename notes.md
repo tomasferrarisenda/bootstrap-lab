@@ -194,7 +194,7 @@ The hello endpoint will be available at http://localhost:8080/api/hello.
 - stop using docker socket
 - code unit tests
 - tf module for ecr
-
+- pass in db server name for api gradle through env var and not hard ocded in web.xml
 
 
 
