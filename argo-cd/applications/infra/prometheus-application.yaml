@@ -9,13 +9,13 @@
 #   destination:
 #     namespace: observability
 #     server: https://kubernetes.default.svc  
-#   project: observability
+#   project: default
 #   source:
-#     path: helm/infra/prometheus
+#     path: helm-charts/infra/prometheus
 #     helm:
 #       valueFiles:
 #         - values-custom.yaml
-#     repoURL: https://github.com/AATT_GITHUB_USERNAME/automate-all-the-things-hardcore.git # This value was modified by the initial-setup python script
+#     repoURL: https://github.com/tomasferrarisenda/cloudbees-core-minikube-lab.git # This value was modified by the initial-setup python script
 #   syncPolicy:
 #     automated:
 #       prune: true
