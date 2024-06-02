@@ -5,7 +5,22 @@
 ## Prerequisites
 
 ## Other repos this project depends on
+- https://github.com/tomasferrarisenda/infra-tools-helm-charts
 
+- https://github.com/tomasferrarisenda/cloudbees-casc
+- https://github.com/tomasferrarisenda/global-shared-library
+- https://github.com/tomasferrarisenda/pipeline-template-catalogs
+
+- https://github.com/tomasferrarisenda/frontend-service-helm-chart
+
+- https://github.com/tomasferrarisenda/api-gradle-service
+- https://github.com/tomasferrarisenda/api-gradle-service-helm-chart
+
+- https://github.com/tomasferrarisenda/mariadb-service
+- https://github.com/tomasferrarisenda/mariadb-service-helm-chart
+
+- https://github.com/tomasferrarisenda/omniman-service
+- https://github.com/tomasferrarisenda/omniman-service-helm-chart
 
 ## Instructions
 1. Run deploy-in-minikube.sh
