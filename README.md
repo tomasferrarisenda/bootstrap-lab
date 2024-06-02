@@ -11,6 +11,7 @@
 - https://github.com/tomasferrarisenda/global-shared-library
 - https://github.com/tomasferrarisenda/pipeline-template-catalogs
 
+- https://github.com/tomasferrarisenda/frontend-service
 - https://github.com/tomasferrarisenda/frontend-service-helm-chart
 
 - https://github.com/tomasferrarisenda/api-gradle-service
