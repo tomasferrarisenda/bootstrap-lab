@@ -38,7 +38,11 @@ chmod +x deploy-in-minikube.sh
 ```
 1. Edit C:\Windows\System32\drivers\etc\hosts. Add:
 ```bash
+127.0.0.1 hello-world.example
 127.0.0.1 cloudbees-core.local
+127.0.0.1 frontend-dev.exercise
+127.0.0.1 frontend-stage.exercise
+127.0.0.1 frontend-prod.exercise
 ```
 <!-- 2. Run:
 ```bash

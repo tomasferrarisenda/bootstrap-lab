@@ -80,11 +80,15 @@ echo "##########################################################################
 echo " "
 echo "TO ACCESS THE CLOUDBEES OPERATIONS CENTER DASHBOARD:"
 echo " "
-echo "URL: http://localhost:8081/cjoc/"
+# echo "URL: http://localhost:8081/cjoc/"
+echo "URL: http://cloudbees-core.local/cjoc/"
 # echo "password: $(kubectl exec cjoc-0 --namespace cloudbees-core -- cat /var/jenkins_home/secrets/initialAdminPassword)"
 echo " "
 echo "#############################################################################"
 echo "#############################################################################"
 echo "#############################################################################"
 
-minikube tunnel
+kubectl wait --for=condition=ready -n exercise-dev pod -l app=exercise-api-gradle-dev
+kubectl port-forward -n exercise-dev service/exercise-api-gradle-dev-service 8082:8080 &
+
+minikube tunnel 
