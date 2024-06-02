@@ -11,11 +11,12 @@
 #     server: https://kubernetes.default.svc  
 #   project: default
 #   source:
-#     path: helm-charts/infra/prometheus
+#     # path: helm-charts/infra/prometheus
+#     path: prometheus
 #     helm:
 #       valueFiles:
 #         - values-custom.yaml
-#     repoURL: https://github.com/tomasferrarisenda/cloudbees-core-minikube-lab.git # This value was modified by the initial-setup python script
+#     repoURL: https://github.com/tomasferrarisenda/infra-tools-helm-charts.git # This value was modified by the initial-setup python script
 #   syncPolicy:
 #     automated:
 #       prune: true
