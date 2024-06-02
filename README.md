@@ -40,12 +40,12 @@ chmod +x deploy-in-minikube.sh
 ```bash
 127.0.0.1 cloudbees-core.local
 ```
-2. Run:
+<!-- 2. Run:
 ```bash
 # sudo echo "$(minikube ip) cloudbees-core.local" | sudo tee -a /etc/hosts
 # sudo echo "127.0.0.1 cloudbees-core.local" | sudo tee -a /etc/hosts
 minikube tunnel
-```
+``` -->
 <!-- 2. Log into Operations Center at http://localhost:8081/cjoc/ -->
 2. Log into Operations Center at http://cloudbees-core.local/cjoc/
 <!-- 3. Go through wizard -->
