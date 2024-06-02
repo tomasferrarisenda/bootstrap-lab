@@ -210,7 +210,7 @@ masterprovisioning:
     globalJavaOptions: "-Dorg.csanchez.jenkins.plugins.kubernetes.pipeline.PodTemplateStepExecution.defaultImage=cloudbees/cloudbees-core-agent:2.452.1.2\
       \ -Dcom.cloudbees.jenkins.plugins.kube.ServiceAccountFilter.defaultServiceAccount=jenkins-agents\
       \ -Dcom.cloudbees.networking.useSubdomain=false -Dcom.cloudbees.networking.protocol=\"\
-      http\" -Dcom.cloudbees.networking.hostname= -Dcom.cloudbees.networking.port=80\
+      http\" -Dcom.cloudbees.networking.hostname=\"cloudbees-core.local\" -Dcom.cloudbees.networking.port=80\
       \ -Dcom.cloudbees.networking.operationsCenterName=\"cjoc\""
     javaOptions: "-XshowSettings:vm -XX:+AlwaysPreTouch -XX:+DisableExplicitGC -XX:+ParallelRefProcEnabled\
       \ -XX:+UseStringDeduplication -Dhudson.slaves.NodeProvisioner.initialDelay=0"
@@ -302,7 +302,7 @@ security:
     global:
       realmAndAuthorization:
         canCustomMapping: false
-        canOverride: false
+        canOverride: true
         defaultMappingFactory: "restrictedEquivalentRAMF"
 unclassified:
   buildDiscarders:
@@ -347,7 +347,7 @@ unclassified:
     storage: "file"
   location:
     adminAddress: "address not configured yet <nobody@nowhere>"
-    url: "http://localhost:8081/cjoc/"
+    url: "http://cloudbees-core.local/cjoc/"
   mailer:
     charset: "UTF-8"
     useSsl: false
