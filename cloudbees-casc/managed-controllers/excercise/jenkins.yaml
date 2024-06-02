@@ -22,18 +22,18 @@ jenkins:
   - "JNLP4-connect"
   - "OperationsCenter2"
   - "Ping"
-  # authorizationStrategy: "cloudBeesRoleBasedAccessControl"
+  authorizationStrategy: "cloudBeesRoleBasedAccessControl"
   # authorizationStrategy:
   #   inherit: true
   # authorizationStrategy:
   #     loggedInUsersCanDoAnything:
   #       allowAnonymousRead: false
-  authorizationStrategy:
-    globalMatrix:
-      permissions:
-        - "USER:Overall/Read:anonymous"
-        - "GROUP:Overall/Administer:authenticated"
-        - "USER:Overall/Administer:admin"
+  # authorizationStrategy:
+  #   globalMatrix:
+  #     permissions:
+  #       - "USER:Overall/Read:anonymous"
+  #       - "GROUP:Overall/Administer:authenticated"
+  #       - "USER:Overall/Administer:admin"
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: false
@@ -451,10 +451,10 @@ unclassified:
     charset: "UTF-8"
     useSsl: false
     useTls: false
-  operationsCenterRootAction:
-    connectionDetails: "----- BEGIN CONNECTION DETAILS -----\nH4sIAAAAAAAA/x3NWw5BMRSF4bn02W4PveBMwwja3YVDo9ILEjF35fXLv7Le4lT8rYlZON4663Qk\r\
-      \nPbEn4x1ob9aWQphMsHbHG23ESixxtJrwQuGlYkgvadC5tfusFF8yS065xwBU4lwg6+NHvTYUmTL7\r\
-      \n9K/UmD4RDpmvGP9Hnyo+X/3ySaePAAAA\r\n----- END CONNECTION DETAILS -----\n"
+  # operationsCenterRootAction:
+  #   connectionDetails: "----- BEGIN CONNECTION DETAILS -----\nH4sIAAAAAAAA/x3NWw5BMRSF4bn02W4PveBMwwja3YVDo9ILEjF35fXLv7Le4lT8rYlZON4663Qk\r\
+  #     \nPbEn4x1ob9aWQphMsHbHG23ESixxtJrwQuGlYkgvadC5tfusFF8yS065xwBU4lwg6+NHvTYUmTL7\r\
+  #     \n9K/UmD4RDpmvGP9Hnyo+X/3ySaePAAAA\r\n----- END CONNECTION DETAILS -----\n"
   pollSCM:
     pollingThreadCount: 10
   scmGit:
