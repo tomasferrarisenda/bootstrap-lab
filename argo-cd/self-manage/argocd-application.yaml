@@ -9,8 +9,9 @@ spec:
     namespace: argocd
     server: https://kubernetes.default.svc
   source:
-    repoURL: https://github.com/tomasferrarisenda/cloudbees-core-minikube-lab.git # This value was modified by the initial-setup script
-    path: helm-charts/infra/argo-cd
+    repoURL: https://github.com/tomasferrarisenda/infra-tools-helm-charts.git # This value was modified by the initial-setup script
+    # path: helm-charts/infra/argo-cd
+    path: argo-cd
     helm:
       valueFiles:
         - values-custom.yaml
