@@ -161,38 +161,8 @@ paths:
 1. done, going back to CI/CD environment. need to solve CasC for managed controllers. If it takes too long Ill drop it and begin working on unit tests for apigradle
 1. while adapting to k8s, relized connection vars come from web.xml file. need to move them to env vars for working with multiple environments in k8s
 
-# CI/CD ENVIRONMENT
+# CI/CD ENVIRONMENT (CLOUDBEES)
 Cant deploy managed controller from CasC bundle, no time to solve this so when starting "exercise" controller Configuration as Code (CasC) -> Bundle must be None. Well have to manually add al the stuff.
-
-# OPENAPI
-
-the OpenAPI information is automatically exposed at the /openapi endpoint by the MicroProfile OpenAPI implementation. This is a standard feature of MicroProfile OpenAPI and doesn't require any additional configuration.
-
-The @OpenAPIDefinition annotation in your JAXRSConfiguration class is used to provide metadata about your API. The @Info annotation provides the title and version of your API, and the @Server annotation provides the URL and description of your server.
-
-The @ApplicationPath("api") annotation sets the base URI for all resource URIs. This means that your API endpoints will be available under the /api path.
-
-So, if you have a resource class like this:
-@Path("/hello")
-public class HelloResource {
-
-    @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    public String hello() {
-        return "Hello, world!";
-    }
-}
-
-The hello endpoint will be available at http://localhost:8080/api/hello.
-
-
-# UNIT TESTS
-gradle wrapper
-./gradlew build
-./gradlew test --tests com.ubisoft.hotel.profileapi.repository.ProfileRepositoryTest --info
-./gradlew test --tests com.ubisoft.hotel.profileapi.repository.AuthorityRepositoryTest --info
-./gradlew test --tests com.ubisoft.hotel.profileapi.repository.UserRepositoryTest --info
-./gradlew test --tests com.ubisoft.hotel.profileapi.repository.AbstractRepositoryTest --info
 
 
 # TO DO
@@ -205,6 +175,7 @@ gradle wrapper
 - create pvc for mariadb
 - setup cronjob so apiGradle builds every night. Why is the Build periodically option greyed out???
 - remove unncessary files from jenkins_home in api-gradle repo
+- in the lcoal dev environment (docker compose), do I need to push the built image to registry and then pull from there? or can I move the image from the jenkins container to my local so dont need to rely on connection to registry?
 
 
 
