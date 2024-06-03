@@ -201,8 +201,10 @@ gradle wrapper
 - code unit tests
 - tf module for ecr
 - pass in db server name for api gradle through env var and not hard ocded in web.xml
+- a way to use different env var depending on environment. If environment is docker compose use "crm_db", if minikube use "exercise-mariadb-dev-service.exercise-dev.svc.cluster.local"
 - create pvc for mariadb
 - setup cronjob so apiGradle builds every night. Why is the Build periodically option greyed out???
+- remove unncessary files from jenkins_home in api-gradle repo
 
 
 
