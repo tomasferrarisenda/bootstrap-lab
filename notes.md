@@ -7,7 +7,7 @@ So every free moment i got during the holidays I started learning about these su
 
 Also learned about CasC for jenkins, tried to CasC everything as much as possible, in order to get "1-click deployment". Got pretty far, though not fully 1-click.
 
-On friday I get challenge from mauricio. Not what I was expecting but I'll be putting the lab I set up to good use.
+On friday I get challenge from mauricio. Not what I was expecting but I might as well put the lab to good use.
 
 # STEP BY STEP
 1. General overview of task and files
@@ -176,6 +176,7 @@ Cant deploy managed controller from CasC bundle, no time to solve this so when s
 - setup cronjob so apiGradle builds every night. Why is the Build periodically option greyed out???
 - remove unncessary files from jenkins_home in api-gradle repo
 - in the lcoal dev environment (docker compose), do I need to push the built image to registry and then pull from there? or can I move the image from the jenkins container to my local so dont need to rely on connection to registry?
+- setup github webhook. hard cause Jenkins running locally. Could use ngrok?
 
 
 
