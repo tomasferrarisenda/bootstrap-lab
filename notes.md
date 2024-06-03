@@ -177,6 +177,8 @@ Cant deploy managed controller from CasC bundle, no time to solve this so when s
 - remove unncessary files from jenkins_home in api-gradle repo
 - in the lcoal dev environment (docker compose), do I need to push the built image to registry and then pull from there? or can I move the image from the jenkins container to my local so dont need to rely on connection to registry?
 - setup github webhook. hard cause Jenkins running locally. Could use ngrok?
+- in minikube, the api-gradle to mariadb connection breaks when we deploy new version of mariadb. If it work I should then account for different environments in minikube (dev, stage, prod)
+- why are items not being saved in the managed controllers bundle? is it because they are from template catalog?
 
 
 

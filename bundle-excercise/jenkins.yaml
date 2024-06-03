@@ -1,0 +1,482 @@
+credentials:
+  system:
+    domainCredentials:
+    - credentials:
+      - usernamePassword:
+          description: "GitHub"
+          id: "github"
+          password: "{AQAAABAAAAAwiKp7trSwA3VYeR8tEwUCgeDTvIjvKmI52S04y2VC86KSBOH5/4tyF0vX98Ach5zJeEPleaeeIoX47CS2S+ReRw==}"
+          scope: GLOBAL
+          username: "tomasferrarisenda"
+          usernameSecret: true
+      - usernamePassword:
+          description: "DockerHub"
+          id: "dockerhub"
+          password: "{AQAAABAAAAAgRQPsqJ8Nkt/rghTGCBTgd7nft4vUfWIW/dneCZziBox/YITMg6AvafA+gqvdp/l+}"
+          scope: GLOBAL
+          username: "tferrari92"
+          usernameSecret: true
+jenkins:
+  agentProtocols:
+  - "Diagnostic-Ping"
+  - "JNLP4-connect"
+  - "OperationsCenter2"
+  - "Ping"
+  authorizationStrategy: "cloudBeesRoleBasedAccessControl"
+  # authorizationStrategy:
+  #   inherit: true
+  # authorizationStrategy:
+  #     loggedInUsersCanDoAnything:
+  #       allowAnonymousRead: false
+  # authorizationStrategy:
+  #   globalMatrix:
+  #     permissions:
+  #       - "USER:Overall/Read:anonymous"
+  #       - "GROUP:Overall/Administer:authenticated"
+  #       - "USER:Overall/Administer:admin"
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  disabledAdministrativeMonitors:
+  - "hudson.util.DoubleLaunchChecker"
+  labelAtoms:
+  - name: "built-in"
+  - name: "containerBuilds"
+  - name: "maven-docker-mv3xx"
+  markupFormatter: "plainText"
+  mode: NORMAL
+  myViewsTabBar: "standard"
+  noUsageStatistics: true
+  nodeMonitors:
+  - "architecture"
+  - "clock"
+  - diskSpace:
+      freeSpaceThreshold: "1GiB"
+      freeSpaceWarningThreshold: "2GiB"
+  - "swapSpace"
+  - tmpSpace:
+      freeSpaceThreshold: "1GiB"
+      freeSpaceWarningThreshold: "2GiB"
+  - "responseTime"
+  numExecutors: 0
+  primaryView:
+    all:
+      name: "all"
+  projectNamingStrategy: "standard"
+  quietPeriod: 5
+  remotingSecurity:
+    enabled: true
+  scmCheckoutRetryCount: 0
+  securityRealm: "operationsCenter"
+  slaveAgentPort: 50000
+  updateCenter:
+    sites:
+    - id: "core-mm-offline"
+      url: "file:/tmp/jenkins/war/WEB-INF/plugins/update-center.json"
+    - id: "cap-core-mm"
+      url: "https://jenkins-updates.cloudbees.com/update-center/envelope-core-mm/update-center.json"
+  views:
+  - all:
+      name: "all"
+  viewsTabBar: "standard"
+beekeeper:
+  enabled: true
+  securityWarnings:
+    enabledForCore: true
+    enabledForPlugins: true
+  upgrades:
+    autoDowngradePlugins: false
+    autoUpgradePlugins: true
+globalCloudBeesPipelineTemplateCatalog:
+  catalogs:
+  - branchOrTag: "main"
+    scm:
+      github:
+        configuredByUrl: true
+        credentialsId: "github"
+        id: "801562df-b59f-46c8-b17e-cc9790c9bddc"
+        repoOwner: "tomasferrarisenda"
+        repository: "pipeline-template-catalogs"
+        repositoryUrl: "https://github.com/tomasferrarisenda/pipeline-template-catalogs"
+        traits:
+        - gitHubBranchDiscovery:
+            strategyId: 1
+        - gitHubPullRequestDiscovery:
+            strategyId: 2
+        - gitHubForkDiscovery:
+            strategyId: 2
+            trust: "gitHubTrustPermissions"
+# license:
+#   certificate: |
+#     -----BEGIN CERTIFICATE-----
+#     MIIRRTCCEC2gAwIBAgIGAY/U8NHlMA0GCSqGSIb3DQEBBQUAMIICczERMA8GCisG
+#     AQQBgql/AQETATMxMDAuBgorBgEEAYKpfwECEyA0YThiMDM5NjZhZjhmNDQ1OWNh
+#     OWJkYjcwMmRkNmQ1NjEVMBMGCysGAQQBgql/AQsOEwR0cnVlMRUwEwYLKwYBBAGC
+#     qX8BCw0TBHRydWUxFTATBgsrBgEEAYKpfwELEBMEdHJ1ZTEVMBMGCysGAQQBgql/
+#     AQsPEwR0cnVlMRUwEwYLKwYBBAGCqX8BCwoTBHRydWUxFTATBgsrBgEEAYKpfwEL
+#     DBMEdHJ1ZTEVMBMGCysGAQQBgql/AQsLEwR0cnVlMRUwEwYLKwYBBAGCqX8BCxET
+#     BHRydWUxFTATBgsrBgEEAYKpfwELBxMEdHJ1ZTEVMBMGCysGAQQBgql/AQsGEwR0
+#     cnVlMRUwEwYLKwYBBAGCqX8BCwkTBHRydWUxFTATBgsrBgEEAYKpfwELCBMEdHJ1
+#     ZTEVMBMGCysGAQQBgql/AQsDEwR0cnVlMRUwEwYLKwYBBAGCqX8BCwITBHRydWUx
+#     FTATBgsrBgEEAYKpfwELBRMEdHJ1ZTEVMBMGCysGAQQBgql/AQsEEwR0cnVlMRUw
+#     EwYLKwYBBAGCqX8BCwETBHRydWUxFTATBgsrBgEEAYKpfwELFBMEdHJ1ZTEVMBMG
+#     CysGAQQBgql/AQsVEwR0cnVlMRMwEQYKKwYBBAGCqX8BAxMDMTAwMRUwEwYKKwYB
+#     BAGCqX8BDhMFMTAwMDAxFTATBgorBgEEAYKpfwEJEwVmYWxzZTERMA8GA1UEAxMI
+#     VG9tRmVycmExCTAHBgNVBAsTADEWMBQGCysGAQQBgql/AQsYEwVmYWxzZTAeFw0y
+#     NDA2MDExNjU1MDNaFw0yNDA2MDQxODU1MDNaMIICmzERMA8GA1UEAwwIVG9tRmVy
+#     cmExETAPBgNVBAsMCFRvbUZlcnJhMREwDwYKKwYBBAGCqX8BAQwBMzEwMC4GCisG
+#     AQQBgql/AQIMIGViOTJmMWQ4NDZhNTU1YjEwZmZjZTc3ZWI0MjY3NzJiMTQwMgYK
+#     KwYBBAGCqX8BBgwkNmM3NjU2M2QtMzBjYS00YTZlLTk0MTUtYmIwNGI1NThjMjM0
+#     MRUwEwYKKwYBBAGCqX8BDgwFMTAwMDAxFDASBgorBgEEAYKpfwEDDAQxMDAwMRUw
+#     EwYLKwYBBAGCqX8BCw4TBHRydWUxFTATBgsrBgEEAYKpfwELDRMEdHJ1ZTEVMBMG
+#     CysGAQQBgql/AQsQEwR0cnVlMRUwEwYLKwYBBAGCqX8BCw8TBHRydWUxFTATBgsr
+#     BgEEAYKpfwELChMEdHJ1ZTEVMBMGCysGAQQBgql/AQsMEwR0cnVlMRUwEwYLKwYB
+#     BAGCqX8BCwsTBHRydWUxFTATBgsrBgEEAYKpfwELERMEdHJ1ZTEVMBMGCysGAQQB
+#     gql/AQsHEwR0cnVlMRUwEwYLKwYBBAGCqX8BCwYTBHRydWUxFTATBgsrBgEEAYKp
+#     fwELCRMEdHJ1ZTEVMBMGCysGAQQBgql/AQsIEwR0cnVlMRUwEwYLKwYBBAGCqX8B
+#     CwMTBHRydWUxFTATBgsrBgEEAYKpfwELAhMEdHJ1ZTEVMBMGCysGAQQBgql/AQsF
+#     EwR0cnVlMRUwEwYLKwYBBAGCqX8BCwQTBHRydWUxFTATBgsrBgEEAYKpfwELARME
+#     dHJ1ZTEVMBMGCysGAQQBgql/AQsUEwR0cnVlMRUwEwYLKwYBBAGCqX8BCxUTBHRy
+#     dWUxFjAUBgsrBgEEAYKpfwELGBMFZmFsc2UwggEiMA0GCSqGSIb3DQEBAQUAA4IB
+#     DwAwggEKAoIBAQDR3RkL/+ocMx7hFvVNPzqelSgLNhXDfbOM+STIy28p8XHwcYl5
+#     F34gf9n+7dtxTx6jB/cE5sNdzBu5FquCtAzAMPzcp7y2SnpLnaqa0YIaVHu5gHQw
+#     mgFi/98J3CDkYwiBv6JjgM5I73R2TrdD0Lix0JORWi/uovaFMdSGBOIunZLJqanG
+#     3s2mrT7AMUl0eBRuuzGkMcgf5Ntzw4sPR/yRewxwvT7bq/jzNzgcbRgvT7J7x56V
+#     z7AxeigIGpgzKQbNydbM/cd69eghmWRLFS6ZET/HJ1VlipmyHvMSE6oY77s6OyaV
+#     r7J+/fxZkOwRGzroT22zlrD+rNAcQbLhQIUNAgMBAAGjggmxMIIJrTAdBgNVHQ4E
+#     FgQUj5vYPTszYMets92LrZ0Ch7fFtwMwdQYDVR0jBG4wbIAUyVaH7ASokKXe3wYm
+#     ezdDTRlPNXShTqRMMEoxCzAJBgNVBAYTAlVTMREwDwYDVQQIDAhEZWxhd2FyZTEO
+#     MAwGA1UEBwwFTGV3ZXMxGDAWBgNVBAoMD0Nsb3VkQmVlcywgSW5jLoIEAfRmTDCC
+#     CRMGCisGAQQBgql/AQcEggkDBIII/wotLS0tLUJFR0lOIENFUlRJRklDQVRFLS0t
+#     LS0KTUlJR2R6Q0NCRitnQXdJQkFnSUVBZlJtVERBTkJna3Foa2lHOXcwQkFRc0ZB
+#     REJLTVFzd0NRWURWUVFHRXdKVgpVekVSTUE4R0ExVUVDQXdJUkdWc1lYZGhjbVV4
+#     RGpBTUJnTlZCQWNNQlV4bGQyVnpNUmd3RmdZRFZRUUtEQTlECmJHOTFaRUpsWlhN
+#     c0lFbHVZeTR3SGhjTk1qUXdOVE14TURBd01EQXdXaGNOTWpRd05qRTJNak0xT1RV
+#     NVdqQ0MKQW5NeEVUQVBCZ29yQmdFRUFZS3Bmd0VCRXdFek1UQXdMZ1lLS3dZQkJB
+#     R0NxWDhCQWhNZ05HRTRZakF6T1RZMgpZV1k0WmpRME5UbGpZVGxpWkdJM01ESmta
+#     RFprTlRZeEZUQVRCZ3NyQmdFRUFZS3Bmd0VMRGhNRWRISjFaVEVWCk1CTUdDeXNH
+#     QVFRQmdxbC9BUXNORXdSMGNuVmxNUlV3RXdZTEt3WUJCQUdDcVg4QkN4QVRCSFJ5
+#     ZFdVeEZUQVQKQmdzckJnRUVBWUtwZndFTER4TUVkSEoxWlRFVk1CTUdDeXNHQVFR
+#     QmdxbC9BUXNLRXdSMGNuVmxNUlV3RXdZTApLd1lCQkFHQ3FYOEJDd3dUQkhSeWRX
+#     VXhGVEFUQmdzckJnRUVBWUtwZndFTEN4TUVkSEoxWlRFVk1CTUdDeXNHCkFRUUJn
+#     cWwvQVFzUkV3UjBjblZsTVJVd0V3WUxLd1lCQkFHQ3FYOEJDd2NUQkhSeWRXVXhG
+#     VEFUQmdzckJnRUUKQVlLcGZ3RUxCaE1FZEhKMVpURVZNQk1HQ3lzR0FRUUJncWwv
+#     QVFzSkV3UjBjblZsTVJVd0V3WUxLd1lCQkFHQwpxWDhCQ3dnVEJIUnlkV1V4RlRB
+#     VEJnc3JCZ0VFQVlLcGZ3RUxBeE1FZEhKMVpURVZNQk1HQ3lzR0FRUUJncWwvCkFR
+#     c0NFd1IwY25WbE1SVXdFd1lMS3dZQkJBR0NxWDhCQ3dVVEJIUnlkV1V4RlRBVEJn
+#     c3JCZ0VFQVlLcGZ3RUwKQkJNRWRISjFaVEVWTUJNR0N5c0dBUVFCZ3FsL0FRc0JF
+#     d1IwY25WbE1SVXdFd1lMS3dZQkJBR0NxWDhCQ3hRVApCSFJ5ZFdVeEZUQVRCZ3Ny
+#     QmdFRUFZS3Bmd0VMRlJNRWRISjFaVEVUTUJFR0Npc0dBUVFCZ3FsL0FRTVRBekV3
+#     Ck1ERVZNQk1HQ2lzR0FRUUJncWwvQVE0VEJURXdNREF3TVJVd0V3WUtLd1lCQkFH
+#     Q3FYOEJDUk1GWm1Gc2MyVXgKRVRBUEJnTlZCQU1UQ0ZSdmJVWmxjbkpoTVFrd0J3
+#     WURWUVFMRXdBeEZqQVVCZ3NyQmdFRUFZS3Bmd0VMR0JNRgpabUZzYzJVd2dnRWlN
+#     QTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUURDeS9TaTVXTDk2
+#     aDk0CnBjaUxWSkNrWlN5dTVZN25FNjlnQ2gzcWJPNDhXT0RFL09rOHcxL0gwTTBR
+#     ajBuRTRWS20zT3NtQWhPL3dIdkIKQnM0VDAvaklWTm0xSVpXcWpSK2hPaFFNMWth
+#     K0l2MHRtR0xZbGVSTnRtQVYyZ1I1Yk9LOU1FS3IrdGpPTytOMgpwWE9iQVlYWHg3
+#     cmZhRzIwa2l1RXRkM3J1a3VFYmFhVUorZGxJWVlvd3E0ZUI1ZzA0dlZDWjYwb1hn
+#     MWJ5ZmFzCjZJbEdmZnRVTjBtaWxaMHY4ajJ1UDB3ME9aQUsyVFpPWmtMNDV5UjRU
+#     Q2lqb3BzWllpMnd4VEwvZy9ucm1pTEkKSDZUb3p2cmhQK1NpaXV6NTBQdXIwS09k
+#     R2M4UzhMZkFOVy9nc1lNd25CNFJwSjNzREhRTjl4eEs0SHY0MUxPSApOZHJLSnBD
+#     UkFnTUJBQUdqT2pBNE1Bd0dBMVVkRXdRRk1BTUJBZjh3SFFZRFZSME9CQllFRk1s
+#     V2grd0VxSkNsCjN0OEdKbnMzUTAwWlR6VjBNQWtHQTFVZEl3UUNNQUF3RFFZSktv
+#     WklodmNOQVFFTEJRQURnZ0lCQUlJLzV0T08KVXEwR2NLd255UEthS05Hb3l0M1ds
+#     cUVuM2dKMUZXMjFSM3IwNHp0NDJCTnB6SmNiWVVHZkwyMkJHQWphY2VWcQpDcG16
+#     aURMWEtHeWliS2NheDZkTFZaaHdDV3VDaDNIOFdYMFkwNTQ3MldFd0o4aFVIaEZO
+#     Tkloa0l6NlhHWkdoCnVpbURkeFo3d2xzUE51SEcxVXBxR2lLbkx0YnM0ak5kZWhT
+#     eTYzNGxrMUcyOVFxTGNSWVYrOFhBNDFNaUhrYVAKN1F1ZXhMc3pSeTFtZ0IxNEJx
+#     Yk4yZjZ0bG0zbU1tc0ZWcmZKSjVPSDZ2RWFISitiZmk1Z1d4WUlKeU0ydnZleQpN
+#     VE5BM1JENjJEVWN2MElNckJpVlZhYVVyUldrNXFKajZ0M2ovUCtZY3cwaEZhb3Mz
+#     K01tTjhCUWZHbTFmVGJlCm96NWVpSFhXSHlmZkRzRjZzL0EvK0V2bW45MWZ1NmZy
+#     Q2hOU3B1TGNLQ3hsdGdZN0VwK1BxZTA1bjVWZHQybm4KVHJRMEtJQm9SamxGS3Fv
+#     N2NPTUJIcnZFdUxlVTlCbEN3ejdCQk9IUStIYnI5eWNTcXR2ZjkzN0JZZ1J5REdS
+#     QgpFZUo5c3FLZ1dqVWg2TFFZTi9KM01jN1JURFlUOHY1V29EZFRrUWhVMEdkY3dV
+#     ZWI2bCtPS1VzUHhVUFFuRVByClBFRWlJNFdoSENzbUgrWS9TWTd0MWxPNlp4U1Fl
+#     R2ZmUUFoZTdFUTBIc0dBQ3VHWUlLamdCcXU2RllZd05nVCsKb2RYLzdqVjZVYXF3
+#     ZG9OdUVWdUdPM3g1VEQrZGpFMTJ2MXFYZ1F2VXdQZm1ENitKVW1IU3RMajBHRFU2
+#     bDdRNApUbXFCd0tmdkdpSWlaeG5HYjJZMWkrVWdDTU52Rk9qcytwRHIKLS0tLS1F
+#     TkQgQ0VSVElGSUNBVEUtLS0tLQoKMA0GCSqGSIb3DQEBBQUAA4IBAQCnRN9Erz9o
+#     41aWrjCbqK+zf7hmb2wv5bFXChmzJP74jQT2r8AhYDeHGyi/Kd+faoN2xcJmXCoc
+#     yvReO4Uq8nHBOPb8MOloxOGPj3uX8+rxWfur+JKCeSZisxtho+XHYxsu5dNqs8ZG
+#     yEZWowMJKLzW9HaTLH3iKyI7I93o96ayD/MjvrOnDRnRqGEX5Sa4Vder1TGdcruG
+#     /dpegR0QqaaCyNcPfN/jd+CCo8InpPQOw91hkbiXpbPEMZM+FSAUC0KXxa8wbk6N
+#     rkxcA+0q+xrybzXx9oiWHvqEYuNqv4eKhUPWjmRQCihOOjCxD5S6TaRCEb09GvMR
+#     lzeG6R+16SPm
+#     -----END CERTIFICATE-----
+#   key: |
+#     -----BEGIN RSA PRIVATE KEY-----
+#     MIIEowIBAAKCAQEA0d0ZC//qHDMe4Rb1TT86npUoCzYVw32zjPkkyMtvKfFx8HGJ
+#     eRd+IH/Z/u3bcU8eowf3BObDXcwbuRargrQMwDD83Ke8tkp6S52qmtGCGlR7uYB0
+#     MJoBYv/fCdwg5GMIgb+iY4DOSO90dk63Q9C4sdCTkVov7qL2hTHUhgTiLp2Syamp
+#     xt7Npq0+wDFJdHgUbrsxpDHIH+Tbc8OLD0f8kXsMcL0+26v48zc4HG0YL0+ye8ee
+#     lc+wMXooCBqYMykGzcnWzP3HevXoIZlkSxUumRE/xydVZYqZsh7zEhOqGO+7Ojsm
+#     la+yfv38WZDsERs66E9ts5aw/qzQHEGy4UCFDQIDAQABAoH/A1WQ3vxLHIzkB2fm
+#     PXvzh7G2us5r7s/MWYlb6sGyk3JmTIkpZ/Etz9q8Xw/MyysH8Fb1kKPXsCdK8qce
+#     yy5rf03BzoTzrT/9dWDVsk/W6hJ6HiFXCLo3Omq9S4kzIKsEiuHGSJjjm/F7fokx
+#     Iq3Rma5c91WuuLJddRc+4dl8/n/fv3P5kDKw7uIIqagYF+emkqcAMdZl8lU6mb8T
+#     BwDjmbEEUBg6Zxxsr+aFum4Bfr798t+Kin39m02L80DAD9OC2dA210ZC0/J7u+Ec
+#     cbSb63+y6Dr92QsY3fCGJP6UzuVKOvHuXlJLCzADwdczdxyPadxwuAyVLwZuGcWu
+#     Dbf7AoGBAOcAf2WmxCMs2C5kVK2lnNV8KZVf8Er5xswitSEjMLXYpUUXFwIAmm6P
+#     9E+9kvxrnomDQB3ZHNFOekdocaoePITP7O6y6cBshtt/xI53xcNk3kGv256FoBH7
+#     fsse2ou0g7FhufI4AsBsJ0brEjKvSu6a3pWWvHFywbzEYaaNsBPjAoGBAOiTAFc+
+#     VG3cgdJAnutI0d3F/S/UqcK7xlz88dyAYiHArJqpcbcCcZ7NHxsVM1AvMSCVUAiV
+#     S26e9kNNR4BeRQlUGv01hCD5XQpXewifWR9VMA/c4MAJ6ev9Jd12413mvJUAM0Uk
+#     KZWDZCa842IBZflUW4TvaP5UxNNuDQVPzbZPAoGBAKGBG5D6c48UP2DQDNQLQgeQ
+#     c5JYLSx+TZtTeMfeTqQVABe5+QARY+eBBhLqO+X3aDREa4Ny1E8SSzO5th52XWGN
+#     7d1FgWBjgDXespHY84+U6j+KsEW4rx1jdFaXD701TA2sgdDzkBjwhNV0bJi7Lex8
+#     orp7VO0Mip9rvcowrbZ5AoGBANGoCuua5bNvz5wA4wIJUB8TJ02h8TL54TTcVQ/I
+#     sC3rKe32h+tJibF1CfB5KRvEnw3XbCGArFJZfHhpRuailKt3JSlTv/uVr9jtyZyZ
+#     QVcsjToPjI+xoC07tJGzZf21ThUn7BANLGt62aLOLlCgIBQmhqYMyGJVemV61MQQ
+#     D8qjAoGBAMbrmpcStkpyVczNrn9gfnH5IqpEkQyslrwEGM5mjRhyH9CBtjPm8pAE
+#     qQNzWm/bNvnI8NpiG2coJN5B29AeBrHVDOijxkK9KPJU/VjB/goo0upysfEJzozS
+#     qK8Hgi63ooUWjgu3IC6h9T8KQGmgjHQeeeVqFQX2wneDlzAdrYJZ
+#     -----END RSA PRIVATE KEY-----
+kube:
+  podTemplatesConfiguration:
+    templates:
+    - id: "0fb417d8-c567-4cbf-8d17-d58782ce083a"
+      label: "containerBuilds"
+      name: "maven-docker"
+      yaml: |-
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: maven-docker
+        spec:
+          containers:
+          - name: maven
+            image: maven:3.8.5-openjdk-11
+            command:
+            - cat
+            tty: true
+          - name: docker
+            image: docker
+            args: ["sleep", "10000"]
+            volumeMounts:
+            - mountPath: /var/run/docker.sock
+              name: docker-socket
+          restartPolicy: Never
+          volumes:
+          - name: docker-socket
+            hostPath:
+              path: /var/run/docker.sock
+      yamlMergeStrategy: "override"
+      yamls:
+      - |-
+        apiVersion: v1
+        kind: Pod
+        metadata:
+          name: maven-docker
+        spec:
+          containers:
+          - name: maven
+            image: maven:3.8.5-openjdk-11
+            command:
+            - cat
+            tty: true
+          - name: docker
+            image: docker
+            args: ["sleep", "10000"]
+            volumeMounts:
+            - mountPath: /var/run/docker.sock
+              name: docker-socket
+          restartPolicy: Never
+          volumes:
+          - name: docker-socket
+            hostPath:
+              path: /var/run/docker.sock
+support:
+  automatedBundleConfiguration:
+    componentIds:
+    - "CloudBeesAssuranceSupport"
+    - "AgentsConfigFile"
+    - "ConfigFileComponent"
+    - "OtherConfigFilesComponent"
+    - "AboutBrowser"
+    - "AboutJenkins"
+    - "AboutUser"
+    - "AdministrativeMonitors"
+    - "AgentProtocols"
+    - "BuildQueue"
+    - "CustomLogs"
+    - "DumpExportTable"
+    - "EnvironmentVariables"
+    - "FileDescriptorLimit"
+    - "GCLogs"
+    - "HeapUsageHistogram"
+    - "ItemsContent"
+    - "AgentsJVMProcessSystemMetricsContents"
+    - "MasterJVMProcessSystemMetricsContents"
+    - "JenkinsLogs"
+    - "LoadStats"
+    - "LoggerManager"
+    - "Metrics"
+    - "NetworkInterfaces"
+    - "NodeExecutors"
+    - "NodeMonitors"
+    - "OtherLogs"
+    - "ReverseProxy"
+    - "RootCAs"
+    - "RunningBuilds"
+    - "SlaveCommandStatistics"
+    - "SlaveLaunchLogs"
+    - "SlaveLogs"
+    - "AgentsSystemConfiguration"
+    - "MasterSystemConfiguration"
+    - "SystemProperties"
+    - "TaskLogs"
+    - "ThreadDumps"
+    - "UpdateCenter"
+    - "UserCount"
+    - "ComponentImpl"
+    - "SlowRequestComponent"
+    - "HighLoadComponent"
+    - "DeadlockRequestComponent"
+    - "OperationsCenterSupportComponent"
+    - "UserActivityComponent"
+    - "PipelineInternalCalls"
+    - "PipelineTimings"
+    - "PipelineThreadDump"
+    enabled: true
+    period: 1
+globalCredentialsConfiguration:
+  configuration:
+    providerFilter: "none"
+    typeFilter: "none"
+appearance:
+  prism:
+    theme: PRISM
+security:
+  anonymizeSupportBundle:
+    enabled: false
+  apiToken:
+    creationOfLegacyTokenEnabled: false
+    tokenGenerationOnCreationEnabled: false
+    usageStatisticsEnabled: true
+  gitHooks:
+    allowedOnAgents: false
+    allowedOnController: false
+  gitHostKeyVerificationConfiguration:
+    sshHostKeyVerificationStrategy: "knownHostsFileVerificationStrategy"
+unclassified:
+  buildDiscarders:
+    configuredBuildDiscarders:
+    - "jobBuildDiscarder"
+  bundleUpdateTiming:
+    automaticReload: false
+    automaticRestart: false
+    rejectWarnings: false
+    reloadAlwaysOnRestart: false
+    skipNewVersions: false
+  cascItemsConfiguration:
+    variableInterpolationEnabledForAdmin: false
+    variableInterpolationEnabledForNonAdmin: false
+  cloudBeesSCMReporting:
+    enabled: true
+  cloudbeesPipelineExplorer:
+    autoPollingEnabled: true
+    autoPollingIntervalSeconds: 10
+    enabled: true
+    searchMaxIndexSize: 1000
+  email-ext:
+    adminRequiredForTemplateTesting: false
+    allowUnregisteredEnabled: false
+    charset: "UTF-8"
+    debugMode: false
+    defaultBody: |-
+      $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:
+
+      Check console output at $BUILD_URL to view the results.
+    defaultContentType: "text/plain"
+    defaultSubject: "$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!"
+    defaultTriggerIds:
+    - "hudson.plugins.emailext.plugins.trigger.FailureTrigger"
+    maxAttachmentSize: -1
+    maxAttachmentSizeMb: -1
+    precedenceBulk: false
+    watchingEnabled: false
+  enrichedSummaryConfig:
+    enrichedSummaryEnabled: false
+    httpClientDelayBetweenRetriesInSeconds: 1
+    httpClientMaxRetries: 3
+    httpClientTimeoutInSeconds: 1
+  experimentalPlugins:
+    enabled: false
+  fingerprints:
+    fingerprintCleanupDisabled: false
+    storage: "file"
+  gitHubConfiguration:
+    apiRateLimitChecker: ThrottleForNormalize
+  gitHubPluginConfig:
+    hookUrl: "http://cloudbees-core.local/exercise/github-webhook/"
+  globalLibraries:
+    libraries:
+    - defaultVersion: "main"
+      name: "global-shared-library"
+      retriever:
+        modernSCM:
+          libraryPath: "."
+          scm:
+            github:
+              configuredByUrl: true
+              credentialsId: "github"
+              id: "e45a70c3-f299-4cff-8904-1734f8643097"
+              repoOwner: "tomasferrarisenda"
+              repository: "global-shared-library"
+              repositoryUrl: "https://github.com/tomasferrarisenda/global-shared-library"
+              traits:
+              - gitHubBranchDiscovery:
+                  strategyId: 1
+              - gitHubPullRequestDiscovery:
+                  strategyId: 2
+              - gitHubForkDiscovery:
+                  strategyId: 2
+                  trust: "gitHubTrustPermissions"
+  injectionConfig:
+    allowUntrusted: false
+    checkForBuildAgentErrors: false
+    enabled: false
+    enforceUrl: false
+    gradleCaptureTaskInputFiles: true
+    injectCcudExtension: false
+    injectMavenExtension: false
+    mavenCaptureGoalInputFiles: true
+  junitTestResultStorage:
+    storage: "file"
+  location:
+    adminAddress: "address not configured yet <nobody@nowhere>"
+    url: "http://cloudbees-core.local/exercise/"
+  mailer:
+    charset: "UTF-8"
+    useSsl: false
+    useTls: false
+  # operationsCenterRootAction:
+  #   connectionDetails: "----- BEGIN CONNECTION DETAILS -----\nH4sIAAAAAAAA/x3NWw5BMRSF4bn02W4PveBMwwja3YVDo9ILEjF35fXLv7Le4lT8rYlZON4663Qk\r\
+  #     \nPbEn4x1ob9aWQphMsHbHG23ESixxtJrwQuGlYkgvadC5tfusFF8yS065xwBU4lwg6+NHvTYUmTL7\r\
+  #     \n9K/UmD4RDpmvGP9Hnyo+X/3ySaePAAAA\r\n----- END CONNECTION DETAILS -----\n"
+  pollSCM:
+    pollingThreadCount: 10
+  scmGit:
+    addGitTagAction: false
+    allowSecondFetch: false
+    createAccountBasedOnEmail: false
+    disableGitToolChooser: false
+    hideCredentials: false
+    showEntireCommitSummaryInChanges: false
+    useExistingAccountWithSameEmail: false
+  usageStatisticsCloudBees:
+    disabledJenkinsUsageStatistics: true
+    usageStatisticsCollected: true
+  validationVisualization:
+    quiet: false
+tool:
+  cloudbeesPluginUsageAnalyzer:
+    enabled: true
+  git:
+    installations:
+    - home: "git"
+      name: "Default"
+  mavenGlobalConfig:
+    globalSettingsProvider: "standard"
+    settingsProvider: "standard"

@@ -45,9 +45,14 @@ chmod +x deploy-in-minikube.sh
 127.0.0.1 hello-world.example
 127.0.0.1 cloudbees-core.local
 127.0.0.1 grafana.local
+
 127.0.0.1 frontend-dev.exercise
 127.0.0.1 frontend-stage.exercise
 127.0.0.1 frontend-prod.exercise
+
+127.0.0.1 api-gradle-dev.exercise
+127.0.0.1 api-gradle-stage.exercise
+127.0.0.1 api-gradle-prod.exercise
 ```
 <!-- 2. Run:
 ```bash
@@ -206,14 +211,27 @@ spec:
   - Complete with appropiate values
   - Save
 19. You can now build any of the services. If successful, they will be automatically deployed to Minikube after a few minutes. 
-
+**NOTE**: If you are going to build and deploy api-gradle, make sure use the proper server-name in the web.xml. Like this
+```xml
+    <data-source>
+        <name>java:global/ApiGradle</name>
+        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
+        <!-- <server-name>@serverName@</server-name> -->
+        <!-- <server-name>crm_db</server-name> -->
+        <server-name>exercise-mariadb-dev-service.exercise-dev.svc.cluster.local</server-name>
+        <port-number>3306</port-number>
+        <database-name>apiDB</database-name>
+        <user>api</user>
+        <password>api</password>
+    </data-source>
+```
+<br/>
+<br/>
 
 ## Logs
-You can see the logs for each pod on the Explore tab of Grafana. Here's an example for example-api-gradle-dev:
+You can see the logs for each pod on the Explore tab of Grafana. Here's an example for [example-api-gradle-dev](http://grafana.local/explore?orgId=1&left=%7B%22datasource%22:%22P8E80F9AEF21F6940%22,%22queries%22:%5B%7B%22refId%22:%22A%22,%22expr%22:%22%7Bapp%3D%5C%22exercise-api-gradle-dev%5C%22%7D%20%7C%3D%20%60%60%22,%22queryType%22:%22range%22,%22datasource%22:%7B%22type%22:%22loki%22,%22uid%22:%22P8E80F9AEF21F6940%22%7D,%22editorMode%22:%22builder%22%7D%5D,%22range%22:%7B%22from%22:%22now-1h%22,%22to%22:%22now%22%7D%7D):
 
 <p title="logs" align="center"> <img src="https://i.imgur.com/pbqYfVg.jpg"></p>
-
-<!-- - http://grafana.local/explore?orgId=1&left=%7B%22datasource%22:%22P8E80F9AEF21F6940%22,%22queries%22:%5B%7B%22refId%22:%22A%22,%22expr%22:%22%7Bapp%3D%5C%22exercise-api-gradle-dev%5C%22%7D%20%7C%3D%20%60%60%22,%22queryType%22:%22range%22,%22datasource%22:%7B%22type%22:%22loki%22,%22uid%22:%22P8E80F9AEF21F6940%22%7D,%22editorMode%22:%22builder%22%7D%5D,%22range%22:%7B%22from%22:%22now-1h%22,%22to%22:%22now%22%7D%7D -->
 
 <!-- ### Operations Center
 Couldn't deploy Operations Center with CasC because of license:
