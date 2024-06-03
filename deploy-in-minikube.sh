@@ -5,12 +5,10 @@
 # read -p "Enter your DockerHub password: " REGISTRY_PASS 
 # read -p "Enter your DockerHub email: " REGISTRY_EMAIL
 
-# Start cluster. Extra beefy beause Backstage is a bit heavy.
-# minikube start --cpus 4 --memory 4096  
-minikube start --cpus 4 --memory 4096 --addons ingress 
+# Start cluster. Extra beefy.
+minikube start --cpus 5 --memory 5120 --addons ingress 
 
 # Install ArgoCD
-# helm install argocd -n argocd helm-charts/infra/argo-cd --values helm-charts/infra/argo-cd/values-custom.yaml --dependency-update --create-namespace
 helm install argocd -n argocd argo-cd/helm-chart --values argo-cd/helm-chart/values-custom.yaml --dependency-update --create-namespace
 
 # Get ArgoCD admin password
@@ -20,7 +18,6 @@ until kubectl -n argocd get secret argocd-initial-admin-secret &> /dev/null; do
 done
 
 kubectl wait --for=condition=ready pod -l app.kubernetes.io/name=argocd-server --namespace argocd --timeout=120s
-
 
 kubectl port-forward -n argocd service/argocd-server 8080:443 &
 

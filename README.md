@@ -33,7 +33,7 @@ You can find them [here](/notes.md).
 <br/>
 
 ## Instructions
-I'm running this lab in WSL2 for Windows. There are some steps you don't need to run or will need to modify if you are running on Linux.
+I built this lab in WSL2 for Windows. Some steps may vary if you are running on Linux.
 
 1. Run deploy-in-minikube.sh
 ```bash
