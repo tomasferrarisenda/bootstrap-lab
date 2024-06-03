@@ -1,4 +1,6 @@
 # BOOTSTRAP LAB
+<br/>
+<br/>
 
 ## Prerequisites
 - minikube installed
@@ -10,22 +12,23 @@
 
 ## Other repos this project depends on
 - https://github.com/tomasferrarisenda/infra-tools-helm-charts
-
 - https://github.com/tomasferrarisenda/cloudbees-casc
 - https://github.com/tomasferrarisenda/global-shared-library
 - https://github.com/tomasferrarisenda/pipeline-template-catalogs
-
 - https://github.com/tomasferrarisenda/frontend-service
 - https://github.com/tomasferrarisenda/frontend-service-helm-chart
-
 - https://github.com/tomasferrarisenda/api-gradle-service
 - https://github.com/tomasferrarisenda/api-gradle-service-helm-chart
-
 - https://github.com/tomasferrarisenda/mariadb-service
 - https://github.com/tomasferrarisenda/mariadb-service-helm-chart
-
 - https://github.com/tomasferrarisenda/omniman-service
 - https://github.com/tomasferrarisenda/omniman-service-helm-chart
+
+<br/>
+<br/>
+
+## Further (informal) notes
+You can find them [here](/notes.md).
 
 <br/>
 <br/>
@@ -40,6 +43,7 @@ chmod +x deploy-in-minikube.sh
 ```bash
 127.0.0.1 hello-world.example
 127.0.0.1 cloudbees-core.local
+127.0.0.1 grafana.local
 127.0.0.1 frontend-dev.exercise
 127.0.0.1 frontend-stage.exercise
 127.0.0.1 frontend-prod.exercise
@@ -51,6 +55,10 @@ chmod +x deploy-in-minikube.sh
 minikube tunnel
 ``` -->
 <!-- 2. Log into Operations Center at http://localhost:8081/cjoc/ -->
+1. Run:
+```bash
+minikube tunnel 
+```
 2. Log into Operations Center at http://cloudbees-core.local/cjoc/
 <!-- 3. Go through wizard -->
 3. Create First Admin User:
@@ -78,7 +86,7 @@ kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80
 kubectl wait --for=condition=ready -n cloudbees-core pods/exercise-0  --timeout=120s
 echo "password: $(kubectl exec pods/exercise-0  --namespace cloudbees-core -- cat /var/jenkins_home/secrets/initialAdminPassword)"
 ``` -->
-6. Acces the "exercise" managed-controller UI
+6. Acces the "exercise" managed-controller UI at http://cloudbees-core.local/exercise/
 <!-- 6. Acces the "invincible-gtg" managed-controller UI -->
 7. Go through wizard. Install all suggested plugins
 

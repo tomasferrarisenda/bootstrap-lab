@@ -91,4 +91,3 @@ echo "##########################################################################
 kubectl wait --for=condition=ready -n exercise-dev pod -l app=exercise-api-gradle-dev
 kubectl port-forward -n exercise-dev service/exercise-api-gradle-dev-service 8082:8080 &
 
-minikube tunnel 
