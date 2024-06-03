@@ -40,7 +40,7 @@ I'm running this lab in WSL2 for Windows. There are some steps you don't need to
 chmod +x deploy-in-minikube.sh
 ./deploy-in-minikube.sh
 ```
-1. Edit C:\Windows\System32\drivers\etc\hosts. Add:
+2. Edit C:\Windows\System32\drivers\etc\hosts. Add:
 ```bash
 127.0.0.1 hello-world.example
 127.0.0.1 cloudbees-core.local
@@ -56,13 +56,13 @@ chmod +x deploy-in-minikube.sh
 minikube tunnel
 ``` -->
 <!-- 2. Log into Operations Center at http://localhost:8081/cjoc/ -->
-1. Run:
+3. Run:
 ```bash
 minikube tunnel 
 ```
-2. Log into Operations Center at http://cloudbees-core.local/cjoc/
+4. Log into Operations Center at http://cloudbees-core.local/cjoc/
 <!-- 3. Go through wizard -->
-3. Create First Admin User:
+5. Create First Admin User:
   - Username: admin
   - Pass: admin
   - Full Name: admin
@@ -76,7 +76,7 @@ minikube tunnel
 2. Go to the configuration of "invincible-gtg" managed controller. Under Configuration as Code (CasC) select the bundle. Save -->
 <!-- 4. Start "invincible-gtg" managed controller. -->
 <!-- 4. Start "invincible-gtg" managed controller. -->
-4. Start "exercise" managed controller.
+6. Start "exercise" managed controller.
 <!-- 5. Run:
 ```bash
 kubectl wait --for=condition=ready -n cloudbees-core pod/invincible-gtg-0 
@@ -87,28 +87,28 @@ kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80
 kubectl wait --for=condition=ready -n cloudbees-core pods/exercise-0  --timeout=120s
 echo "password: $(kubectl exec pods/exercise-0  --namespace cloudbees-core -- cat /var/jenkins_home/secrets/initialAdminPassword)"
 ``` -->
-6. Acces the "exercise" managed-controller UI at http://cloudbees-core.local/exercise/
+7. Acces the "exercise" managed-controller UI at http://cloudbees-core.local/exercise/
 <!-- 6. Acces the "invincible-gtg" managed-controller UI -->
 **NOTE**: I tried to automate these next steps but couldn't get the CasC for the managed controllers to work. We need to do them manually.
 
-7. Go through wizard. Install all suggested plugins
-8. Create credentials in "exercise" managed-controller for dockerhub. ID must be "dockerhub".
-9. Create credentials in "exercise" managed-controller for github with PAT. ID must be "github".
-10. Add Shared Library. On "exercise" managed-controller go Manage Jenkins -> System -> Global Pipeline Libraries  
+8. Go through wizard. Install all suggested plugins
+9. Create credentials in "exercise" managed-controller for dockerhub. ID must be "dockerhub".
+10. Create credentials in "exercise" managed-controller for github with PAT. ID must be "github".
+11. Add Shared Library. On "exercise" managed-controller go Manage Jenkins -> System -> Global Pipeline Libraries  
   - Name: global-shared-library
   - Default version: main
   - Source Code Management: GitHub
   - Credentials: GitHub
   - Repository HTTPS URL: https://github.com/tomasferrarisenda/global-shared-library
   - Save
-11. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
+12. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
   - Branch: main
   - Check for template catalog updates every: 15 minutes
   - Catalog source code repository location: GitHub
   - Credentials: GitHub
   - Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
   - Save
-12. Create Kubernetes pod template for just Docker builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
+13. Create Kubernetes pod template for just Docker builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
   - Name: docker 
   - Labels: dockerContainerBuilds
   - Raw YAML for the Pod:
@@ -131,7 +131,7 @@ spec:
     hostPath:
       path: /var/run/docker.sock
 ```
-12. Create Kubernetes pod template for Gradle builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
+14. Create Kubernetes pod template for Gradle builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
   - Name: gradle-docker 
   - Labels: gradleContainerBuilds
   - Raw YAML for the Pod:
@@ -159,7 +159,7 @@ spec:
     hostPath:
       path: /var/run/docker.sock
 ```
-12. Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
+15. Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
   - Name: maven-docker 
   - Labels: mavenContainerBuilds
   - Raw YAML for the Pod:
@@ -187,25 +187,25 @@ spec:
     hostPath:
       path: /var/run/docker.sock
 ```
-13. Create frontend pipeline. On "exercise" managed-controller go to New item:
+16. Create frontend pipeline. On "exercise" managed-controller go to New item:
   - Name: frontend
   - Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
-13. Create apiGradle pipeline. On "exercise" managed-controller go to New item:
+17. Create apiGradle pipeline. On "exercise" managed-controller go to New item:
   - Name: apiGradle
   - Gradle Docker Build and Deploy
   - Complete with appropiate values
   - Save
   - OK
-13. Create mariadb pipeline. On "exercise" managed-controller go to New item:
+18. Create mariadb pipeline. On "exercise" managed-controller go to New item:
   - Name: mariadb
   - Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
-14. You can build now any of the service, they will be automatically deployed to Minikube afeter a few minutes. 
+19. You can build now any of the service, they will be automatically deployed to Minikube afeter a few minutes. 
 
 
 ## Logs
