@@ -194,7 +194,7 @@ spec:
   - Complete with appropiate values
   - Save
 17. Create apiGradle pipeline. On "exercise" managed-controller go to New item:
-  - Name: apiGradle
+  - Name: api-gradle
   - Gradle Docker Build and Deploy
   - Complete with appropiate values
   - Save
@@ -205,7 +205,7 @@ spec:
   - OK
   - Complete with appropiate values
   - Save
-19. You can build now any of the service, they will be automatically deployed to Minikube afeter a few minutes. 
+19. You can now build any of the services. If successful, they will be automatically deployed to Minikube after a few minutes. 
 
 
 ## Logs
