@@ -165,7 +165,25 @@ spec:
     hostPath:
       path: /var/run/docker.sock
 ```
-15. Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
+15. Create Kubernetes pod template for Gradle Tests. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
+  - Name: gradle 
+  - Labels: gradleTests
+  - Raw YAML for the Pod:
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gradle-docker
+spec:
+  containers:
+  - name: gradle
+    image: gradle:6.8.3-jdk11
+    command:
+    - cat
+    tty: true
+  restartPolicy: Never
+```
+15. (Optional) Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
   - Name: maven-docker 
   - Labels: mavenContainerBuilds
   - Raw YAML for the Pod:
