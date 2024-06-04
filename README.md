@@ -26,8 +26,9 @@
 <br/>
 <br/>
 
-## Further (informal) notes
-You can find them [here](/notes.md).
+## Important
+- There's further (informal) notes. You can find them [here](/notes.md).
+- You're going to need my DockerHub and GitHub credentials, not ideal, but working around this would open up many potential errors. There's nothing important in DockerHub and the GitHub token is read-only, so I'll share them with you in the email.
 
 <br/>
 <br/>
