@@ -27,8 +27,8 @@
 <br/>
 
 ## Important
+- You're going to need my DockerHub and GitHub credentials, not ideal, but working around this would open up many potential errors. There's nothing important in DockerHub and nor in that GitHub account, so I'll share them with you in the email.
 - There's further (informal) notes. You can find them [here](/notes.md).
-- You're going to need my DockerHub and GitHub credentials, not ideal, but working around this would open up many potential errors. There's nothing important in DockerHub and the GitHub token is read-only, so I'll share them with you in the email.
 
 <br/>
 <br/>
@@ -98,19 +98,19 @@ echo "password: $(kubectl exec pods/exercise-0  --namespace cloudbees-core -- ca
 **NOTE**: I tried to automate these next steps but couldn't get the CasC for the managed controllers to work. We need to do them manually.
 
 8. Go through wizard. Install all suggested plugins
-9. Create credentials in "exercise" managed-controller for dockerhub. ID must be "dockerhub".
-10. Create credentials in "exercise" managed-controller for github with PAT. ID must be "github".
+9. Create credentials in "exercise" managed-controller for dockerhub. ID and description must be "dockerhub".
+10. Create credentials in "exercise" managed-controller for github with PAT. ID and description must be "github".
 11. Add Shared Library. On "exercise" managed-controller go Manage Jenkins -> System -> Global Pipeline Libraries  
   - Name: global-shared-library
   - Default version: main
   - Source Code Management: GitHub
-  - Credentials: GitHub
+  - Credentials: github
   - Repository HTTPS URL: https://github.com/tomasferrarisenda/global-shared-library
   - Save
 12. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
   - Branch: main
   - Check for template catalog updates every: 15 minutes
-  - Catalog source code repository location: GitHub
+  - Catalog source code repository location: github
   - Credentials: GitHub
   - Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
   - Save
@@ -173,7 +173,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: gradle-docker
+  name: gradle
 spec:
   containers:
   - name: gradle
@@ -183,7 +183,7 @@ spec:
     tty: true
   restartPolicy: Never
 ```
-15. (Optional) Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
+15. (Optional if you plan to build the omniman service) Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
   - Name: maven-docker 
   - Labels: mavenContainerBuilds
   - Raw YAML for the Pod:
@@ -217,15 +217,27 @@ spec:
   - OK
   - Complete with appropiate values
   - Save
-17. Create apiGradle pipeline. On "exercise" managed-controller go to New item:
+17. Create api-gradle pipeline. On "exercise" managed-controller go to New item:
   - Name: api-gradle
   - Gradle Docker Build and Deploy
+  - Complete with appropiate values
+  - Save
+  - OK
+17. Create api-gradle-test pipeline. On "exercise" managed-controller go to New item:
+  - Name: api-gradle-test
+  - Gradle Unit Test
   - Complete with appropiate values
   - Save
   - OK
 18. Create mariadb pipeline. On "exercise" managed-controller go to New item:
   - Name: mariadb
   - Docker Build and Deploy
+  - OK
+  - Complete with appropiate values
+  - Save
+18. (Optional) Create ominman pipeline. On "exercise" managed-controller go to New item:
+  - Name: omniman
+  - Maven Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
@@ -244,6 +256,8 @@ spec:
         <password>api</password>
     </data-source>
 ```
+20. You can access the frontend at http://frontend-dev.exercise/
+
 <br/>
 <br/>
 
