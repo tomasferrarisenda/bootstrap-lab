@@ -56,46 +56,19 @@ chmod +x deploy-in-minikube.sh
 127.0.0.1 api-gradle-stage.exercise
 127.0.0.1 api-gradle-prod.exercise
 ```
-<!-- 2. Run:
-```bash
-# sudo echo "$(minikube ip) cloudbees-core.local" | sudo tee -a /etc/hosts
-# sudo echo "127.0.0.1 cloudbees-core.local" | sudo tee -a /etc/hosts
-minikube tunnel
-``` -->
-<!-- 2. Log into Operations Center at http://localhost:8081/cjoc/ -->
 3. Run:
 ```bash
 minikube tunnel 
 ```
 4. Log into Operations Center at http://cloudbees-core.local/cjoc/
-<!-- 3. Go through wizard -->
 5. Create First Admin User:
   - Username: admin
   - Pass: admin
   - Full Name: admin
   - Email: admin@admin.com
-<!-- 4. Create Managed controller "invincible-gtg-managed-controller":
-  - Disk size: (5gb)
-  - Storgaeclass: standard
-  - Memory: 1024
-  - Cpu: 1.0 -->
-<!-- 1. Go to http://localhost:8081/cjoc/manage/core-casc-bundles/?tab=2 and click EDIT on invincible-gtg. Write "invincible-gtg" under "Edit availability pattter". Save.
-2. Go to the configuration of "invincible-gtg" managed controller. Under Configuration as Code (CasC) select the bundle. Save -->
-<!-- 4. Start "invincible-gtg" managed controller. -->
-<!-- 4. Start "invincible-gtg" managed controller. -->
 6. Start "exercise" managed controller.
-<!-- 5. Run:
-```bash
-kubectl wait --for=condition=ready -n cloudbees-core pod/invincible-gtg-0 
-kubectl port-forward -n cloudbees-core service/invincible-gtg 8082:80 
-``` -->
-<!-- 7. Get password:
-```bash
-kubectl wait --for=condition=ready -n cloudbees-core pods/exercise-0  --timeout=120s
-echo "password: $(kubectl exec pods/exercise-0  --namespace cloudbees-core -- cat /var/jenkins_home/secrets/initialAdminPassword)"
-``` -->
 7. Acces the "exercise" managed-controller UI at http://cloudbees-core.local/exercise/
-<!-- 6. Acces the "invincible-gtg" managed-controller UI -->
+
 **NOTE**: I tried to automate these next steps but couldn't get the CasC for the managed controllers to work. We need to do them manually.
 
 8. Go through wizard. Install all suggested plugins
@@ -252,13 +225,6 @@ spec:
 You can see the logs for each pod on the Explore tab of Grafana. Here's an example for [example-api-gradle-dev](http://grafana.local/explore?orgId=1&left=%7B%22datasource%22:%22P8E80F9AEF21F6940%22,%22queries%22:%5B%7B%22refId%22:%22A%22,%22expr%22:%22%7Bapp%3D%5C%22exercise-api-gradle-dev%5C%22%7D%20%7C%3D%20%60%60%22,%22queryType%22:%22range%22,%22datasource%22:%7B%22type%22:%22loki%22,%22uid%22:%22P8E80F9AEF21F6940%22%7D,%22editorMode%22:%22builder%22%7D%5D,%22range%22:%7B%22from%22:%22now-1h%22,%22to%22:%22now%22%7D%7D):
 
 <p title="logs" align="center"> <img src="https://i.imgur.com/pbqYfVg.jpg"></p>
-
-<!-- ### Operations Center
-Couldn't deploy Operations Center with CasC because of license:
-```bash
-2024-05-30 18:10:59.854+0000 [id=30]	SEVERE	jenkins.InitReactorRunner$1#onTaskFailed: Failed ConfigurationAsCode.init
-ERROR: This license belongs to another server: 962ad4baa7b523689ed2eec67e92183c
-``` -->
 
 
 
