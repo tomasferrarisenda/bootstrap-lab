@@ -29,6 +29,7 @@
 ## Important
 - You're going to need my DockerHub and GitHub credentials, not ideal, but working around this would open up many potential errors. There's nothing important in DockerHub and nor in that GitHub account, so I'll share them with you in the email.
 - There's further (informal) notes. You can find them [here](/notes.md).
+- This environment will use the main branch of api-gradle-service.
 
 <br/>
 <br/>
@@ -110,8 +111,8 @@ echo "password: $(kubectl exec pods/exercise-0  --namespace cloudbees-core -- ca
 12. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
   - Branch: main
   - Check for template catalog updates every: 15 minutes
-  - Catalog source code repository location: github
-  - Credentials: GitHub
+  - Catalog source code repository location: GitHub
+  - Credentials: github
   - Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
   - Save
 13. Create Kubernetes pod template for just Docker builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
@@ -138,7 +139,7 @@ spec:
       path: /var/run/docker.sock
 ```
 14. Create Kubernetes pod template for Gradle builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
-  - Name: gradle-docker 
+  - Name: gradle-docker
   - Labels: gradleContainerBuilds
   - Raw YAML for the Pod:
 ```yaml
@@ -183,7 +184,7 @@ spec:
     tty: true
   restartPolicy: Never
 ```
-15. (Optional if you plan to build the omniman service) Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
+16. (Optional if you plan to build the omniman service) Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
   - Name: maven-docker 
   - Labels: mavenContainerBuilds
   - Raw YAML for the Pod:
@@ -211,52 +212,38 @@ spec:
     hostPath:
       path: /var/run/docker.sock
 ```
-16. Create frontend pipeline. On "exercise" managed-controller go to New item:
-  - Name: frontend
-  - Docker Build and Deploy
-  - OK
-  - Complete with appropiate values
-  - Save
 17. Create api-gradle pipeline. On "exercise" managed-controller go to New item:
   - Name: api-gradle
   - Gradle Docker Build and Deploy
   - Complete with appropiate values
   - Save
   - OK
-17. Create api-gradle-test pipeline. On "exercise" managed-controller go to New item:
-  - Name: api-gradle-test
+18. Create api-gradle-test pipeline. On "exercise" managed-controller go to New item:
+  - Name: api-gradle-unit-test
   - Gradle Unit Test
   - Complete with appropiate values
   - Save
   - OK
-18. Create mariadb pipeline. On "exercise" managed-controller go to New item:
+19. (Optional) Create mariadb pipeline. On "exercise" managed-controller go to New item:
   - Name: mariadb
   - Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
-18. (Optional) Create ominman pipeline. On "exercise" managed-controller go to New item:
+20. (Optional) Create frontend pipeline. On "exercise" managed-controller go to New item:
+  - Name: frontend
+  - Docker Build and Deploy
+  - OK
+  - Complete with appropiate values
+  - Save
+21. (Optional) Create ominman pipeline. On "exercise" managed-controller go to New item:
   - Name: omniman
   - Maven Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
-19. You can now build any of the services. If successful, they will be automatically deployed to Minikube after a few minutes. 
-**NOTE**: If you are going to build and deploy api-gradle, make sure use the proper server-name in the web.xml. Like this
-```xml
-    <data-source>
-        <name>java:global/ApiGradle</name>
-        <class-name>com.mysql.cj.jdbc.MysqlDataSource</class-name>
-        <!-- <server-name>@serverName@</server-name> -->
-        <!-- <server-name>crm_db</server-name> -->
-        <server-name>exercise-mariadb-dev-service.exercise-dev.svc.cluster.local</server-name>
-        <port-number>3306</port-number>
-        <database-name>apiDB</database-name>
-        <user>api</user>
-        <password>api</password>
-    </data-source>
-```
-20. You can access the frontend at http://frontend-dev.exercise/
+22. You can now build any of the services. If successful, they will be automatically deployed to Minikube after a few minutes. 
+23. You can access the frontend at http://frontend-dev.exercise/
 
 <br/>
 <br/>
