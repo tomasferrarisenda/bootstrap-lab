@@ -172,7 +172,7 @@ spec:
       value: http://exercise-api-gradle-dev-service.exercise-dev.svc.cluster.local:8080
   restartPolicy: Never
 ```
-16. (Optional if you plan to build the omniman service) Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
+16. (Optional, only if you plan to build the omniman service) Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
   - Name: ```maven-docker```
   - Labels: ```mavenContainerBuilds```
   - Raw YAML for the Pod:
