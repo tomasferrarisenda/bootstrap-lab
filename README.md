@@ -77,16 +77,16 @@ You now should be able to access:
   - Pass: ```admin```
   - Full Name: ```admin```
   - Email: ```admin@admin.com```
-6. Go to the Configuration of the "exercise" managed controller.
+<!-- 6. Go to the "Configure" tab of the "exercise" managed controller.
 7. Make sure under "Configuration as Code (CasC)" these options are selected:
 - Bundle -> exercise
 - Branch/tag or local configuration -> main
-8. Click "Save" to deploy the managed controller.
+8. Click "Save" to deploy the managed controller. -->
+6. Start the "exercise" managed-controller
+7. When provisioned, access the "exercise" managed-controller UI at ```http://cloudbees-core.local/exercise/```
 
-When deployed, access the "exercise" managed-controller UI at ```http://cloudbees-core.local/exercise/```
-
-**NOTE**: I tried to automate these next steps but couldn't get the CasC for the managed controllers to work. We need to do them manually.
-
+**NOTE**: Addind the Pipeline Template Catalogs through CasC would crash de provisioning of the managed controller, so these next steps need to be done manually.
+<!-- **NOTE**: I tried to automate these next steps but couldn't get the CasC for the managed controllers to work. We need to do them manually.
 8. Go through wizard. Install all suggested plugins
 9. Create credentials in "exercise" managed-controller for dockerhub. ID and description must be ```dockerhub```.
 10. Create credentials in "exercise" managed-controller for github with PAT. ID and description must be ```github```.
@@ -96,7 +96,7 @@ When deployed, access the "exercise" managed-controller UI at ```http://cloudbee
   - Source Code Management: GitHub
   - Credentials: ```github```
   - Repository HTTPS URL: ```https://github.com/tomasferrarisenda/global-shared-library```
-  - Save
+  - Save -->
 12. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
   - Branch: ```main```
   - Check for template catalog updates every: 15 minutes
@@ -104,7 +104,7 @@ When deployed, access the "exercise" managed-controller UI at ```http://cloudbee
   - Credentials: ```github```
   - Repository HTTPS URL: ```https://github.com/tomasferrarisenda/pipeline-template-catalogs```
   - Save
-13. Create Kubernetes pod template for just Docker builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
+<!-- 13. Create Kubernetes pod template for just Docker builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
   - Name: ```docker```
   - Labels: ```dockerContainerBuilds```
   - Raw YAML for the Pod:
@@ -206,19 +206,19 @@ spec:
   - name: docker-socket
     hostPath:
       path: /var/run/docker.sock
-```
+``` -->
 17. Create api-gradle pipeline. On "exercise" managed-controller go to New item:
   - Name: ```api-gradle```
   - Gradle Docker Build and Deploy
+  - OK
   - Complete with appropiate values
   - Save
-  - OK
 18. Create api-gradle-test pipeline. On "exercise" managed-controller go to New item:
   - Name: ```api-gradle-unit-test```
   - Gradle Unit Test
+  - OK
   - Complete with appropiate values
   - Save
-  - OK
 19. (Optional) Create mariadb pipeline. On "exercise" managed-controller go to New item:
   - Name: ```mariadb```
   - Docker Build and Deploy
