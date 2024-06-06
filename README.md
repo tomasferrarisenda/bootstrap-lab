@@ -128,6 +128,9 @@ spec:
     command:
     - cat
     tty: true
+    env:
+    - name: API_SERVER_URL
+      value: http://api-gradle-dev.exercise
   - name: docker
     image: docker
     args: ["sleep", "10000"]
@@ -156,6 +159,9 @@ spec:
     command:
     - cat
     tty: true
+    env:
+    - name: API_SERVER_URL
+      value: http://api-gradle-dev.exercise
   restartPolicy: Never
 ```
 16. (Optional if you plan to build the omniman service) Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
