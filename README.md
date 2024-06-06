@@ -59,10 +59,12 @@ chmod +x deploy-in-minikube.sh
 127.0.0.1 api-gradle-stage.exercise
 127.0.0.1 api-gradle-prod.exercise
 ```
-3. When the script is done, run (you may have to input your password):
+3. When the Minikube is deployed, run:
 ```bash
 minikube tunnel 
 ```
+You may have to input your password.
+
 You now should be able to access:
 - ArgoCD at ```http://argocd.local/``` (credential are logged by the deploy-in-minikube.sh script)
 - Cloudbees Operartions Center at ```http://cloudbees-core.local/cjoc/```
