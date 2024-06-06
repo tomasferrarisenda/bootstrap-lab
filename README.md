@@ -45,7 +45,7 @@ cd bootstrap-lab
 chmod +x deploy-in-minikube.sh
 ./deploy-in-minikube.sh
 ```
-2. Meanwhile, edit C:\Windows\System32\drivers\etc\hosts. Add:
+2. Meanwhile, add to C:\Windows\System32\drivers\etc\hosts:
 ```bash
 127.0.0.1 argocd.local
 127.0.0.1 cloudbees-core.local
