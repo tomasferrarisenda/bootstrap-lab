@@ -77,8 +77,13 @@ You now should be able to access:
   - Pass: ```admin```
   - Full Name: ```admin```
   - Email: ```admin@admin.com```
-6. Start "exercise" managed controller.
-    When deployed, access the "exercise" managed-controller UI at ```http://cloudbees-core.local/exercise/```
+6. Go to the Configuration of the "exercise" managed controller.
+7. Make sure under "Configuration as Code (CasC)" these options are selected:
+- Bundle -> exercise
+- Branch/tag or local configuration -> main
+8. Click "Save" to deploy the managed controller.
+
+When deployed, access the "exercise" managed-controller UI at ```http://cloudbees-core.local/exercise/```
 
 **NOTE**: I tried to automate these next steps but couldn't get the CasC for the managed controllers to work. We need to do them manually.
 
