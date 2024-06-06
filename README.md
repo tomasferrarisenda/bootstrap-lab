@@ -45,7 +45,7 @@ chmod +x deploy-in-minikube.sh
 ```
 2. Edit C:\Windows\System32\drivers\etc\hosts. Add:
 ```bash
-127.0.0.1 hello-world.example
+127.0.0.1 argocd.local
 127.0.0.1 cloudbees-core.local
 127.0.0.1 grafana.local
 
@@ -61,6 +61,12 @@ chmod +x deploy-in-minikube.sh
 ```bash
 minikube tunnel 
 ```
+You now should be able to access:
+- ArgoCD at http://argocd.local/
+- Cloudbees Operartions Center at http://cloudbees-core.local/cjoc/
+- Grafana at http://grafana.local/
+- SwaggerUI at http://frontend-dev.exercise/
+
 4. Log into Operations Center at http://cloudbees-core.local/cjoc/
 5. Create First Admin User:
   - Username: admin
@@ -130,7 +136,7 @@ spec:
     tty: true
     env:
     - name: API_SERVER_URL
-      value: http://api-gradle-dev.exercise
+      value: http://exercise-api-gradle-dev-service.exercise-dev.svc.cluster.local:8080
   - name: docker
     image: docker
     args: ["sleep", "10000"]
@@ -161,7 +167,7 @@ spec:
     tty: true
     env:
     - name: API_SERVER_URL
-      value: http://api-gradle-dev.exercise
+      value: http://exercise-api-gradle-dev-service.exercise-dev.svc.cluster.local:8080
   restartPolicy: Never
 ```
 16. (Optional if you plan to build the omniman service) Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
