@@ -28,7 +28,6 @@
 
 ## Important
 - You're going to need my DockerHub and GitHub credentials, not ideal, but working around this would open up many potential errors. There's nothing important in DockerHub and nor in that GitHub account, so I'll share them with you in the email.
-- There's further (informal) notes. You can find them [here](/notes.md).
 - This environment will use the main branch of api-gradle-service.
 - I didn't include JaCoCo and SonarQube stages in this environment because it involved more manual steps by installing and configuring plugins.
 
