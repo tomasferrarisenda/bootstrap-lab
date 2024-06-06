@@ -1,13 +1,13 @@
 # PROLOGUE
-I got Mauricio's call on Tuesday, since I was out on holidays, he offered to send me the challenge on friday, I said yes.
+I got Mauricio's call on Tuesday. Since I was out on holidays, he offered to send me the challenge on friday, I said yes.
 
 Still got a little anxious, and since David was worried about my lack of experience with Jenkins shared libraries and templata catalogs, I thought the challenge would have something to do with that.
 
 So every free moment i got during the holidays I started learning about these subjects and setting up a lab. Ended up with a Cloudbees core deployment. Created repo for shared libraries and another for templates. Set up an example omniman-service that used all of these features. Omniman service was java maven app.
 
-Also learned about CasC for jenkins, tried to CasC everything as much as possible, in order to get "1-click deployment". Got pretty far, though not fully 1-click.
+Also learned about CasC for jenkins, tried to CasC everything as much as possible, in order to get "1-click deployment". Got pretty far, but for some reason I can't have the managed controllers be deployed using their CasC bundle.
 
-On friday I get challenge from mauricio. Not what I was expecting but I might as well put the lab to good use.
+On friday I get challenge from Mauricio. Not what I was expecting but I might as well put the lab to good use.
 
 # STEP BY STEP
 1. General overview of task and files
