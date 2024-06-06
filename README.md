@@ -97,7 +97,8 @@ You now should be able to access:
   - Credentials: ```github```
   - Repository HTTPS URL: ```https://github.com/tomasferrarisenda/global-shared-library```
   - Save -->
-8. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
+8. Update the value of the password of the github credentials with the provided token.
+9. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
   - Branch: ```main```
   - Check for template catalog updates every: 15 minutes
   - Catalog source code repository location: GitHub
@@ -207,37 +208,37 @@ spec:
     hostPath:
       path: /var/run/docker.sock
 ``` -->
-9. Create api-gradle pipeline. On "exercise" managed-controller go to New item:
+10. Create api-gradle pipeline. On "exercise" managed-controller go to New item:
   - Name: ```api-gradle```
   - Gradle Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
-10. Create api-gradle-test pipeline. On "exercise" managed-controller go to New item:
+11. Create api-gradle-test pipeline. On "exercise" managed-controller go to New item:
   - Name: ```api-gradle-unit-test```
   - Gradle Unit Test
   - OK
   - Complete with appropiate values
   - Save
-11. (Optional) Create mariadb pipeline. On "exercise" managed-controller go to New item:
+12. (Optional) Create mariadb pipeline. On "exercise" managed-controller go to New item:
   - Name: ```mariadb```
   - Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
-12. (Optional) Create frontend pipeline. On "exercise" managed-controller go to New item:
+13. (Optional) Create frontend pipeline. On "exercise" managed-controller go to New item:
   - Name: ```frontend```
   - Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
-13. (Optional) Create ominman pipeline. On "exercise" managed-controller go to New item:
+14. (Optional) Create ominman pipeline. On "exercise" managed-controller go to New item:
   - Name: ```omniman```
   - Maven Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
-14. You can now build any of the services. If successful, they will be automatically deployed to Minikube after a few minutes. 
+15. You can now build any of the services. If successful, they will be automatically deployed to Minikube after a few minutes. 
 
 <br/>
 <br/>
@@ -246,8 +247,3 @@ spec:
 You can see the logs for each pod on the Explore tab of Grafana. Here's an example for [example-api-gradle-dev](http://grafana.local/explore?orgId=1&left=%7B%22datasource%22:%22P8E80F9AEF21F6940%22,%22queries%22:%5B%7B%22refId%22:%22A%22,%22expr%22:%22%7Bapp%3D%5C%22exercise-api-gradle-dev%5C%22%7D%20%7C%3D%20%60%60%22,%22queryType%22:%22range%22,%22datasource%22:%7B%22type%22:%22loki%22,%22uid%22:%22P8E80F9AEF21F6940%22%7D,%22editorMode%22:%22builder%22%7D%5D,%22range%22:%7B%22from%22:%22now-1h%22,%22to%22:%22now%22%7D%7D):
 
 <p title="logs" align="center"> <img src="https://i.imgur.com/pbqYfVg.jpg"></p>
-
-
-
-
-
