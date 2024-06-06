@@ -76,7 +76,7 @@ You now should be able to access:
   - Full Name: admin
   - Email: admin@admin.com
 6. Start "exercise" managed controller.
-7. Acces the "exercise" managed-controller UI at http://cloudbees-core.local/exercise/
+    When deployed, access the "exercise" managed-controller UI at http://cloudbees-core.local/exercise/
 
 **NOTE**: I tried to automate these next steps but couldn't get the CasC for the managed controllers to work. We need to do them manually.
 
