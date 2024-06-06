@@ -98,7 +98,7 @@ You now should be able to access:
   - Repository HTTPS URL: ```https://github.com/tomasferrarisenda/pipeline-template-catalogs```
   - Save
 13. Create Kubernetes pod template for just Docker builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
-  - Name: ```docker ```
+  - Name: ```docker```
   - Labels: ```dockerContainerBuilds```
   - Raw YAML for the Pod:
 ```yaml
