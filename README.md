@@ -64,7 +64,7 @@ minikube tunnel
 You now should be able to access:
 - ArgoCD at http://argocd.local/ (credential are logged by the deploy-in-minikube.sh script)
 - Cloudbees Operartions Center at http://cloudbees-core.local/cjoc/
-- Grafana at http://grafana.local/
+- Grafana at http://grafana.local/ (user: admin / password: admin)
 - SwaggerUI at http://frontend-dev.exercise/
 
 4. Log into Operations Center at http://cloudbees-core.local/cjoc/
