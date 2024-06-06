@@ -40,6 +40,8 @@ I built this lab in WSL2 for Windows. Some steps may vary if you are running on 
 
 1. Run deploy-in-minikube.sh
 ```bash
+git clone https://github.com/tomasferrarisenda/bootstrap-lab.git
+cd bootstrap-lab
 chmod +x deploy-in-minikube.sh
 ./deploy-in-minikube.sh
 ```
