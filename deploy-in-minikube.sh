@@ -20,7 +20,7 @@ echo "##########################################################################
 echo " "
 echo "TO ACCESS THE ARGOCD DASHBOARD:"
 echo " "
-echo "URL: http://localhost:8080/"
+echo "URL: http://argocd.local/"
 echo "user: admin"
 echo "password: $(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d)"
 echo " "

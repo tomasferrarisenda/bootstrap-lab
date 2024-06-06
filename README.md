@@ -43,7 +43,7 @@ I built this lab in WSL2 for Windows. Some steps may vary if you are running on 
 chmod +x deploy-in-minikube.sh
 ./deploy-in-minikube.sh
 ```
-2. Edit C:\Windows\System32\drivers\etc\hosts. Add:
+2. Meanwhile, edit C:\Windows\System32\drivers\etc\hosts. Add:
 ```bash
 127.0.0.1 argocd.local
 127.0.0.1 cloudbees-core.local
@@ -57,12 +57,12 @@ chmod +x deploy-in-minikube.sh
 127.0.0.1 api-gradle-stage.exercise
 127.0.0.1 api-gradle-prod.exercise
 ```
-3. Run:
+3. When the script is done, run (you may have to input your password):
 ```bash
 minikube tunnel 
 ```
 You now should be able to access:
-- ArgoCD at http://argocd.local/
+- ArgoCD at http://argocd.local/ (credential are logged by the deploy-in-minikube.sh script)
 - Cloudbees Operartions Center at http://cloudbees-core.local/cjoc/
 - Grafana at http://grafana.local/
 - SwaggerUI at http://frontend-dev.exercise/
