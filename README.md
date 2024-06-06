@@ -64,42 +64,42 @@ chmod +x deploy-in-minikube.sh
 minikube tunnel 
 ```
 You now should be able to access:
-- ArgoCD at http://argocd.local/ (credential are logged by the deploy-in-minikube.sh script)
-- Cloudbees Operartions Center at http://cloudbees-core.local/cjoc/
-- Grafana at http://grafana.local/ (user: admin / password: admin)
-- SwaggerUI at http://frontend-dev.exercise/
+- ArgoCD at ```http://argocd.local/``` (credential are logged by the deploy-in-minikube.sh script)
+- Cloudbees Operartions Center at ```http://cloudbees-core.local/cjoc/```
+- Grafana at ```http://grafana.local/``` (user: ```admin``` / password: ```admin```)
+- SwaggerUI at ```http://frontend-dev.exercise/```
 
-4. Log into Operations Center at http://cloudbees-core.local/cjoc/
+4. Log into Operations Center at ```http://cloudbees-core.local/cjoc/```
 5. Create First Admin User:
-  - Username: admin
-  - Pass: admin
-  - Full Name: admin
-  - Email: admin@admin.com
+  - Username: ```admin```
+  - Pass: ```admin```
+  - Full Name: ```admin```
+  - Email: ```admin@admin.com```
 6. Start "exercise" managed controller.
-    When deployed, access the "exercise" managed-controller UI at http://cloudbees-core.local/exercise/
+    When deployed, access the "exercise" managed-controller UI at ```http://cloudbees-core.local/exercise/```
 
 **NOTE**: I tried to automate these next steps but couldn't get the CasC for the managed controllers to work. We need to do them manually.
 
 8. Go through wizard. Install all suggested plugins
-9. Create credentials in "exercise" managed-controller for dockerhub. ID and description must be "dockerhub".
-10. Create credentials in "exercise" managed-controller for github with PAT. ID and description must be "github".
+9. Create credentials in "exercise" managed-controller for dockerhub. ID and description must be ```dockerhub```.
+10. Create credentials in "exercise" managed-controller for github with PAT. ID and description must be ```github```.
 11. Add Shared Library. On "exercise" managed-controller go Manage Jenkins -> System -> Global Pipeline Libraries  
-  - Name: global-shared-library
-  - Default version: main
+  - Name: ```global-shared-library```
+  - Default version: ```main```
   - Source Code Management: GitHub
-  - Credentials: github
-  - Repository HTTPS URL: https://github.com/tomasferrarisenda/global-shared-library
+  - Credentials: ```github```
+  - Repository HTTPS URL: ```https://github.com/tomasferrarisenda/global-shared-library```
   - Save
 12. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
-  - Branch: main
+  - Branch: ```main```
   - Check for template catalog updates every: 15 minutes
   - Catalog source code repository location: GitHub
-  - Credentials: github
-  - Repository HTTPS URL: https://github.com/tomasferrarisenda/pipeline-template-catalogs
+  - Credentials: ```github```
+  - Repository HTTPS URL: ```https://github.com/tomasferrarisenda/pipeline-template-catalogs```
   - Save
 13. Create Kubernetes pod template for just Docker builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
-  - Name: docker 
-  - Labels: dockerContainerBuilds
+  - Name: ```docker ```
+  - Labels: ```dockerContainerBuilds```
   - Raw YAML for the Pod:
 ```yaml
 apiVersion: v1
@@ -121,8 +121,8 @@ spec:
       path: /var/run/docker.sock
 ```
 14. Create Kubernetes pod template for Gradle builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
-  - Name: gradle-docker
-  - Labels: gradleContainerBuilds
+  - Name: ```gradle-docker```
+  - Labels: ```gradleContainerBuilds```
   - Raw YAML for the Pod:
 ```yaml
 apiVersion: v1
@@ -152,8 +152,8 @@ spec:
       path: /var/run/docker.sock
 ```
 15. Create Kubernetes pod template for Gradle Tests. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
-  - Name: gradle 
-  - Labels: gradleTests
+  - Name: ```gradle```
+  - Labels: ```gradleTests```
   - Raw YAML for the Pod:
 ```yaml
 apiVersion: v1
@@ -173,8 +173,8 @@ spec:
   restartPolicy: Never
 ```
 16. (Optional if you plan to build the omniman service) Create Kubernetes pod template for Maven builds. On "exercise" managed-controller go to Manage Jenkins -> Kubernetes Pod Templates:
-  - Name: maven-docker 
-  - Labels: mavenContainerBuilds
+  - Name: ```maven-docker```
+  - Labels: ```mavenContainerBuilds```
   - Raw YAML for the Pod:
 ```yaml
 apiVersion: v1
@@ -201,37 +201,36 @@ spec:
       path: /var/run/docker.sock
 ```
 17. Create api-gradle pipeline. On "exercise" managed-controller go to New item:
-  - Name: api-gradle
+  - Name: ```api-gradle```
   - Gradle Docker Build and Deploy
   - Complete with appropiate values
   - Save
   - OK
 18. Create api-gradle-test pipeline. On "exercise" managed-controller go to New item:
-  - Name: api-gradle-unit-test
+  - Name: ```api-gradle-unit-test```
   - Gradle Unit Test
   - Complete with appropiate values
   - Save
   - OK
 19. (Optional) Create mariadb pipeline. On "exercise" managed-controller go to New item:
-  - Name: mariadb
+  - Name: ```mariadb```
   - Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
 20. (Optional) Create frontend pipeline. On "exercise" managed-controller go to New item:
-  - Name: frontend
+  - Name: ```frontend```
   - Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
 21. (Optional) Create ominman pipeline. On "exercise" managed-controller go to New item:
-  - Name: omniman
+  - Name: ```omniman```
   - Maven Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
 22. You can now build any of the services. If successful, they will be automatically deployed to Minikube after a few minutes. 
-23. You can access the frontend at http://frontend-dev.exercise/
 
 <br/>
 <br/>
