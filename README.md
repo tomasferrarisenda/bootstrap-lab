@@ -85,7 +85,7 @@ You now should be able to access:
 6. Start the "exercise" managed-controller
 7. When provisioned, access the "exercise" managed-controller UI at ```http://cloudbees-core.local/exercise/```
 
-**NOTE**: Addind the Pipeline Template Catalogs through CasC would crash de provisioning of the managed controller, so these next steps need to be done manually.
+**NOTE**: Adding the Pipeline Template Catalogs through CasC would crash de provisioning of the managed controller, so these next steps need to be done manually.
 <!-- **NOTE**: I tried to automate these next steps but couldn't get the CasC for the managed controllers to work. We need to do them manually.
 8. Go through wizard. Install all suggested plugins
 9. Create credentials in "exercise" managed-controller for dockerhub. ID and description must be ```dockerhub```.
@@ -97,7 +97,7 @@ You now should be able to access:
   - Credentials: ```github```
   - Repository HTTPS URL: ```https://github.com/tomasferrarisenda/global-shared-library```
   - Save -->
-12. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
+8. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
   - Branch: ```main```
   - Check for template catalog updates every: 15 minutes
   - Catalog source code repository location: GitHub
@@ -207,37 +207,37 @@ spec:
     hostPath:
       path: /var/run/docker.sock
 ``` -->
-17. Create api-gradle pipeline. On "exercise" managed-controller go to New item:
+9. Create api-gradle pipeline. On "exercise" managed-controller go to New item:
   - Name: ```api-gradle```
   - Gradle Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
-18. Create api-gradle-test pipeline. On "exercise" managed-controller go to New item:
+10. Create api-gradle-test pipeline. On "exercise" managed-controller go to New item:
   - Name: ```api-gradle-unit-test```
   - Gradle Unit Test
   - OK
   - Complete with appropiate values
   - Save
-19. (Optional) Create mariadb pipeline. On "exercise" managed-controller go to New item:
+11. (Optional) Create mariadb pipeline. On "exercise" managed-controller go to New item:
   - Name: ```mariadb```
   - Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
-20. (Optional) Create frontend pipeline. On "exercise" managed-controller go to New item:
+12. (Optional) Create frontend pipeline. On "exercise" managed-controller go to New item:
   - Name: ```frontend```
   - Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
-21. (Optional) Create ominman pipeline. On "exercise" managed-controller go to New item:
+13. (Optional) Create ominman pipeline. On "exercise" managed-controller go to New item:
   - Name: ```omniman```
   - Maven Docker Build and Deploy
   - OK
   - Complete with appropiate values
   - Save
-22. You can now build any of the services. If successful, they will be automatically deployed to Minikube after a few minutes. 
+14. You can now build any of the services. If successful, they will be automatically deployed to Minikube after a few minutes. 
 
 <br/>
 <br/>
