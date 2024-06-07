@@ -97,6 +97,7 @@ You now should be able to access:
   - Repository HTTPS URL: ```https://github.com/tomasferrarisenda/global-shared-library```
   - Save -->
 8. Update the value of the password of the github credentials with the provided token.
+8. Update the value of the password of the dockerhub credentials with the provided password.
 9. Add Template Catalog. Go to Pipeline Template Catalog -> Add catalog
   - Branch: ```main```
   - Check for template catalog updates every: 15 minutes
